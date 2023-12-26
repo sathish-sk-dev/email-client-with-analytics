@@ -1,0 +1,90 @@
+$important-flag: " !important";
+
+@function important-flag($important) {
+  @return if($important, $important-flag, "");
+}
+
+@mixin full-width($important: false) {
+  inline-size: 100vw#{important-flag($important)};
+}
+
+@mixin full-height($important: false) {
+  block-size: 100vh#{important-flag($important)};
+}
+
+@mixin center-align($important: false) {
+  display: flex#{important-flag($important)};
+  justify-content: center#{important-flag($important)};
+  align-items: center#{important-flag($important)};
+}
+
+@mixin center-align-items($important: false) {
+  display: flex#{important-flag($important)};
+  align-items: center#{important-flag($important)};
+}
+
+@mixin center-justify-content($important: false) {
+  display: flex#{important-flag($important)};
+  justify-content: center#{important-flag($important)};
+}
+
+@mixin flex-row($important: false) {
+  display: flex#{important-flag($important)};
+  flex-direction: row#{important-flag($important)};
+}
+
+@mixin flex-column($important: false) {
+  display: flex#{important-flag($important)};
+  flex-direction: column#{important-flag($important)};
+}
+
+@mixin center-align-full-width($important: false) {
+  @include center-align($important);
+  @include full-width($important);
+}
+
+@mixin center-align-full-height($important: false) {
+  @include center-align($important);
+  @include full-height($important);
+}
+
+@mixin center-align-items-full-height($important: false) {
+  @include center-align-items($important);
+  @include full-height($important);
+}
+
+@mixin center-align-row($important: false) {
+  @include center-align($important);
+  @include flex-row($important);
+}
+
+@mixin center-align-column($important: false) {
+  @include center-align($important);
+  @include flex-column($important);
+}
+
+@mixin center-align-row-full-size($important: false) {
+  @include center-align($important);
+  @include full-width($important);
+  @include full-height($important);
+  @include flex-row($important);
+}
+
+@mixin center-align-column-full-size($important: false) {
+  @include center-align($important);
+  @include full-width($important);
+  @include full-height($important);
+  @include flex-column($important);
+}
+
+@mixin center-align-row-full-width($important: false) {
+  @include center-align($important);
+  @include full-width($important);
+  @include flex-row($important);
+}
+
+@mixin center-align-column-full-height($important: false) {
+  @include center-align($important);
+  @include full-height($important);
+  @include flex-column($important);
+}

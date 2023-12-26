@@ -1,0 +1,5 @@
+@use "src/styles/Layout.module";
+
+.container {
+  @include Layout.flex-row;
+}

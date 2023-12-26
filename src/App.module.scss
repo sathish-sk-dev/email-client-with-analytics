@@ -1,20 +1,25 @@
-.App {
+@use "src/styles/Colors.module";
+@use "src/styles/Fonts.module";
+@import "src/styles/Colors.module";
+@import "src/styles/Global.module";
+
+.app {
   text-align: center;
 }
 
-.App-logo {
+.appLogo {
   height: 40vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
+  .appLogo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.appHeader {
+  background-color: Colors.$background-color;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,8 +29,14 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.paragraph {
+  color: Colors.$text-color;
+  @include Fonts.font-bold-mammoth();
+}
+
+.appLink {
+  color: Colors.$text-color;
+  @include Fonts.font-mammoth();
 }
 
 @keyframes App-logo-spin {

@@ -1,0 +1,18 @@
+@use "src/styles/Colors.module";
+
+$large-padding: 24px;
+$large-margin: 24px;
+
+$medium-padding: 16px;
+$medium-margin: 16px;
+
+$small-padding: 12px;
+$small-margin: 12px;
+
+$extra-small-padding: 8px;
+$extra-small-margin: 8px;
+
+$primary-box-shadow: 0px 0px 24px 0px Colors.$shadow-grey;
+$border: 1px solid Colors.$border-color;
+
+$side-nav-width: 200px;

@@ -1,0 +1,11 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Common.module";
+
+.container {
+  @include Layout.center-align-column-full-height;
+  background-color: Colors.$secondary-background-color;
+  flex-grow: 3;
+  z-index: 9;
+  padding: Common.$large-padding;
+}

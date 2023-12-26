@@ -1,0 +1,19 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --text-color: #333;
+  --background-color: #ffffff;
+  --secondary-background-color: #f5f7fa;
+  --shadow-grey: #00000014;
+  --secondary-card-color: #fdfefe;
+  --border-color: #edf2f7; //#4c57661a
+}
+
+$primary-color: var(--primary-color);
+$secondary-color: var(--secondary-color);
+$text-color: var(--text-color);
+$background-color: var(--background-color);
+$secondary-background-color: var(--secondary-background-color);
+$secondary-card-color: var(--secondary-card-color);
+$border-color: var(--border-color);
+$shadow-grey: var(--shadow-grey);

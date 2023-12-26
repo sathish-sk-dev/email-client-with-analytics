@@ -1,0 +1,111 @@
+@mixin media-xs-devices {
+  @media (width <= 767px) {
+    @content;
+  }
+}
+
+@mixin media-xs-devices-landscape {
+  @media (width <= 767px) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin media-sm-devices {
+  @media (width >= 768px) and (width <= 991px) {
+    @content;
+  }
+}
+
+@mixin media-md-devices {
+  @media (width >= 992px) and (width <= 1199px) {
+    @content;
+  }
+}
+
+@mixin media-lg-devices {
+  @media (width >= 1200px) {
+    @content;
+  }
+}
+
+@mixin media-lg-devices-down {
+  @media (width <= 1440px) {
+    @content;
+  }
+}
+
+@mixin media-sm-devices-up {
+  @media (width >= 768px) {
+    @content;
+  }
+}
+
+@mixin media-md-devices-up {
+  @media (width >= 992px) {
+    @content;
+  }
+}
+
+@mixin media-sm-devices-down {
+  @media (width <= 991px) {
+    @content;
+  }
+}
+
+@mixin media-md-devices-down {
+  @media (width <= 1199px) {
+    @content;
+  }
+}
+
+@mixin portrait-with-keyboard {
+  // Possible approximation for Android chrome with keyboard up in portrait mode
+  // May be used for future reference -> mediaQuery - device-aspect-ratio: 1/0.9 instead of Height and Width
+  // Setting height of 450px to look well on Android devices with higher pixel density.
+  @media screen and (height <= 450px) and (width <= 450px) {
+    @content;
+  }
+}
+
+@mixin landscape-tablet-with-keyboard {
+  // Possible approximation for Android chrome with keyboard up in portrait mode
+  @media screen and (height <= 350px) and (width >= 768px) and (width <= 1199px) {
+    @content;
+  }
+}
+
+@mixin touch-devices {
+  @include media-md-devices-down {
+    @content;
+  }
+}
+
+@mixin not-touch-devices {
+  @include media-lg-devices {
+    @content;
+  }
+}
+
+@mixin hover-and-active($classSelector) {
+  @include not-touch-devices {
+    #{unquote($classSelector)}:hover {
+      @content;
+    }
+  }
+  #{unquote($classSelector)}:active {
+    @content;
+  }
+}
+
+/* Media Print query CSS */
+@mixin media-print {
+  @media print {
+    @content;
+  }
+}
+
+@mixin media-ipad-device {
+  @media only screen and (device-width >= 768px) and (device-width <= 1024px) {
+    @content;
+  }
+}

@@ -1,0 +1,11 @@
+@use "src/styles/Colors.module";
+@use "src/styles/Layout.module";
+@use "src/styles/Common.module";
+
+.container {
+  @include Layout.center-align-items-full-height;
+  width: Common.$side-nav-width;
+  padding: Common.$medium-padding;
+  background: Colors.$background-color;
+  z-index: 10;
+}
