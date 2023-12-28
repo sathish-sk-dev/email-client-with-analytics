@@ -14,6 +14,7 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
 
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
+    document.body.setAttribute("style", "overflow: hidden;");
   }, [theme]);
 
   const toggleTheme = () => {

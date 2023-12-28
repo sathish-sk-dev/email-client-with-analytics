@@ -3,9 +3,19 @@
 @use "src/styles/Common.module";
 
 .container {
-  @include Layout.center-align-column-full-height;
+  @include Layout.flex-column;
   background-color: Colors.$secondary-background-color;
-  flex-grow: 3;
   z-index: 9;
-  padding: Common.$large-padding;
+  flex: 1;
+}
+
+.innerContainer {
+  padding: Common.$small-padding Common.$large-padding Common.$large-padding;
+}
+
+.listContainer {
+  @include Layout.flex-column;
+  overflow-y: scroll;
+  height: calc(100vh - 182px);
+  padding: 0px 12px Common.$large-padding Common.$large-padding;
 }

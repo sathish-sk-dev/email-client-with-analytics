@@ -1,0 +1,49 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+
+.container {
+  @include Layout.flex-row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: Common.$large-padding;
+  border-bottom: Common.$border;
+  //box-shadow: Common.$primary-box-shadow;
+  position: relative;
+  width: calc(100% - 48px);
+  background-color: Colors.$background-color;
+  height: 50px;
+}
+
+.innerContainer {
+  @include Layout.flex-column;
+  gap: 4px;
+  margin-right: 16px;
+  align-items: flex-end;
+
+  .title {
+    @include Fonts.font-bold-medium;
+  }
+
+  .status {
+    @include Layout.center-align-row;
+    @include Fonts.font-small;
+    color: Colors.$secondary-text-color;
+  }
+
+  .statusColor {
+    width: 8px;
+    height: 8px;
+    background-color: Colors.$online-color;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  box-shadow: Common.$primary-box-shadow;
+}

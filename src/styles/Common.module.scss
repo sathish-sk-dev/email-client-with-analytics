@@ -1,4 +1,5 @@
 @use "src/styles/Colors.module";
+@use "src/styles/Fonts.module";
 
 $large-padding: 24px;
 $large-margin: 24px;
@@ -12,7 +13,140 @@ $small-margin: 12px;
 $extra-small-padding: 8px;
 $extra-small-margin: 8px;
 
-$primary-box-shadow: 0px 0px 24px 0px Colors.$shadow-grey;
-$border: 1px solid Colors.$border-color;
+$primary-icon-width: 32px;
+$primary-icon-height: 32px;
 
-$side-nav-width: 200px;
+$secondary-icon-width: 24px;
+$secondary-icon-height: 24px;
+
+$primary-box-shadow: 0px 0px 8px 0px Colors.$shadow-grey;
+$border: 2px solid Colors.$border-color;
+$input-box-shadow:
+  0 0 8px 2px rgb(106 28 166 / 8%),
+  0 2px 2px -2px rgb(0 0 0 / 12%);
+
+$side-nav-width: 88px;
+$card-border-radios: 16px;
+$search-border-radios: 24px;
+
+input::placeholder {
+  color: Colors.$placeholder-color;
+}
+
+body {
+  @include Fonts.font-normal;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  appearance: inherit;
+  cursor: pointer;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea,
+select,
+button {
+  @include Fonts.font-normal;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  overflow: visible;
+  background: 0 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: Colors.$scroll-bar-thumb-color;
+  background-clip: padding-box;
+  box-shadow: inset 0 0 0 1px Colors.$background-color;
+  border-radius: 6px !important;
+}

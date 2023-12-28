@@ -1,0 +1,9 @@
+export { ReactComponent as SearchIcon } from "./search.svg";
+export { ReactComponent as CloseIcon } from "./close.svg";
+export { ReactComponent as MailOpenOutline } from "./mail-open-outline.svg";
+export { ReactComponent as MailOpenSolid } from "./mail-open-solid.svg";
+export { ReactComponent as SendOutline } from "./send-outline.svg";
+export { ReactComponent as SendSolid } from "./send-solid.svg";
+export { ReactComponent as DeleteOutline } from "./delete-outline.svg";
+export { ReactComponent as PenIcon } from "./pen.svg";
+export { ReactComponent as AddIcon } from "./add.svg";

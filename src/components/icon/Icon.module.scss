@@ -1,0 +1,26 @@
+@use "src/styles/Common.module";
+@use "src/styles/Colors.module";
+
+.iconContainer {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  outline: none;
+  cursor: pointer;
+  padding: 6px;
+
+  &:hover {
+    background-color: Colors.$icon-hover-color;
+    border-radius: 50%;
+  }
+}
+
+.container {
+  svg {
+    fill: Colors.$icon-color;
+    height: Common.$secondary-icon-height;
+    width: Common.$secondary-icon-width;
+  }
+}

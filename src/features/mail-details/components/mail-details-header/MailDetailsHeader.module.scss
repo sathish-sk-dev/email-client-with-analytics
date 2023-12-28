@@ -1,0 +1,47 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+
+.header {
+  @include Layout.flex-row;
+  position: relative;
+  width: calc(100% - 48px);
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+}
+
+.headerContent {
+  @include Layout.flex-column;
+  gap: 6px;
+  margin-left: 16px;
+  margin-top: 4px;
+
+  .name {
+    @include Fonts.font-semi-bold-medium;
+  }
+
+  .to {
+    @include Fonts.font-small;
+    color: Colors.$secondary-text-color;
+  }
+}
+
+.mailId {
+  @include Fonts.font-moderate-normal;
+  color: Colors.$secondary-text-color;
+  margin-left: 24px;
+  margin-top: 5px;
+}
+
+.time {
+  @include Fonts.font-small;
+  color: Colors.$secondary-text-color;
+  position: absolute;
+  right: 0px;
+  margin-top: 5px;
+}

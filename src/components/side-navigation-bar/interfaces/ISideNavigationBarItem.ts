@@ -1,7 +1,9 @@
-import { ReactNode } from "react";
+import { FC, SVGProps } from "react";
 
 export interface ISideNavigationBarItem {
-  icon: ReactNode;
+  outlineIcon: FC<SVGProps<SVGSVGElement>>;
+  solidIcon: FC<SVGProps<SVGSVGElement>>;
   title: string;
-  onClick: () => void;
+  containerClass: string;
+  selectedContainerClass: string;
 }

@@ -1,0 +1,47 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Fonts.module";
+@use "src/styles/Common.module";
+
+.container {
+  align-items: center;
+  background-color: Colors.$background-color;
+  box-sizing: border-box;
+  border-radius: Common.$search-border-radios;
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+  padding: Common.$extra-small-padding;
+  border: Common.$border;
+  min-height: 24px;
+
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  &:focus-within {
+    box-shadow: Common.$input-box-shadow;
+    border: 1px solid Colors.$primary-color;
+  }
+}
+
+.input {
+  border: none;
+  flex: 1 1 auto;
+  outline: none;
+  min-width: 0;
+  text-overflow: ellipsis;
+  @include Fonts.font-medium;
+
+  &:focus::placeholder {
+    visibility: hidden;
+  }
+}
+
+.icon {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
