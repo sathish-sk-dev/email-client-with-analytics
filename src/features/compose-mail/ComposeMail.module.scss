@@ -1,0 +1,19 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+
+.container {
+  @include Layout.flex-column;
+  background-color: Colors.$background-color;
+  z-index: 11;
+  flex: 1;
+  box-shadow: Common.$primary-box-shadow;
+  padding: Common.$large-padding;
+  width: calc(100% - 48px);
+}
+
+.title {
+  @include Fonts.font-semi-bold-large;
+  margin-bottom: 24px;
+}

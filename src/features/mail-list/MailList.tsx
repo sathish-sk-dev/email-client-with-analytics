@@ -30,7 +30,9 @@ export const MailList = () => {
   const onClickAdd = () => {};
 
   const renderMailList = () => {
-    return list.map((item) => <MailListItem item={item} />);
+    return list.map((item, index) => (
+      <MailListItem item={item} index={index} />
+    ));
   };
 
   return (

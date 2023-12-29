@@ -12,9 +12,11 @@
   --placeholder-color: #6b7280;
   --badge-color: #e76262;
   --border-color: #e4e6e9;
+  --secondary-border-color: #ccc;
   --scroll-bar-thumb-color: #a2a9b4;
   --read-color: #ffffff66;
   --online-color: #68d391;
+  --selected-card-color: #615ef00f;
 }
 
 $primary-color: var(--primary-color);
@@ -33,3 +35,5 @@ $badge-color: var(--badge-color);
 $scroll-bar-thumb-color: var(--scroll-bar-thumb-color);
 $read-color: var(--read-color);
 $online-color: var(--online-color);
+$secondary-border-color: var(--secondary-border-color);
+$selected-card-color: var(--selected-card-color);

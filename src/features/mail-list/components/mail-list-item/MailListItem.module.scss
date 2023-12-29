@@ -21,6 +21,11 @@
   box-shadow: Colors.$border-color;
 }
 
+.selectedContainer {
+  background-color: Colors.$selected-card-color;
+  box-shadow: Common.$primary-box-shadow;
+}
+
 .statusIndicator {
   position: absolute;
   width: 4px;
