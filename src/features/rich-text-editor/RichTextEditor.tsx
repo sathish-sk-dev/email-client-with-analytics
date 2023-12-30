@@ -6,7 +6,7 @@ import {
   getEditorFormats,
   getEditorModules,
 } from "./utils/RichTextEditorConfigUtils";
-import "./react-quill.css";
+import "./react-quill.scss";
 
 export const RichTextEditor: FC<RichTextEditorProps> = ({
   editorHtml,

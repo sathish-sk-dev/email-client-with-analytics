@@ -52,4 +52,9 @@ const generateMockMailList = (count: number): IMailListItem[] =>
     count,
   });
 
-export { generateMockMailList };
+const generateMockReceipients = (count: number): IReceipient[] =>
+  faker.helpers.multiple(createReceipient, {
+    count,
+  });
+
+export { generateMockMailList, generateMockReceipients };

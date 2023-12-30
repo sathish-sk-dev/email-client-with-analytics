@@ -1,0 +1,23 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+
+.container {
+  border: 1px solid Colors.$secondary-border-color;
+  border-bottom: none;
+  padding: 10px 12px 10px 12px;
+}
+
+.label {
+  @include Fonts.font-moderate-normal;
+  width: 100px;
+}
+
+.input {
+  @include Fonts.font-moderate-normal;
+  border: none;
+  outline: none;
+  text-overflow: ellipsis;
+  width: calc(100% - 72px);
+}

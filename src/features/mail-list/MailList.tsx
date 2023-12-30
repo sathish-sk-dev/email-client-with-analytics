@@ -1,25 +1,28 @@
 import styles from "./MailList.module.scss";
 import { SearchBar } from "../../components/search-bar/SearchBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MailListHeader } from "./components/mail-list-header/MailListHeader";
 import { MailListItem } from "./components/mail-list-item/MailListItem";
 import { generateMockMailList } from "../../utils/fakeDataGenerator";
 import { UserMailStatus } from "../../enums/UserMailStatus";
+import { IMailListItem } from "../../interfaces/IMailListItem";
 
 export const MailList = () => {
   const [searchText, setSearchText] = useState("");
+  const [mailList, setMailList] = useState<IMailListItem[]>([]);
+  const [unReadCount, setUnReadCount] = useState(0);
 
-  const list = generateMockMailList(50);
-
-  let unReadCount = 0;
-
-  list.forEach((item) => {
-    if (item.userMailStatus === UserMailStatus.UN_READ) {
-      unReadCount++;
-    }
-  });
-
-  console.log(list);
+  useEffect(() => {
+    const list = generateMockMailList(50);
+    let count = 0;
+    list.forEach((item) => {
+      if (item.userMailStatus === UserMailStatus.UN_READ) {
+        count++;
+      }
+    });
+    setMailList(list);
+    setUnReadCount(count);
+  }, []);
 
   const onChange = (text: string) => {
     setSearchText(text);
@@ -30,7 +33,7 @@ export const MailList = () => {
   const onClickAdd = () => {};
 
   const renderMailList = () => {
-    return list.map((item, index) => (
+    return mailList.map((item, index) => (
       <MailListItem item={item} index={index} />
     ));
   };
