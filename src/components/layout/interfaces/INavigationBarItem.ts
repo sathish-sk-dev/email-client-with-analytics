@@ -1,6 +1,6 @@
 import { FC, SVGProps } from "react";
 
-export interface ISideNavigationBarItem {
+export interface INavigationBarItem {
   outlineIcon: FC<SVGProps<SVGSVGElement>>;
   solidIcon: FC<SVGProps<SVGSVGElement>>;
   title: string;

@@ -20,6 +20,7 @@ export const MailList = () => {
         count++;
       }
     });
+    console.log(list);
     setMailList(list);
     setUnReadCount(count);
   }, []);

@@ -1,5 +1,5 @@
-import { ISideNavigationBarItem } from "../interfaces/ISideNavigationBarItem";
+import { INavigationBarItem } from "../../layout/interfaces/INavigationBarItem";
 
 export type SideNavigationBarProps = {
-  items: ISideNavigationBarItem[];
+  items: INavigationBarItem[];
 };

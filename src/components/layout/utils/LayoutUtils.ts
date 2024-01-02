@@ -1,8 +1,8 @@
-import styles from "../SideNavigationBar.module.scss";
-import { ISideNavigationBarItem } from "../interfaces/ISideNavigationBarItem";
+import styles from "../../side-navigation-bar/SideNavigationBar.module.scss";
+import { INavigationBarItem } from "../interfaces/INavigationBarItem";
 import { IconType } from "../../../assets/svg/types/IconType";
 
-const getNavBarItems = (): ISideNavigationBarItem[] => {
+const getNavBarItems = (): INavigationBarItem[] => {
   return [
     {
       outlineIcon: IconType.MAIL_OPEN_OUTLINE,
