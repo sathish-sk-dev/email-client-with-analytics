@@ -69,14 +69,15 @@
 
 .deleteIcon {
   svg {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
 }
 
 .deleteSolidIcon {
-  svg path {
-    stroke: Colors.$primary-color;
-    stroke-width: 2px;
+  svg {
+    path {
+      fill: Colors.$primary-color !important;
+    }
   }
 }

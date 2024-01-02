@@ -2,42 +2,44 @@ import styles from "./MailListItem.module.scss";
 import { FC } from "react";
 import { MailListItemProps } from "../../types/MailListItemProps";
 import cx from "classnames";
-import { formatTimeAgo } from "../../../../utils/dateUtils";
-import { UserMailStatus } from "../../../../enums/UserMailStatus";
-import { capitalizeFirstLetter } from "../../../../utils/stringUtils";
+import { useMailListItem } from "./useMailListItem";
 
-export const MailListItem: FC<MailListItemProps> = ({ item, index }) => {
-  const { from, subject, body, updatedAt, userMailStatus } = item;
-  const { name, mailId, avatar } = from;
+export const MailListItem: FC<MailListItemProps> = ({ item }) => {
+  const { from, body } = item;
+  const { name, avatar } = from;
+  const {
+    onClickItem,
+    readContainerClass,
+    statusContainerClass,
+    selectedContainerClass,
+    timeAgoText,
+    subjectText,
+  } = useMailListItem({ item });
 
-  const isUnRead = userMailStatus === UserMailStatus.UN_READ;
-
-  const isSelected = index === 0;
-
-  const readContainerClass = isUnRead ? "" : styles.readContainer;
-
-  const statusClass = isUnRead ? styles.unReadStatus : styles.readStatus;
-
-  const selectedContainerClass = isSelected ? styles.selectedContainer : "";
+  const renderHeader = () => {
+    return (
+      <div className={styles.header}>
+        <img src={avatar} className={styles.avatar} loading="lazy" />
+        <div className={styles.headerContent}>
+          <span className={styles.name}>{name}</span>
+          <div className={styles.time}> {timeAgoText} </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div
-      key={mailId}
       className={cx(
         styles.container,
         readContainerClass,
         selectedContainerClass,
       )}
+      onClick={onClickItem}
     >
-      <div className={cx(styles.statusIndicator, statusClass)} />
-      <div className={styles.header}>
-        <img src={avatar} className={styles.avatar} loading="lazy" />
-        <div className={styles.headerContent}>
-          <span className={styles.name}>{name}</span>
-          <div className={styles.time}> {formatTimeAgo(updatedAt)} </div>
-        </div>
-      </div>
-      <span className={styles.subject}>{capitalizeFirstLetter(subject)}</span>
+      <div className={cx(styles.statusIndicator, statusContainerClass)} />
+      {renderHeader()}
+      <span className={styles.subject}>{subjectText}</span>
       <div className={styles.body}> {body} </div>
     </div>
   );

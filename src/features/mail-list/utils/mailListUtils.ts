@@ -71,10 +71,29 @@ const getMailStatusByViewType = (viewType: ViewType): MailStatus => {
   }
 };
 
+/**
+ * Updates the read status of a selected mail item in the given mail list.
+ * @param {IMailListItem[]} mailList - The list of mail items.
+ * @param {IMailListItem} selectedItem - The selected mail item to mark as read.
+ * @returns {IMailListItem[]} - The updated mail list.
+ */
+const updateReadStatus = (
+  mailList: IMailListItem[],
+  selectedItem: IMailListItem,
+): IMailListItem[] => {
+  return mailList.map((item) => {
+    if (item.id === selectedItem.id) {
+      return { ...item, userMailStatus: UserMailStatus.READ };
+    }
+    return item;
+  });
+};
+
 export {
   getUnReadCount,
   filterMailListByStatus,
   getMailListSearchKeys,
   getMailListTitleByViewType,
   getMailStatusByViewType,
+  updateReadStatus,
 };

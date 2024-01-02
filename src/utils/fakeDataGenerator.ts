@@ -5,6 +5,8 @@ import { IMailListItem } from "../interfaces/IMailListItem";
 import { IReceipient } from "../interfaces/IReceipient";
 import { ILabel } from "../interfaces/ILabel";
 import { IAttachment } from "../interfaces/IAttachment";
+import { IUser } from "../redux-toolkit/interfaces/IUser";
+import { UserStatus } from "../enums/UserStatus";
 
 const createReceipient = (): IReceipient => ({
   id: faker.string.uuid(),
@@ -77,4 +79,12 @@ const generateMockReceipients = (count: number): IReceipient[] =>
     count,
   });
 
-export { generateMockMailList, generateMockReceipients };
+const generateMockUser = (): IUser => ({
+  id: faker.string.uuid(),
+  name: faker.internet.displayName(),
+  email: faker.internet.email(),
+  avatar: faker.image.avatar(),
+  status: faker.helpers.enumValue(UserStatus),
+});
+
+export { generateMockMailList, generateMockReceipients, generateMockUser };

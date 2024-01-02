@@ -9,11 +9,10 @@
   align-items: center;
   padding: Common.$large-padding;
   border-bottom: Common.$border;
-  //box-shadow: Common.$primary-box-shadow;
-  position: relative;
   width: calc(100% - 48px);
   background-color: Colors.$background-color;
   height: 50px;
+  position: relative;
 }
 
 .innerContainer {
@@ -21,6 +20,7 @@
   gap: 4px;
   margin-right: 16px;
   align-items: flex-end;
+  margin-top: 5px;
 
   .title {
     @include Fonts.font-bold-medium;
@@ -46,4 +46,10 @@
   height: 48px;
   border-radius: 12px;
   box-shadow: Common.$primary-box-shadow;
+}
+
+.closeIcon {
+  position: absolute;
+  left: 16px;
+  margin-top: 12px;
 }

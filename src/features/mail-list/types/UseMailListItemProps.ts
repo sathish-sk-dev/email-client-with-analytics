@@ -1,5 +1,5 @@
 import { IMailListItem } from "../../../interfaces/IMailListItem";
 
-export type MailListItemProps = {
+export type UseMailListItemProps = {
   item: IMailListItem;
 };

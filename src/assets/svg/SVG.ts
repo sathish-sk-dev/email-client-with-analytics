@@ -7,3 +7,5 @@ export { ReactComponent as SendSolid } from "./send-solid.svg";
 export { ReactComponent as DeleteOutline } from "./delete-outline.svg";
 export { ReactComponent as PenIcon } from "./pen.svg";
 export { ReactComponent as AddIcon } from "./add.svg";
+export { ReactComponent as DeleteSolid } from "./delete-solid.svg";
+export { ReactComponent as ArrowLeft } from "./arrow-left.svg";

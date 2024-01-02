@@ -7,13 +7,13 @@ import { MailDetails } from "./features/mail-details/MailDetails";
 import { useApp } from "./useApp";
 
 const App = () => {
-  const { isLoading, isOpenComposeView } = useApp();
+  const { isLoading, canShowModuleDetailsView, isOpenComposeView } = useApp();
 
   return (
     <ProviderWrapper>
       <Layout>
         <MailList />
-        {!isOpenComposeView && <MailDetails />}
+        {canShowModuleDetailsView && <MailDetails />}
         {isOpenComposeView && <ComposeMail />}
       </Layout>
     </ProviderWrapper>

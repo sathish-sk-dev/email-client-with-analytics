@@ -9,6 +9,11 @@
   z-index: 9;
   flex: 1;
   box-shadow: Common.$primary-box-shadow;
+  transition: right 2s ease-in-out;
+}
+
+.hideContainer {
+  display: none !important;
 }
 
 .innerContainer {

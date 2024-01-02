@@ -19,6 +19,7 @@ const initialMailListState: IMailListState = {
   searchText: "",
   unReadCount: 0,
   isLoading: true,
+  selectedMailItem: null,
 };
 
 const initialComposeMailState: IComposeMailState = {

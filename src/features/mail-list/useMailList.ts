@@ -30,8 +30,6 @@ export const useMailList = (): UseMailListHooks => {
   const { selectedViewType } = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
 
-  console.log(mailListByViewType);
-
   useEffect(() => {
     fetchMailList().then((list) => {
       dispatch(setMailList({ selectedViewType, mailList: list }));

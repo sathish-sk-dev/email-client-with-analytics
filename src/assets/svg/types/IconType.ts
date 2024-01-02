@@ -1,7 +1,9 @@
 import {
   AddIcon,
+  ArrowLeft,
   CloseIcon,
   DeleteOutline,
+  DeleteSolid,
   MailOpenOutline,
   MailOpenSolid,
   PenIcon,
@@ -18,6 +20,8 @@ export const IconType = {
   SEND_OUTLINE: SendOutline,
   SEND_SOLID: SendSolid,
   DELETE_OUTLINE: DeleteOutline,
+  DELETE_SOLID: DeleteSolid,
   PEN: PenIcon,
   ADD: AddIcon,
+  ARROW_LEFT: ArrowLeft,
 };

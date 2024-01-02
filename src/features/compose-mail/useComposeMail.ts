@@ -13,7 +13,7 @@ import {
 import { IAppState } from "../../redux-toolkit/interfaces/IAppState";
 import { toggleComposeView } from "../../redux-toolkit/slices/appSlice";
 import { useEffect } from "react";
-import { fetchReceipientsList } from "../mail-details/api";
+import { fetchReceipientsList } from "./api";
 import { constructSuggestionsFromReceipients } from "./utils/composeMailUtils";
 
 export const useComposeMail = (): UseComposeMailHooks => {

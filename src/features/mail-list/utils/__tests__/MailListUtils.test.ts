@@ -5,10 +5,12 @@ import {
   getMailListTitleByViewType,
   getMailStatusByViewType,
   getUnReadCount,
+  updateReadStatus,
 } from "../mailListUtils";
 import { UserMailStatus } from "../../../../enums/UserMailStatus";
 import { MailStatus } from "../../../../enums/MailStatus";
 import { ViewType } from "../../../../enums/ViewType";
+import { UserStatus } from "../../../../enums/UserStatus";
 
 describe("getUnReadCount", () => {
   it("should return 0 for an empty mail list", () => {
@@ -95,5 +97,22 @@ describe("getMailStatusByViewType", () => {
   it("should return MailStatus.DELETED for ViewType.DELETED", () => {
     const status = getMailStatusByViewType(ViewType.DELETED);
     expect(status).toBe(MailStatus.DELETED);
+  });
+});
+
+describe("updateReadStatus", () => {
+  it("should update read status for selected mail list item", () => {
+    const mailList: IMailListItem[] = [
+      { id: "1", userMailStatus: UserMailStatus.READ },
+      { id: "2", userMailStatus: UserMailStatus.UN_READ },
+      { id: "3", userMailStatus: UserMailStatus.UN_READ },
+      { id: "4", userMailStatus: UserMailStatus.READ },
+    ] as IMailListItem[];
+    const selectedItem = {
+      id: "2",
+      userMailStatus: UserMailStatus.UN_READ,
+    } as IMailListItem;
+    const result = updateReadStatus(mailList, selectedItem);
+    expect(result[1].userMailStatus).toBe(UserMailStatus.READ);
   });
 });

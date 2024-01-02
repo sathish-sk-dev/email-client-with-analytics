@@ -19,7 +19,7 @@ export const MailList = () => {
 
   const renderMailList = () => {
     return searchedMailList.map((item, index) => (
-      <MailListItem key={index} item={item} index={index} />
+      <MailListItem key={index} item={item} />
     ));
   };
 

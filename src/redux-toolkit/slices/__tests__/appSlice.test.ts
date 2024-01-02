@@ -1,5 +1,5 @@
 import { IUser } from "../../interfaces/IUser";
-import { IUserStatus } from "../../../interfaces/IUserStatus";
+import { UserStatus } from "../../../enums/UserStatus";
 import {
   appReducer,
   setSelectedViewType,
@@ -19,7 +19,7 @@ describe("appSlice", () => {
     email: "sathishsk.dev@gmail.com",
     avatar:
       "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/563.jpg",
-    status: IUserStatus.ONLINE,
+    status: UserStatus.ONLINE,
   };
 
   it("should toggle loading state", () => {

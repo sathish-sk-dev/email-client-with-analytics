@@ -33,6 +33,9 @@ export const mailListSlice = createSlice({
       state.searchedMailList = action.payload;
       state.unReadCount = getUnReadCount(action.payload);
     },
+    setSelectedMailItem: (state, action) => {
+      state.selectedMailItem = action.payload;
+    }
   },
 });
 
@@ -42,6 +45,7 @@ export const {
   setUnReadCount,
   setMailList,
   setSearchedMailList,
+  setSelectedMailItem,
 } = mailListSlice.actions;
 
 export const mailListReducer = mailListSlice.reducer;

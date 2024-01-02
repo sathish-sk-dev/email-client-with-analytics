@@ -5,6 +5,7 @@ import {
   setUnReadCount,
   setMailList,
   setSearchedMailList,
+  setSelectedMailItem,
 } from "../mailListSlice";
 import { initialMailListState } from "../../initial-state/initialState";
 import {
@@ -94,5 +95,13 @@ describe("mailListSlice", () => {
     const state = mailListReducer(initialMailListState, action);
 
     expect(state.searchedMailList).toEqual(mockMailList);
+  });
+
+  it("should set selected mail item", () => {
+    const action = setSelectedMailItem(mockMailList[0]);
+
+    const state = mailListReducer(initialMailListState, action);
+
+    expect(state.selectedMailItem).toEqual(mockMailList[0]);
   });
 });

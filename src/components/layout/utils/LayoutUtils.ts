@@ -23,7 +23,7 @@ const getNavBarItems = (): INavigationBarItem[] => {
     },
     {
       outlineIcon: IconType.DELETE_OUTLINE,
-      solidIcon: IconType.DELETE_OUTLINE,
+      solidIcon: IconType.DELETE_SOLID,
       title: "Deleted",
       containerClass: styles.deleteIcon,
       selectedContainerClass: styles.deleteSolidIcon,
