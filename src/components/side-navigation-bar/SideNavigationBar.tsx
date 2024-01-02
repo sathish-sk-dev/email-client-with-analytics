@@ -5,11 +5,20 @@ import { SideNavigationBarItem } from "./SideNavigationBarItem";
 
 export const SideNavigationBar: React.FC<SideNavigationBarProps> = ({
   items,
+  selectedViewType,
+  onSelectItem,
 }) => {
   const renderTopLogo = () => <div className={styles.topLogo}> M </div>;
 
   const renderNavBarItems = () =>
-    items.map((item) => <SideNavigationBarItem item={item} />);
+    items.map((item) => (
+      <SideNavigationBarItem
+        key={item.type}
+        item={item}
+        selectedViewType={selectedViewType}
+        onSelectItem={onSelectItem}
+      />
+    ));
 
   return (
     <div className={styles.container}>

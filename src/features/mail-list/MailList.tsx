@@ -1,57 +1,42 @@
 import styles from "./MailList.module.scss";
 import { SearchBar } from "../../components/search-bar/SearchBar";
-import { useEffect, useState } from "react";
 import { MailListHeader } from "./components/mail-list-header/MailListHeader";
 import { MailListItem } from "./components/mail-list-item/MailListItem";
-import { generateMockMailList } from "../../utils/fakeDataGenerator";
-import { UserMailStatus } from "../../enums/UserMailStatus";
-import { IMailListItem } from "../../interfaces/IMailListItem";
+import { useMailList } from "./useMailList";
 
 export const MailList = () => {
-  const [searchText, setSearchText] = useState("");
-  const [mailList, setMailList] = useState<IMailListItem[]>([]);
-  const [unReadCount, setUnReadCount] = useState(0);
-
-  useEffect(() => {
-    const list = generateMockMailList(50);
-    let count = 0;
-    list.forEach((item) => {
-      if (item.userMailStatus === UserMailStatus.UN_READ) {
-        count++;
-      }
-    });
-    console.log(list);
-    setMailList(list);
-    setUnReadCount(count);
-  }, []);
-
-  const onChange = (text: string) => {
-    setSearchText(text);
-  };
-
-  const onSearch = () => {};
-
-  const onClickAdd = () => {};
+  const {
+    isLoading,
+    title,
+    searchedMailList,
+    unReadCount,
+    searchText,
+    onSearch,
+    onChangeSearch,
+    onAdd,
+    onClearSearch,
+  } = useMailList();
 
   const renderMailList = () => {
-    return mailList.map((item, index) => (
-      <MailListItem item={item} index={index} />
+    return searchedMailList.map((item, index) => (
+      <MailListItem key={index} item={item} index={index} />
     ));
   };
 
   return (
     <div className={styles.container}>
       <MailListHeader
-        title={"Inbox"}
+        title={title}
         unReadCount={unReadCount}
-        onClickAdd={onClickAdd}
+        onClickAdd={onAdd}
       />
       <div className={styles.innerContainer}>
         <SearchBar
           searchText={searchText}
-          onChange={onChange}
+          onChange={onChangeSearch}
           placeholderText={"Search in mail"}
           onSearch={onSearch}
+          onClear={onClearSearch}
         />
       </div>
       <div className={styles.listContainer}>{renderMailList()}</div>

@@ -7,14 +7,16 @@ export const useSearchBar = ({
   searchText,
   onChange,
   onSearch,
+  onClear,
 }: UseSearchBarProps): UseSearchBarHooks => {
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     onChange(value);
   };
 
-  const onClear = () => {
+  const onClearSearch = () => {
     onChange("");
+    onClear();
   };
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
@@ -28,7 +30,7 @@ export const useSearchBar = ({
   return {
     shouldShowCloseIcon,
     onChangeInput,
-    onClear,
+    onClearSearch,
     onKeyDown,
   };
 };

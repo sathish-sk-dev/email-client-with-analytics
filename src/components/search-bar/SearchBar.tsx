@@ -11,9 +11,10 @@ export const SearchBar: FC<SearchBarProps> = ({
   placeholderText,
   inputRef,
   onSearch,
+  onClear,
 }) => {
-  const { shouldShowCloseIcon, onChangeInput, onClear, onKeyDown } =
-    useSearchBar({ inputRef, searchText, onChange, onSearch });
+  const { shouldShowCloseIcon, onChangeInput, onClearSearch, onKeyDown } =
+    useSearchBar({ inputRef, searchText, onChange, onSearch, onClear });
 
   const renderSearchIcon = () => (
     <Icon
@@ -38,7 +39,7 @@ export const SearchBar: FC<SearchBarProps> = ({
   const renderClearIcon = () => (
     <Icon
       iconType={IconType.CLOSE}
-      onClick={onClear}
+      onClick={onClearSearch}
       containerClass={styles.icon}
     />
   );

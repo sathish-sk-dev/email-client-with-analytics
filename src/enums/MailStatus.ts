@@ -1,7 +1,7 @@
 export enum MailStatus {
   INBOX = 1,
   SEND = 2,
-  SPAM = 3,
-  DELETED = 4,
-  DRAFT = 5,
+  DELETED = 3,
+  DRAFT = 4,
+  SPAM = 5,
 }

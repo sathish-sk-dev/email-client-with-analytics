@@ -1,5 +1,5 @@
 export const enum ViewType {
-  INBOX = 0,
+  INBOX = 1,
   SEND = 2,
   DELETED = 3,
   DRAFTS = 4,

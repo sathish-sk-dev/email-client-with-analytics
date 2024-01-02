@@ -1,7 +1,7 @@
-@use "src/styles/Layout.module";
-@use "src/styles/Colors.module";
-@use "src/styles/Common.module";
-@use "src/styles/Fonts.module";
+@use "../../styles/Layout.module";
+@use "../../styles/Colors.module";
+@use "../../styles/Common.module";
+@use "../../styles/Fonts.module";
 
 .container {
   @include Layout.flex-row;

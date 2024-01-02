@@ -3,7 +3,7 @@ import { IUserStatus } from "../../../interfaces/IUserStatus";
 import {
   appReducer,
   setSelectedViewType,
-  setUser,
+  setUser, toggleComposeView,
   toggleLoading,
   toggleTheme,
 } from "../appSlice";
@@ -56,4 +56,12 @@ describe("appSlice", () => {
 
     expect(state.selectedViewType).toBe(newViewType);
   });
+
+  it("should toggle compose view", () => {
+    const action = toggleComposeView(true);
+
+    const state = appReducer(mockInitialState, action);
+
+    expect(state.isOpenComposeView).toBe(true);
+  })
 });

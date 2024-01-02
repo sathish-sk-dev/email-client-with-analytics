@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { appReducer } from "../slices/appSlice";
 import { thunk } from "redux-thunk";
+import { mailListReducer } from "../slices/mailListSlice";
 
 export const store = configureStore({
   reducer: {
     appState: appReducer,
+    mailListState: mailListReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -7,4 +7,5 @@ export interface IAppState {
   user?: IUser | null;
   theme: Theme;
   selectedViewType: ViewType;
+  isOpenComposeView: boolean;
 }

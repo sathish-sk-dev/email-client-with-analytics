@@ -1,6 +1,7 @@
 import styles from "../../side-navigation-bar/SideNavigationBar.module.scss";
 import { INavigationBarItem } from "../interfaces/INavigationBarItem";
 import { IconType } from "../../../assets/svg/types/IconType";
+import { ViewType } from "../../../enums/ViewType";
 
 const getNavBarItems = (): INavigationBarItem[] => {
   return [
@@ -10,6 +11,7 @@ const getNavBarItems = (): INavigationBarItem[] => {
       title: "Inbox",
       containerClass: "",
       selectedContainerClass: styles.inboxSolidIcon,
+      type: ViewType.INBOX,
     },
     {
       outlineIcon: IconType.SEND_OUTLINE,
@@ -17,6 +19,7 @@ const getNavBarItems = (): INavigationBarItem[] => {
       title: "Send",
       containerClass: "",
       selectedContainerClass: styles.sendSolidIcon,
+      type: ViewType.SEND,
     },
     {
       outlineIcon: IconType.DELETE_OUTLINE,
@@ -24,6 +27,7 @@ const getNavBarItems = (): INavigationBarItem[] => {
       title: "Deleted",
       containerClass: styles.deleteIcon,
       selectedContainerClass: styles.deleteSolidIcon,
+      type: ViewType.DELETED,
     },
   ];
 };

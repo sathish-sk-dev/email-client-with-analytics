@@ -1,17 +1,20 @@
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import { SideNavigationBar } from "../side-navigation-bar/SideNavigationBar";
 import { CompositionProps } from "../../types/CompositionProps";
 import styles from "./Layout.module.scss";
-import { getNavBarItems } from "./utils/LayoutUtils";
+import { useLayout } from "./useLayout";
 
 export const Layout: FC<CompositionProps> = ({ children }) => {
-  const navBarItems = useCallback(() => {
-    return getNavBarItems();
-  }, []);
+  const { navBarItems, selectedViewType, onSelectItem } = useLayout();
 
   const renderSideNavigationBar = () => {
-    const items = navBarItems();
-    return <SideNavigationBar items={items} />;
+    return (
+      <SideNavigationBar
+        items={navBarItems}
+        selectedViewType={selectedViewType}
+        onSelectItem={onSelectItem}
+      />
+    );
   };
 
   return (

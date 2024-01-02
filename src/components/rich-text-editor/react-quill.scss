@@ -1,4 +1,4 @@
-@use "src/styles/Fonts.module";
+@use "../../styles/Fonts.module";
 
 .editor {
   @include Fonts.font-normal;

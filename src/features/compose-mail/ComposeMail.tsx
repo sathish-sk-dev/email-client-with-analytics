@@ -1,5 +1,5 @@
 import styles from "./ComposeMail.module.scss";
-import { RichTextEditor } from "../rich-text-editor/RichTextEditor";
+import { RichTextEditor } from "../../components/rich-text-editor/RichTextEditor";
 import { useCallback, useEffect, useState } from "react";
 import { IAutoCompleteSuggestion } from "../../components/auto-complete-tag/interfaces/IAutoCompleteSuggestion";
 import { AutoCompleteTag } from "../../components/auto-complete-tag/AutoCompleteTag";

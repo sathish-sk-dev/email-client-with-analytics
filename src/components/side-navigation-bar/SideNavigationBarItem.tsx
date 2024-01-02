@@ -6,6 +6,8 @@ import styles from "./SideNavigationBar.module.scss";
 
 export const SideNavigationBarItem: FC<SideNavigationBarItemProps> = ({
   item,
+  selectedViewType,
+  onSelectItem,
 }) => {
   const {
     outlineIcon,
@@ -13,17 +15,27 @@ export const SideNavigationBarItem: FC<SideNavigationBarItemProps> = ({
     title,
     containerClass,
     selectedContainerClass,
+    type,
   } = item;
 
-  const isSelected = false;
+  const isSelected = selectedViewType === type;
 
   const iconType = isSelected ? solidIcon : outlineIcon;
-  const selectedClassName = isSelected ? selectedContainerClass : "";
+  const selectedClassName = isSelected
+    ? cx(styles.selectedContainer, selectedContainerClass)
+    : "";
+  const containerClassName = cx(styles.icon, containerClass, selectedClassName);
+
+  const onClick = () => {
+    onSelectItem(item);
+  };
 
   return (
     <Icon
+      data-testid={`side-navigation-bar-${type}`}
       iconType={iconType}
-      containerClass={cx(styles.icon, containerClass, selectedClassName)}
+      containerClass={containerClassName}
+      onClick={onClick}
     />
   );
 };

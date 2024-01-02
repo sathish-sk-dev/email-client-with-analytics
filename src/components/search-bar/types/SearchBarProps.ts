@@ -6,4 +6,5 @@ export type SearchBarProps = {
   searchText: string;
   placeholderText: string;
   onSearch: () => void;
+  onClear: () => void;
 };

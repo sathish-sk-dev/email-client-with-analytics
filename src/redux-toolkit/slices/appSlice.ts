@@ -16,10 +16,18 @@ export const appSlice = createSlice({
     setSelectedViewType: (state, action) => {
       state.selectedViewType = action.payload;
     },
+    toggleComposeView: (state, action) => {
+      state.isOpenComposeView = action.payload;
+    },
   },
 });
 
-export const { toggleLoading, toggleTheme, setUser, setSelectedViewType } =
-  appSlice.actions;
+export const {
+  toggleLoading,
+  toggleTheme,
+  setUser,
+  setSelectedViewType,
+  toggleComposeView,
+} = appSlice.actions;
 
 export const appReducer = appSlice.reducer;

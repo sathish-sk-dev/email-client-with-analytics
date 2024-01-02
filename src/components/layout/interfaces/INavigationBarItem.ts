@@ -1,4 +1,5 @@
 import { FC, SVGProps } from "react";
+import { ViewType } from "../../../enums/ViewType";
 
 export interface INavigationBarItem {
   outlineIcon: FC<SVGProps<SVGSVGElement>>;
@@ -6,4 +7,5 @@ export interface INavigationBarItem {
   title: string;
   containerClass: string;
   selectedContainerClass: string;
+  type: ViewType;
 }

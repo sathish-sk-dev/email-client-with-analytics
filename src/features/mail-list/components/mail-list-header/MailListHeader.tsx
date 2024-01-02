@@ -20,7 +20,11 @@ export const MailListHeader: FC<MailListHeaderProps> = ({
 
   const renderComposeIcon = () => {
     return (
-      <Icon iconType={IconType.ADD} containerClass={styles.composeButton} />
+      <Icon
+        iconType={IconType.ADD}
+        containerClass={styles.composeButton}
+        onClick={onClickAdd}
+      />
     );
   };
 
