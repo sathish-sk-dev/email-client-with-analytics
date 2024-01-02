@@ -2,10 +2,13 @@ import { IMailListItem } from "../../../../interfaces/IMailListItem";
 import {
   filterMailListByStatus,
   getMailListSearchKeys,
+  getMailListTitleByViewType,
+  getMailStatusByViewType,
   getUnReadCount,
-} from "../MailListUtils";
+} from "../mailListUtils";
 import { UserMailStatus } from "../../../../enums/UserMailStatus";
 import { MailStatus } from "../../../../enums/MailStatus";
+import { ViewType } from "../../../../enums/ViewType";
 
 describe("getUnReadCount", () => {
   it("should return 0 for an empty mail list", () => {
@@ -57,5 +60,40 @@ describe("getMailListSearchKeys", () => {
     ];
     const searchKeys = getMailListSearchKeys();
     expect(searchKeys).toEqual(expectedKeys);
+  });
+});
+
+describe("getMailListTitleByViewType", () => {
+  it('should return "Inbox" for ViewType.INBOX', () => {
+    let title: string;
+    title = getMailListTitleByViewType(ViewType.INBOX);
+    expect(title).toBe("Inbox");
+  });
+
+  it('should return "Send" for ViewType.SEND', () => {
+    const title = getMailListTitleByViewType(ViewType.SEND);
+    expect(title).toBe("Send");
+  });
+
+  it('should return "Deleted" for ViewType.DELETED', () => {
+    const title = getMailListTitleByViewType(ViewType.DELETED);
+    expect(title).toBe("Deleted");
+  });
+});
+
+describe("getMailStatusByViewType", () => {
+  it("should return MailStatus.INBOX for ViewType.INBOX", () => {
+    const status = getMailStatusByViewType(ViewType.INBOX);
+    expect(status).toBe(MailStatus.INBOX);
+  });
+
+  it("should return MailStatus.SEND for ViewType.SEND", () => {
+    const status = getMailStatusByViewType(ViewType.SEND);
+    expect(status).toBe(MailStatus.SEND);
+  });
+
+  it("should return MailStatus.DELETED for ViewType.DELETED", () => {
+    const status = getMailStatusByViewType(ViewType.DELETED);
+    expect(status).toBe(MailStatus.DELETED);
   });
 });

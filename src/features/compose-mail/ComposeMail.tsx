@@ -1,54 +1,56 @@
 import styles from "./ComposeMail.module.scss";
 import { RichTextEditor } from "../../components/rich-text-editor/RichTextEditor";
-import { useCallback, useEffect, useState } from "react";
-import { IAutoCompleteSuggestion } from "../../components/auto-complete-tag/interfaces/IAutoCompleteSuggestion";
 import { AutoCompleteTag } from "../../components/auto-complete-tag/AutoCompleteTag";
-import { constructSuggestionsFromReceipients } from "./utils/ComposeMailUtils";
-import { generateMockReceipients } from "../../utils/fakeDataGenerator";
 import { LabelWithInput } from "./components/lable-with-input/LabelWithInput";
+import { Icon } from "../../components/icon/Icon";
+import { IconType } from "../../assets/svg/types/IconType";
+import { useComposeMail } from "./useComposeMail";
 
 export const ComposeMail = () => {
-  const [editorHtml, setEditorHtml] = useState("");
-  const [selected, setSelected] = useState<IAutoCompleteSuggestion[]>([]);
-  const [suggestions, setSuggestions] = useState<IAutoCompleteSuggestion[]>([]);
-  const [subject, setSubject] = useState("");
-  const [to, setTo] = useState("sathish@gmail.com");
-
-  useEffect(() => {
-    const receipients = generateMockReceipients(100);
-    setSuggestions(constructSuggestionsFromReceipients(receipients));
-  }, []);
-
-  const onAdd = useCallback(
-    (newTag: IAutoCompleteSuggestion) => {
-      setSelected([...selected, newTag]);
-    },
-    [selected],
-  );
-
-  const onDelete = useCallback(
-    (tagIndex: number) => {
-      setSelected(selected.filter((_, index) => index !== tagIndex));
-    },
-    [selected],
-  );
+  const {
+    editorHtml,
+    fromEmailId,
+    subject,
+    suggestions,
+    selectedSuggestions,
+    onAdd,
+    onChangeSubject,
+    onDelete,
+    onClose,
+    onChangeEditorHtml,
+  } = useComposeMail();
 
   return (
     <div className={styles.container}>
-      <div className={styles.title}> {"New Mail"} </div>
-      <LabelWithInput label={"From"} value={to} onChangeValue={setTo} />
+      <div className={styles.headerContainer}>
+        <div className={styles.title}> {"New Mail"} </div>
+        <Icon
+          iconType={IconType.CLOSE}
+          containerClass={styles.icon}
+          onClick={onClose}
+        />
+      </div>
+      <LabelWithInput
+        label={"From"}
+        value={fromEmailId}
+        onChangeValue={() => {}}
+      />
       <AutoCompleteTag
         suggestions={suggestions}
-        selectedSuggestions={selected}
+        selectedSuggestions={selectedSuggestions}
         placeholderText={"Select Receipients"}
         noSuggestionsText={"No Matching Receipients"}
         onAdd={onAdd}
         onDelete={onDelete}
       />
-      <LabelWithInput  label={"Subject"} value={subject} onChangeValue={setSubject} />
+      <LabelWithInput
+        label={"Subject"}
+        value={subject}
+        onChangeValue={onChangeSubject}
+      />
       <RichTextEditor
         editorHtml={editorHtml}
-        onChangeEditorHtml={setEditorHtml}
+        onChangeEditorHtml={onChangeEditorHtml}
         placeholder={"Write something..."}
       />
     </div>

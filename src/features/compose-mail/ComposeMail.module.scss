@@ -13,6 +13,17 @@
   width: calc(100% - 48px);
 }
 
+.headerContainer {
+  @include Layout.flex-row;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 0;
+  top: -8px;
+}
+
 .title {
   @include Fonts.font-semi-bold-large;
   margin-bottom: 24px;

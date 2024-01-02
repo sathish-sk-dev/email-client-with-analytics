@@ -9,18 +9,12 @@ import { useApp } from "./useApp";
 const App = () => {
   const { isLoading, isOpenComposeView } = useApp();
 
-  const renderComposeView = () => {
-    if (isOpenComposeView) {
-      return <ComposeMail />;
-    }
-  };
-
   return (
     <ProviderWrapper>
       <Layout>
         <MailList />
-        <MailDetails />
-        {renderComposeView()}
+        {!isOpenComposeView && <MailDetails />}
+        {isOpenComposeView && <ComposeMail />}
       </Layout>
     </ProviderWrapper>
   );

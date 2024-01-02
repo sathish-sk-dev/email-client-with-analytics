@@ -16,6 +16,7 @@ export const AutoCompleteTag: FC<AutoCompleteTagProps> = ({
       placeholderText={placeholderText}
       selected={selectedSuggestions}
       suggestions={suggestions}
+      // @ts-ignore
       onAdd={onAdd}
       onDelete={onDelete}
       labelText={"To :"}

@@ -16,21 +16,25 @@ import { searchList } from "../../utils/listUtils";
 import {
   getMailListSearchKeys,
   getMailListTitleByViewType,
-} from "./utils/MailListUtils";
+} from "./utils/mailListUtils";
 
 export const useMailList = (): UseMailListHooks => {
-  const { mailList, searchedMailList, unReadCount, searchText, isLoading } =
-    useAppSelector((state) => state.mailListState);
+  const {
+    mailList,
+    searchedMailList,
+    mailListByViewType,
+    unReadCount,
+    searchText,
+    isLoading,
+  } = useAppSelector((state) => state.mailListState);
   const { selectedViewType } = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
 
-  console.log("==========", mailList);
+  console.log(mailListByViewType);
 
   useEffect(() => {
     fetchMailList().then((list) => {
-      dispatch(setMailList(list));
-      dispatch(setSearchedMailList(list));
-      dispatch(setUnReadCount(list));
+      dispatch(setMailList({ selectedViewType, mailList: list }));
     });
   }, [dispatch]);
 
@@ -40,14 +44,14 @@ export const useMailList = (): UseMailListHooks => {
 
   const onSearch = () => {
     const searchKeys = getMailListSearchKeys();
-    const result = searchList(mailList, searchKeys, searchText);
+    const result = searchList(mailListByViewType, searchKeys, searchText);
     dispatch(setSearchedMailList(result));
     dispatch(setUnReadCount(result));
   };
 
   const onClearSearch = () => {
-    dispatch(setSearchedMailList(mailList));
-    dispatch(setUnReadCount(mailList));
+    dispatch(setSearchedMailList(mailListByViewType));
+    dispatch(setUnReadCount(mailListByViewType));
   };
 
   const onAdd = () => {

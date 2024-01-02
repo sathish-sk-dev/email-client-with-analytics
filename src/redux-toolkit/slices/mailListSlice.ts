@@ -1,9 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialMailListState } from "../initial-state/initialState";
-import { getUnReadCount } from "../../features/mail-list/utils/MailListUtils";
+import {
+  filterMailListByStatus,
+  getMailStatusByViewType,
+  getUnReadCount,
+} from "../../features/mail-list/utils/mailListUtils";
 
 export const mailListSlice = createSlice({
-  name: "appState",
+  name: "mailListState",
   initialState: initialMailListState,
   reducers: {
     toggleLoadingMailList: (state, action) => {
@@ -13,14 +17,21 @@ export const mailListSlice = createSlice({
       state.searchText = action.payload;
     },
     setUnReadCount: (state, action) => {
-      const count = getUnReadCount(action.payload);
-      state.unReadCount = count;
+      state.unReadCount = getUnReadCount(action.payload);
     },
     setMailList: (state, action) => {
-      state.mailList = action.payload;
+      const { selectedViewType, mailList } = action.payload;
+      state.mailList = mailList;
+      const mailStatus = getMailStatusByViewType(selectedViewType);
+      const filteredMailList = filterMailListByStatus(mailList, mailStatus);
+      state.mailListByViewType = filteredMailList;
+      state.searchedMailList = filteredMailList;
+      state.unReadCount = getUnReadCount(filteredMailList);
+      state.searchText = "";
     },
     setSearchedMailList: (state, action) => {
       state.searchedMailList = action.payload;
+      state.unReadCount = getUnReadCount(action.payload);
     },
   },
 });

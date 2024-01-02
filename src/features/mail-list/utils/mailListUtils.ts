@@ -53,9 +53,28 @@ const getMailListTitleByViewType = (viewType: ViewType): string => {
   }
 };
 
+/**
+ * Retrieves the mail status based on the specified view type.
+ * @param {ViewType} viewType - The view type for which to retrieve the mail status.
+ * @returns {string} - The mail status.
+ */
+const getMailStatusByViewType = (viewType: ViewType): MailStatus => {
+  switch (viewType) {
+    case ViewType.INBOX:
+      return MailStatus.INBOX;
+    case ViewType.SEND:
+      return MailStatus.SEND;
+    case ViewType.DELETED:
+      return MailStatus.DELETED;
+    default:
+      return MailStatus.INBOX;
+  }
+};
+
 export {
   getUnReadCount,
   filterMailListByStatus,
   getMailListSearchKeys,
   getMailListTitleByViewType,
+  getMailStatusByViewType,
 };
