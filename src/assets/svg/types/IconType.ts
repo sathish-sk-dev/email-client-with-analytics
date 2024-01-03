@@ -1,5 +1,7 @@
 import {
   AddIcon,
+  AnalyticsOutline,
+  AnalyticsSolid,
   ArrowLeft,
   CloseIcon,
   DeleteOutline,
@@ -21,6 +23,8 @@ export const IconType = {
   SEND_SOLID: SendSolid,
   DELETE_OUTLINE: DeleteOutline,
   DELETE_SOLID: DeleteSolid,
+  ANALYTICS_OUTLINE: AnalyticsOutline,
+  ANALYTICS_SOLID: AnalyticsSolid,
   PEN: PenIcon,
   ADD: AddIcon,
   ARROW_LEFT: ArrowLeft,

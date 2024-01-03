@@ -5,17 +5,41 @@ import { ComposeMail } from "./features/compose-mail/ComposeMail";
 import { ProviderWrapper } from "./components/provider-wrapper/ProviderWrapper";
 import { MailDetails } from "./features/mail-details/MailDetails";
 import { useApp } from "./useApp";
+import { ViewType } from "./enums/ViewType";
+import { Analytics } from "./features/analytics/Analytics";
 
 const App = () => {
-  const { isLoading, canShowModuleDetailsView, isOpenComposeView } = useApp();
+  const {
+    isLoading,
+    selectedViewType,
+    canShowModuleDetailsView,
+    isOpenComposeView,
+  } = useApp();
 
-  return (
-    <ProviderWrapper>
-      <Layout>
+  const renderAnalytics = () => {
+    return <Analytics />;
+  };
+
+  const renderMailList = () => {
+    return (
+      <>
         <MailList />
         {canShowModuleDetailsView && <MailDetails />}
         {isOpenComposeView && <ComposeMail />}
-      </Layout>
+      </>
+    );
+  };
+
+  const renderContainer = () => {
+    if (selectedViewType === ViewType.ANALYTICS) {
+      return renderAnalytics();
+    }
+    return renderMailList();
+  };
+
+  return (
+    <ProviderWrapper>
+      <Layout>{renderContainer()}</Layout>
     </ProviderWrapper>
   );
 };

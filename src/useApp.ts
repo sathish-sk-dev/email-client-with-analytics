@@ -5,7 +5,7 @@ import { fetchUserDetails } from "./api";
 import { setUser } from "./redux-toolkit/slices/appSlice";
 
 export const useApp = (): UseAppHooks => {
-  const { isLoading, isOpenComposeView } = useAppSelector(
+  const { isLoading, isOpenComposeView, selectedViewType } = useAppSelector(
     (state) => state.appState,
   );
 
@@ -25,5 +25,6 @@ export const useApp = (): UseAppHooks => {
     isLoading,
     isOpenComposeView,
     canShowModuleDetailsView,
+    selectedViewType,
   };
 };

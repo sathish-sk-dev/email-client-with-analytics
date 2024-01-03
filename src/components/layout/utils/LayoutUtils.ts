@@ -29,6 +29,14 @@ const getNavBarItems = (): INavigationBarItem[] => {
       selectedContainerClass: styles.deleteSolidIcon,
       type: ViewType.DELETED,
     },
+    {
+      outlineIcon: IconType.ANALYTICS_OUTLINE,
+      solidIcon: IconType.ANALYTICS_SOLID,
+      title: "Analytics",
+      containerClass: styles.analyticsIcon,
+      selectedContainerClass: styles.analyticsSolidIcon,
+      type: ViewType.ANALYTICS,
+    },
   ];
 };
 

@@ -69,13 +69,32 @@
 
 .deleteIcon {
   svg {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
   }
 }
 
 .deleteSolidIcon {
   svg {
+    width: 30px;
+    height: 30px;
+    path {
+      fill: Colors.$primary-color !important;
+    }
+  }
+}
+
+.analyticsIcon {
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.analyticsSolidIcon {
+  svg {
+    width: 30px;
+    height: 30px;
     path {
       fill: Colors.$primary-color !important;
     }

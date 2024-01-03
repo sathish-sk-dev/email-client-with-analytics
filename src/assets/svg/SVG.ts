@@ -9,3 +9,5 @@ export { ReactComponent as PenIcon } from "./pen.svg";
 export { ReactComponent as AddIcon } from "./add.svg";
 export { ReactComponent as DeleteSolid } from "./delete-solid.svg";
 export { ReactComponent as ArrowLeft } from "./arrow-left.svg";
+export { ReactComponent as AnalyticsOutline } from "./analytics-outline.svg";
+export { ReactComponent as AnalyticsSolid } from "./analytics-solid.svg";
