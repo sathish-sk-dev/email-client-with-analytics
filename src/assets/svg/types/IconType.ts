@@ -9,10 +9,13 @@ import {
   DeleteSolid,
   MailOpenOutline,
   MailOpenSolid,
+  MailSolid,
   PenIcon,
   SearchIcon,
   SendOutline,
   SendSolid,
+  SpamOutline,
+  SpamSolid,
 } from "../SVG";
 
 export const IconType = {
@@ -30,4 +33,7 @@ export const IconType = {
   ADD: AddIcon,
   ARROW_LEFT: ArrowLeft,
   CALENDER: Calendar,
+  SPAM_OUTLINE: SpamOutline,
+  SPAM_SOLID: SpamSolid,
+  MAIL_SOLID: MailSolid,
 };

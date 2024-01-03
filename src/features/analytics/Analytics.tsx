@@ -7,6 +7,8 @@ import { subDays } from "date-fns";
 import { Icon } from "../../components/icon/Icon";
 import { IconType } from "../../assets/svg/types/IconType";
 import { MailDistribution } from "./components/mail-distribution/MailDistribution";
+import { DashboardItem } from "./components/dashboard-item/DashboardItem";
+import { Divider } from "../../components/divider/Divider";
 
 export const Analytics = () => {
   const {
@@ -15,13 +17,19 @@ export const Analytics = () => {
     emailDistributionDataKey,
     emailDistributionBarData,
     emailDistributionColors,
+    dashboardItems,
   } = useAnalytics();
   const [fromDate, setFromDate] = useState<Date | null>(subDays(new Date(), 7));
   const [toDate, setToDate] = useState<Date | null>(new Date());
   const maxDate = new Date();
 
   const renderTitle = () => {
-    return <div className={styles.title}> {"Analytics"} </div>;
+    return (
+      <div className={styles.headingContainer}>
+        <div className={styles.heading}> {"Analytics"} </div>
+        <div className={styles.subHeading}> {"Details by week"} </div>
+      </div>
+    );
   };
 
   const renderDatePicker = () => {
@@ -81,10 +89,22 @@ export const Analytics = () => {
     );
   };
 
+  const renderDashboardItems = () => {
+    return (
+      <div className={styles.dashboardItemsContainer}>
+        {dashboardItems.map((item) => (
+          <DashboardItem item={item} />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       {renderHeader()}
+      <Divider />
       {renderInnerContainer()}
+      {renderDashboardItems()}
     </div>
   );
 };

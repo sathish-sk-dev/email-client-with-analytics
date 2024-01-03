@@ -3,6 +3,7 @@ import { useCallback } from "react";
 import {
   constructEmailCountFromMailList,
   constructEmailCountPieChartData,
+  getDashboardItems,
   getEmailCountColors,
   getEmailDistributionColors,
 } from "./utils/analyticsUtils";
@@ -14,8 +15,12 @@ export const useAnalytics = (): UseAnalyticsHooks => {
     (state) => state.mailListState,
   );
 
+  const emailCountData = useCallback(() => {
+    return constructEmailCountFromMailList(mailList);
+  }, []);
+
   const emailCountChartData = useCallback(() => {
-    const emailCount = constructEmailCountFromMailList(mailList);
+    const emailCount = emailCountData();
     return constructEmailCountPieChartData(emailCount);
   }, [mailList]);
 
@@ -81,11 +86,17 @@ export const useAnalytics = (): UseAnalyticsHooks => {
     return getEmailDistributionColors();
   }, []);
 
+  const dashboardItems = useCallback(() => {
+    const emailCount = emailCountData();
+    return getDashboardItems(emailCount, mailList);
+  }, []);
+
   return {
     emailCountChartData: emailCountChartData(),
     emailCountColors: emailCountColors(),
     emailDistributionDataKey: "name",
     emailDistributionBarData: emailDistributionBarData(),
     emailDistributionColors: emailDistributionColors(),
+    dashboardItems: dashboardItems(),
   };
 };

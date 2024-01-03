@@ -66,11 +66,28 @@
   border-bottom-left-radius: 6px;
 }
 
-.title {
+.headingContainer {
+  @include Layout.flex-column;
+  gap: 4px;
+}
+
+.heading {
   @include Fonts.font-bold-large;
+}
+
+.subHeading {
+  @include Fonts.font-small;
+  color: Colors.$secondary-text-color;
 }
 
 .innerContainer {
   @include Layout.flex-row;
-  gap: 24px
+  gap: 24px;
+}
+
+.dashboardItemsContainer {
+  @include Layout.flex-row;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
 }

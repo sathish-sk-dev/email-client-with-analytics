@@ -16,9 +16,13 @@ export const StackedBarChart: FC<StackedBarChartProps> = ({
   colors,
 }) => {
   const renderBars = () => {
-    return colors.map((item) => {
-      return <Bar dataKey={item.key} stackId={item.key} fill={item.value} />;
-    });
+    return (
+      <>
+        {colors.map((item) => (
+          <Bar dataKey={item.key} stackId={"mail"} fill={item.value} width={50}/>
+        ))}
+      </>
+    );
   };
 
   return (

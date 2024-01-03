@@ -12,3 +12,6 @@ export { ReactComponent as ArrowLeft } from "./arrow-left.svg";
 export { ReactComponent as AnalyticsOutline } from "./analytics-outline.svg";
 export { ReactComponent as AnalyticsSolid } from "./analytics-solid.svg";
 export { ReactComponent as Calendar } from "./calendar.svg";
+export { ReactComponent as SpamOutline } from "./spam-outline.svg";
+export { ReactComponent as SpamSolid } from "./spam-solid.svg";
+export { ReactComponent as MailSolid } from "./mail-solid.svg";

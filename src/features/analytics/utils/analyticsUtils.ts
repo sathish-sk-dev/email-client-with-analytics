@@ -5,6 +5,9 @@ import { IMailListItem } from "../../../interfaces/IMailListItem";
 import { MailStatus } from "../../../enums/MailStatus";
 import { capitalizeFirstLetter } from "../../../utils/stringUtils";
 import { KeyValueData } from "../../../types/KeyValueData";
+import { IDashboardItem } from "../interfaces/IDashboardItem";
+import { FC, SVGProps } from "react";
+import { IconType } from "../../../assets/svg/types/IconType";
 
 const constructEmailCountFromMailList = (mailList: IMailListItem[]) => {
   const initializeEmailCount: IEmailCount = {
@@ -31,6 +34,19 @@ const constructEmailCountFromMailList = (mailList: IMailListItem[]) => {
   }, initializeEmailCount);
 };
 
+const getIconByEmailCountKey = (type: keyof IEmailCount) => {
+  switch (type) {
+    case "inbox":
+      return IconType.MAIL_OPEN_SOLID;
+    case "send":
+      return IconType.SEND_SOLID;
+    case "deleted":
+      return IconType.DELETE_SOLID;
+    case "spam":
+      return IconType.SPAM_SOLID;
+  }
+};
+
 const getEmailCountColors = (): string[] => {
   const inboxColor = getThemeColor("--inbox-color");
   const sendColor = getThemeColor("--send-color");
@@ -54,6 +70,29 @@ const constructEmailCountPieChartData = (
   });
 };
 
+const getDashboardItems = (
+  emailCount: IEmailCount,
+  mailList: IMailListItem[],
+): IDashboardItem[] => {
+  const emailCountKeys = Object.keys(emailCount);
+  const totalMailsItem = {
+    icon: IconType.MAIL_SOLID,
+    title: "Total Mails",
+    count: mailList.length,
+  };
+  const dashboardItemsByEmailCount = emailCountKeys.map((key) => {
+    const title = capitalizeFirstLetter(key);
+    const count = emailCount[key as keyof IEmailCount];
+    const icon = getIconByEmailCountKey(key as keyof IEmailCount);
+    return {
+      icon,
+      title,
+      count,
+    };
+  });
+  return [totalMailsItem, ...dashboardItemsByEmailCount];
+};
+
 const getEmailDistributionColors = (): KeyValueData[] => {
   const inboxColor = getThemeColor("--inbox-color");
   const sendColor = getThemeColor("--send-color");
@@ -73,4 +112,5 @@ export {
   constructEmailCountPieChartData,
   constructEmailCountFromMailList,
   getEmailDistributionColors,
+  getDashboardItems,
 };
