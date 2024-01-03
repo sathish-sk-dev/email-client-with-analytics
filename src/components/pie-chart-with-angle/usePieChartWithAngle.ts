@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
-import { UsePieChartWithAngleProps } from "./types/UsePieChartWithAngleProps";
+import { UsePieChartWithAngleHooks } from "./types/UsePieChartWithAngleHooks";
 
-export const usePieChartWithAngle = (): UsePieChartWithAngleProps => {
+export const usePieChartWithAngle = (): UsePieChartWithAngleHooks => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const onPieEnter = useCallback(

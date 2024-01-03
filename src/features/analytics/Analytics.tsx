@@ -6,9 +6,16 @@ import { useState } from "react";
 import { subDays } from "date-fns";
 import { Icon } from "../../components/icon/Icon";
 import { IconType } from "../../assets/svg/types/IconType";
+import { MailDistribution } from "./components/mail-distribution/MailDistribution";
 
 export const Analytics = () => {
-  const { emailCountChartData, emailCountColors } = useAnalytics();
+  const {
+    emailCountChartData,
+    emailCountColors,
+    emailDistributionDataKey,
+    emailDistributionBarData,
+    emailDistributionColors,
+  } = useAnalytics();
   const [fromDate, setFromDate] = useState<Date | null>(subDays(new Date(), 7));
   const [toDate, setToDate] = useState<Date | null>(new Date());
   const maxDate = new Date();
@@ -58,10 +65,26 @@ export const Analytics = () => {
     );
   };
 
+  const renderInnerContainer = () => {
+    return (
+      <div className={styles.innerContainer}>
+        <MailCount
+          colors={emailCountColors}
+          pieChartData={emailCountChartData}
+        />
+        <MailDistribution
+          bars={emailDistributionBarData}
+          dataKey={emailDistributionDataKey}
+          colors={emailDistributionColors}
+        />
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       {renderHeader()}
-      <MailCount colors={emailCountColors} pieChartData={emailCountChartData} />
+      {renderInnerContainer()}
     </div>
   );
 };

@@ -69,3 +69,8 @@
 .title {
   @include Fonts.font-bold-large;
 }
+
+.innerContainer {
+  @include Layout.flex-row;
+  gap: 24px
+}

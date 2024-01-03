@@ -4,6 +4,7 @@ import { IPieChartData } from "../interfaces/IPieChartData";
 import { IMailListItem } from "../../../interfaces/IMailListItem";
 import { MailStatus } from "../../../enums/MailStatus";
 import { capitalizeFirstLetter } from "../../../utils/stringUtils";
+import { KeyValueData } from "../../../types/KeyValueData";
 
 const constructEmailCountFromMailList = (mailList: IMailListItem[]) => {
   const initializeEmailCount: IEmailCount = {
@@ -53,8 +54,23 @@ const constructEmailCountPieChartData = (
   });
 };
 
+const getEmailDistributionColors = (): KeyValueData[] => {
+  const inboxColor = getThemeColor("--inbox-color");
+  const sendColor = getThemeColor("--send-color");
+  const deletedColor = getThemeColor("--deleted-color");
+  const spamColor = getThemeColor("--spam-color");
+
+  return [
+    { key: "inbox", value: inboxColor },
+    { key: "send", value: sendColor },
+    { key: "deleted", value: deletedColor },
+    { key: "spam", value: spamColor },
+  ];
+};
+
 export {
   getEmailCountColors,
   constructEmailCountPieChartData,
   constructEmailCountFromMailList,
+  getEmailDistributionColors,
 };

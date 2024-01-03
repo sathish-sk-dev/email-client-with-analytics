@@ -1,4 +1,4 @@
-export type UsePieChartWithAngleProps = {
+export type UsePieChartWithAngleHooks = {
   onPieEnter: (_: any, index: number) => void;
   activeIndex: number;
 };
