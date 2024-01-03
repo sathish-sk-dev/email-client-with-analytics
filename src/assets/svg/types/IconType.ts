@@ -3,6 +3,7 @@ import {
   AnalyticsOutline,
   AnalyticsSolid,
   ArrowLeft,
+  Calendar,
   CloseIcon,
   DeleteOutline,
   DeleteSolid,
@@ -28,4 +29,5 @@ export const IconType = {
   PEN: PenIcon,
   ADD: AddIcon,
   ARROW_LEFT: ArrowLeft,
+  CALENDER: Calendar,
 };

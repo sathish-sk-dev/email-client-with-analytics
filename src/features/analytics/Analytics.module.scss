@@ -13,6 +13,59 @@
   gap: 24px;
 }
 
+.headerContainer {
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  width: 100%;
+  position: relative;
+}
+
+.dateContainer {
+  margin-left: 48px;
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  gap: 8px;
+  background-color: white;
+  box-shadow: Common.$primary-box-shadow;
+  border: Common.$border;
+  border-radius: 6px;
+  padding-right: 8px;
+}
+
+.dateInputContainer {
+  @include Fonts.font-normal;
+  border: none;
+  border-radius: 6px;
+  width: 90px;
+  height: 26px;
+  padding-left: 8px;
+
+  &:focus-visible {
+    box-shadow: Common.$input-box-shadow;
+    border: 1px solid Colors.$primary-color;
+    outline: none;
+  }
+}
+
+.submitButton {
+  @include Fonts.font-normal;
+  background: Colors.$primary-color;
+  border: none;
+  border-radius: 6px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.16));
+  height: 36px;
+  width: 80px;
+  color: white;
+  margin-left: 16px;
+}
+
+.iconContainer {
+  border-right: Common.$border;
+  background-color: Colors.$secondary-background-color;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
 .title {
   @include Fonts.font-bold-large;
 }

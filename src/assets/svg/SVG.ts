@@ -11,3 +11,4 @@ export { ReactComponent as DeleteSolid } from "./delete-solid.svg";
 export { ReactComponent as ArrowLeft } from "./arrow-left.svg";
 export { ReactComponent as AnalyticsOutline } from "./analytics-outline.svg";
 export { ReactComponent as AnalyticsSolid } from "./analytics-solid.svg";
+export { ReactComponent as Calendar } from "./calendar.svg";
