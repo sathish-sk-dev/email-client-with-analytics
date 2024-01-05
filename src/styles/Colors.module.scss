@@ -1,7 +1,8 @@
 :root {
-  --primary-color: #615ef0;
+  //--primary-color: #615ef0;
+  --primary-color: #1890ff;
   --secondary-color: #2ecc71;
-  --text-color: #222;
+  --text-color: #262626;
   --secondary-text-color: #777;
   --background-color: #ffffff;
   //--secondary-background-color: #f4f5f8;
@@ -14,6 +15,7 @@
   --badge-color: #e76262;
   --border-color: #e4e6e9;
   --secondary-border-color: #ccc;
+  --ternary-border-color: #0000001e;
   --scroll-bar-thumb-color: #a2a9b4;
   --read-color: #ffffff66;
   --online-color: #68d391;
@@ -23,6 +25,7 @@
   --deleted-color: #ffbb28;
   --spam-color: #ff8042;
   --divider-color: #00000019;
+  --nav-bar-selected: #e6f7ff;
 }
 
 $primary-color: var(--primary-color);
@@ -44,3 +47,5 @@ $online-color: var(--online-color);
 $secondary-border-color: var(--secondary-border-color);
 $selected-card-color: var(--selected-card-color);
 $divider-color: var(--divider-color);
+$ternary-border-color: var(--ternary-border-color);
+$nav-bar-selected: var(--nav-bar-selected);

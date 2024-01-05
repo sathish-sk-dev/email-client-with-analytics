@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialAppState } from "../initial-state/initialState";
+
 export const appSlice = createSlice({
   name: "appState",
   initialState: initialAppState,
@@ -19,6 +20,12 @@ export const appSlice = createSlice({
     toggleComposeView: (state, action) => {
       state.isOpenComposeView = action.payload;
     },
+    toggleDrawer: (state, action) => {
+      state.isOpenDrawer = action.payload;
+    },
+    setSearchText: (state, action) => {
+      state.searchText = action.payload;
+    },
   },
 });
 
@@ -28,6 +35,8 @@ export const {
   setUser,
   setSelectedViewType,
   toggleComposeView,
+  toggleDrawer,
+  setSearchText,
 } = appSlice.actions;
 
 export const appReducer = appSlice.reducer;

@@ -4,7 +4,7 @@ import { MailListHeader } from "./components/mail-list-header/MailListHeader";
 import { MailListItem } from "./components/mail-list-item/MailListItem";
 import { useMailList } from "./useMailList";
 
-export const MailList = () => {
+const MailList = () => {
   const {
     isLoading,
     title,
@@ -22,6 +22,8 @@ export const MailList = () => {
       <MailListItem key={index} item={item} />
     ));
   };
+
+  // return <div />;
 
   return (
     <div className={styles.container}>
@@ -43,3 +45,5 @@ export const MailList = () => {
     </div>
   );
 };
+
+export default MailList;

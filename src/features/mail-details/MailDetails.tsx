@@ -6,7 +6,7 @@ import { useMailDetails } from "./useMailDetails";
 import { IMailListItem } from "../../interfaces/IMailListItem";
 import styles from "./MailDetails.module.scss";
 
-export const MailDetails = () => {
+const MailDetails = () => {
   const { selectedMailItem, onClose, user } = useMailDetails();
   const mailDetails = selectedMailItem as IMailListItem;
   const { subject, body } = mailDetails;
@@ -21,3 +21,5 @@ export const MailDetails = () => {
     </div>
   );
 };
+
+export default MailDetails;

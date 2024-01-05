@@ -5,7 +5,7 @@ export interface INavigationBarItem {
   outlineIcon: FC<SVGProps<SVGSVGElement>>;
   solidIcon: FC<SVGProps<SVGSVGElement>>;
   title: string;
-  containerClass: string;
-  selectedContainerClass: string;
+  iconContainerClass: string,
+  selectedIconContainerClass: string,
   type: ViewType;
 }

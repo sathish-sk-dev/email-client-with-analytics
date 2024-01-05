@@ -1,5 +1,19 @@
 @use "src/styles/Layout.module";
+@use "src/styles/Common.module";
+@use "src/styles/Colors.module";
 
 .container {
   @include Layout.flex-row;
+  @include Layout.full-width;
+  background-color: Colors.$secondary-background-color;
+}
+
+.outletContainer {
+  @include Layout.full-width;
+  flex-grow: 1;
+  p: {
+    xs: 2;
+    sm: 3;
+  }
+  margin-top: Common.$header-height;
 }

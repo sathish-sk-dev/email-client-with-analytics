@@ -7,13 +7,13 @@
   align-items: center;
   background-color: Colors.$background-color;
   box-sizing: border-box;
-  border-radius: Common.$search-border-radios;
+  border-radius: 4px;
   display: flex;
   gap: 6px;
   justify-content: space-between;
-  padding: Common.$extra-small-padding;
-  border: Common.$border;
-  min-height: 24px;
+  padding: 3px;
+  border: 1px solid Colors.$ternary-border-color;
+  min-width: 300px;
 
   *::before,
   *::after {
@@ -32,7 +32,7 @@
   outline: none;
   min-width: 0;
   text-overflow: ellipsis;
-  @include Fonts.font-medium;
+  @include Fonts.font-normal;
 
   &:focus::placeholder {
     visibility: hidden;

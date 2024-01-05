@@ -10,6 +10,8 @@ const initialAppState: IAppState = {
   theme: Theme.LIGHT,
   selectedViewType: ViewType.INBOX,
   isOpenComposeView: false,
+  isOpenDrawer: true,
+  searchText: "",
 };
 
 const initialMailListState: IMailListState = {

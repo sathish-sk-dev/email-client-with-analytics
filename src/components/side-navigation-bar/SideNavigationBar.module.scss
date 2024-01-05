@@ -5,98 +5,41 @@
 
 .container {
   @include Layout.flex-column;
-  @include Layout.center-align-items;
-  width: Common.$side-nav-width;
-  background: Colors.$background-color;
+  width: 100%;
   z-index: 10;
-  box-shadow: Common.$primary-box-shadow;
-  padding-top: Common.$large-padding;
-}
-
-.selectedContainer {
-  background-color: Colors.$selected-card-color !important;
-  border-radius: 14px !important;
+  padding-top: 12px;
 }
 
 .topLogo {
-  @include Layout.center-align;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  background-color: Colors.$primary-color;
-  @include Fonts.font-bold-large;
-  color: white;
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  padding-left: 12px;
+  gap: 6px;
+}
+
+.topLogoIcon {
+  svg {
+    width: 36px;
+    height: 36px;
+
+    //path {
+    //  fill: Colors.$secondary-color;
+    //}
+  }
+
+  &:hover {
+    background-color: unset;
+    border-radius: 0;
+  }
+}
+
+.title {
+  @include Fonts.font-semi-bold-large;
+  //color: Colors.$secondary-text-color;
 }
 
 .sectionsContainer {
   @include Layout.flex-column;
   @include Layout.center-align-items;
-  margin-top: 48px;
-  gap: 12px;
-}
-
-.icon {
-  width: 48px;
-  height: 48px;
-
-  svg {
-    width: 28px;
-    height: 28px;
-  }
-
-  &:hover {
-    border-radius: 14px !important;
-  }
-}
-
-.inboxSolidIcon {
-  svg {
-    path {
-      fill: Colors.$primary-color !important;
-    }
-  }
-}
-
-.sendSolidIcon {
-  svg {
-    width: 30px;
-    height: 30px;
-    path {
-      fill: Colors.$primary-color !important;
-    }
-  }
-}
-
-.deleteIcon {
-  svg {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-.deleteSolidIcon {
-  svg {
-    width: 30px;
-    height: 30px;
-    path {
-      fill: Colors.$primary-color !important;
-    }
-  }
-}
-
-.analyticsIcon {
-  svg {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-.analyticsSolidIcon {
-  svg {
-    width: 30px;
-    height: 30px;
-    path {
-      fill: Colors.$primary-color !important;
-    }
-  }
+  margin-top: 24px;
 }

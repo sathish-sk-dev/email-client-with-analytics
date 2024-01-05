@@ -1,0 +1,10 @@
+@use "src/styles/Colors.module";
+@use "src/styles/Layout.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
+
+.container {
+  z-index: 1300;
+  flex-shrink: 0;
+}

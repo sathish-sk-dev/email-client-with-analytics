@@ -20,14 +20,16 @@ $secondary-icon-width: 24px;
 $secondary-icon-height: 24px;
 
 $primary-box-shadow: 0px 0px 8px 0px Colors.$shadow-grey;
-$border: 2px solid Colors.$border-color;
+$border: 1px solid Colors.$border-color;
 $input-box-shadow:
   0 0 8px 2px rgb(106 28 166 / 8%),
   0 2px 2px -2px rgb(0 0 0 / 12%);
 
-$side-nav-width: 88px;
+$side-nav-width: 260px;
 $card-border-radios: 16px;
 $search-border-radios: 24px;
+$header-height: 67px;
+$button-box-shadow: rgba(58, 53, 65, 0.42) 0px 4px 8px -4px;
 
 input::placeholder {
   color: Colors.$placeholder-color;
@@ -128,6 +130,8 @@ audio,
 video {
   margin: 0;
   padding: 0;
+  @include Fonts.font-normal;
+  color: Colors.$text-color;
 }
 
 input,
@@ -135,6 +139,7 @@ textarea,
 select,
 button {
   @include Fonts.font-normal;
+  color: Colors.$text-color;
 }
 
 ::-webkit-scrollbar {

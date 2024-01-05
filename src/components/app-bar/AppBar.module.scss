@@ -1,0 +1,53 @@
+@use "src/styles/Colors.module";
+@use "src/styles/Layout.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+
+.container {
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  flex-shrink: 0;
+  position: fixed;
+  z-index: 1100;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition:
+    width 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms,
+    margin 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+  width: calc(100% - var(--side-nav-width));
+  border-bottom: 1px solid Colors.$ternary-border-color;
+  padding: 12px 24px;
+  gap: 16px;
+  max-height: Common.$header-height;
+  background-color: Colors.$background-color;
+}
+
+.openContainer {
+  left: Common.$side-nav-width;
+}
+
+.icon {
+  @include Layout.center-align;
+  border-radius: 50% !important;
+  padding: 6px !important;
+  background-color: Colors.$nav-bar-selected !important;
+
+  svg path {
+    fill: Colors.$primary-color;
+  }
+}
+
+.composeButton {
+  @include Fonts.font-semi-bold-normal;
+  background: Colors.$primary-color;
+  box-shadow: Common.$button-box-shadow;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding-left: 24px;
+  padding-right: 24px;
+  color: white;
+  position: fixed;
+  right: 24px;
+}

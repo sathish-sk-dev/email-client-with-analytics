@@ -15,3 +15,5 @@ export { ReactComponent as Calendar } from "./calendar.svg";
 export { ReactComponent as SpamOutline } from "./spam-outline.svg";
 export { ReactComponent as SpamSolid } from "./spam-solid.svg";
 export { ReactComponent as MailSolid } from "./mail-solid.svg";
+export { ReactComponent as Breadcrumb } from "./breadcrumb.svg";
+export { ReactComponent as Logo } from "./logo.svg";

@@ -1,0 +1,100 @@
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+
+.container {
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  width: calc(100% - 8px);
+  padding-left: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: Colors.$icon-hover-color;
+  }
+}
+
+.selectedContainer {
+  background-color: Colors.$nav-bar-selected;
+  border-right: 2px solid Colors.$primary-color;
+  color: Colors.$primary-color;
+
+  &:hover {
+    background-color: Colors.$nav-bar-selected;
+  }
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    border-radius: unset !important;
+    background-color: unset !important;
+  }
+}
+
+.title {
+  @include Fonts.font-normal;
+}
+
+.selectedIcon {
+}
+
+.inboxSolidIcon {
+  svg {
+    path {
+      fill: Colors.$primary-color !important;
+    }
+  }
+}
+
+.sendSolidIcon {
+  svg {
+    width: 20px;
+    height: 20px;
+    path {
+      fill: Colors.$primary-color !important;
+    }
+  }
+}
+
+.deleteIcon {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.deleteSolidIcon {
+  svg {
+    width: 20px;
+    height: 20px;
+    path {
+      fill: Colors.$primary-color !important;
+    }
+  }
+}
+
+.analyticsIcon {
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.analyticsSolidIcon {
+  svg {
+    width: 20px;
+    height: 20px;
+    path {
+      fill: Colors.$primary-color !important;
+    }
+  }
+}

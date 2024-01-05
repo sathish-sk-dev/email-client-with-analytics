@@ -1,12 +1,12 @@
 import React from "react";
-import { Layout } from "./components/layout/Layout";
-import { MailList } from "./features/mail-list/MailList";
 import { ComposeMail } from "./features/compose-mail/ComposeMail";
 import { ProviderWrapper } from "./components/provider-wrapper/ProviderWrapper";
-import { MailDetails } from "./features/mail-details/MailDetails";
 import { useApp } from "./useApp";
 import { ViewType } from "./enums/ViewType";
 import { Analytics } from "./features/analytics/Analytics";
+import MailList from "./features/mail-list/MailList";
+import MailDetails from "./features/mail-details/MailDetails";
+import Layout from "./components/layout/Layout";
 
 const App = () => {
   const {
@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <ProviderWrapper>
-      <Layout>{renderContainer()}</Layout>
+      {/*<Layout>{renderContainer()}</Layout>*/}
     </ProviderWrapper>
   );
 };
