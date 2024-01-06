@@ -8,7 +8,7 @@ const FloatingActionButton: FC<FloatingActionButtonProps> = ({
   onClick,
 }) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={onClick}>
       <Icon iconType={iconType} containerClass={styles.icon} />
     </div>
   );

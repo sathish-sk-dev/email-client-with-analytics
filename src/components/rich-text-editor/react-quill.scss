@@ -1,5 +1,6 @@
 @use "src/styles/Fonts.module";
 @use "src/styles/Colors.module";
+@use "src/styles/Media.module";
 
 .editor {
   @include Fonts.font-normal;
@@ -11,6 +12,10 @@
   height: 300px;
   overflow-y: scroll;
   border: none;
+
+  @include Media.media-xs-devices {
+    height: 100%;
+  }
 }
 
 .editor .ql-snow.ql-toolbar {

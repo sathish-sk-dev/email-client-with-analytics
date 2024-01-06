@@ -5,36 +5,31 @@
 @use "src/styles/Media.module";
 
 .container {
-  @include Layout.flex-column;
-  background-color: Colors.$background-color;
-  flex: 1;
-  z-index: 1500;
-  position: fixed;
-  width: 754px;
-  border-radius: 8px;
-  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  box-shadow: Common.$modal-box-shadow;
-  bottom: 2em;
-  right: 2em;
-}
-
-.headerContainer {
   @include Layout.flex-row;
   @include Layout.center-align-items;
   height: 56px;
-  padding-left: Common.$large-padding;
-  padding-right: Common.$medium-padding;
-  justify-content: space-between;
+  padding-left: 6px;
   background-color: Colors.$ternary-background-color;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  gap: 16px;
+  position: relative;
 
   @include Media.media-xs-devices {
     height: 48px;
   }
 }
 
-.icon {
+.leftIcon {
+}
+
+.sendIcon {
+  position: absolute;
+  right: 12px;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .title {
@@ -42,11 +37,5 @@
 
   @include Media.media-xs-devices {
     @include Fonts.font-semi-bold-normal;
-  }
-}
-
-.mobileFooterDivider {
-  @include Media.media-xs-devices {
-    margin-bottom: 65px;
   }
 }

@@ -7,6 +7,10 @@ import { IconType } from "../../assets/svg/types/IconType";
 import { useComposeMail } from "./useComposeMail";
 import ComposeMailFooter from "./components/compose-mail-footer/ComposeMailFooter";
 import { Divider } from "../../components/divider/Divider";
+import { useCallback } from "react";
+import BottomSheet from "../../components/bottom-sheet/BottomSheet";
+import useMobileMediaQuery from "../../components/responsive/hooks/useMobileMediaQuery";
+import ComposeMailHeader from "./components/compose-mail-header/ComposeMailHeader";
 
 export const ComposeMail = () => {
   const {
@@ -22,10 +26,12 @@ export const ComposeMail = () => {
     onChangeEditorHtml,
     onDelete,
     onSend,
+    isOpenComposeView,
   } = useComposeMail();
+  const isMobile = useMobileMediaQuery();
 
-  return (
-    <div className={styles.container}>
+  const renderHeader = useCallback(
+    () => (
       <div className={styles.headerContainer}>
         <div className={styles.title}> {"New Mail"} </div>
         <Icon
@@ -34,13 +40,28 @@ export const ComposeMail = () => {
           onClick={onClose}
         />
       </div>
-      <Divider />
+    ),
+    [onClose],
+  );
+
+  const renderMobileHeader = useCallback(
+    () => <ComposeMailHeader onClose={onClose} onSend={onSend} />,
+    [onClose, onSend],
+  );
+
+  const renderFrom = useCallback(
+    () => (
       <LabelWithInput
         label={"From"}
         value={fromEmailId}
         onChangeValue={() => {}}
       />
-      <Divider />
+    ),
+    [fromEmailId],
+  );
+
+  const renderReceipients = useCallback(
+    () => (
       <AutoCompleteTag
         suggestions={suggestions}
         selectedSuggestions={selectedSuggestions}
@@ -49,20 +70,82 @@ export const ComposeMail = () => {
         onAdd={onAddReceipient}
         onDelete={onDeleteReceipient}
       />
-      <Divider />
+    ),
+    [onAddReceipient, onDeleteReceipient, selectedSuggestions, suggestions],
+  );
+
+  const renderSubject = useCallback(
+    () => (
       <LabelWithInput
         label={"Subject"}
         value={subject}
         onChangeValue={onChangeSubject}
       />
-      <Divider />
+    ),
+    [onChangeSubject, subject],
+  );
+
+  const renderTextEditor = useCallback(
+    () => (
       <RichTextEditor
         editorHtml={editorHtml}
         onChangeEditorHtml={onChangeEditorHtml}
         placeholder={"Write something..."}
       />
-      <Divider />
-      <ComposeMailFooter onClickSend={onSend} onClickDelete={onDelete} />
-    </div>
+    ),
+    [editorHtml, onChangeEditorHtml],
   );
+
+  const renderFooter = useCallback(
+    () => <ComposeMailFooter onClickSend={onSend} onClickDelete={onDelete} />,
+    [onDelete, onSend],
+  );
+
+  const renderContent = useCallback(
+    () => (
+      <>
+        {isMobile ? renderMobileHeader() : renderHeader()}
+        <Divider />
+        {!isMobile && renderFrom()}
+        {!isMobile && <Divider />}
+        {renderReceipients()}
+        <Divider />
+        {renderSubject()}
+        <Divider />
+        {renderTextEditor()}
+        <Divider containerClass={styles.mobileFooterDivider} />
+        {!isMobile && renderFooter()}
+      </>
+    ),
+    [
+      isMobile,
+      renderFooter,
+      renderFrom,
+      renderHeader,
+      renderMobileHeader,
+      renderReceipients,
+      renderSubject,
+      renderTextEditor,
+    ],
+  );
+
+  const renderMobileView = useCallback(
+    () => (
+      <BottomSheet isOpen={isOpenComposeView} onClose={onClose}>
+        {renderContent()}
+      </BottomSheet>
+    ),
+    [isOpenComposeView, onClose, renderContent],
+  );
+
+  const renderDesktopView = useCallback(
+    () => <div className={styles.container}>{renderContent()}</div>,
+    [renderContent],
+  );
+
+  if (isMobile) {
+    return renderMobileView();
+  }
+
+  return renderDesktopView();
 };

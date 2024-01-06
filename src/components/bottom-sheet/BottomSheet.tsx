@@ -1,21 +1,15 @@
 import Sheet from "react-modal-sheet";
-import { useState } from "react";
+import { FC } from "react";
+import { BottomSheetProps } from "./BottomSheetProps";
 
-const BottomSheet = () => {
-  const [isOpen, setOpen] = useState(true);
-
+const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
   return (
-    <>
-      <button onClick={() => setOpen(true)}>Open sheet</button>
-
-      <Sheet isOpen={isOpen} onClose={() => setOpen(false)}>
-        <Sheet.Container>
-          <Sheet.Header />
-          <Sheet.Content>{/* Your sheet content goes here */}</Sheet.Content>
-        </Sheet.Container>
-        <Sheet.Backdrop />
-      </Sheet>
-    </>
+    <Sheet isOpen={isOpen} onClose={onClose}>
+      <Sheet.Container>
+        <Sheet.Content>{children}</Sheet.Content>
+      </Sheet.Container>
+      <Sheet.Backdrop />
+    </Sheet>
   );
 };
 

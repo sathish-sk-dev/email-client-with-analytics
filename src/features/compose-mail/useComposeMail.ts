@@ -26,7 +26,7 @@ import { addMail } from "../../redux-toolkit/slices/mailListSlice";
 export const useComposeMail = (): UseComposeMailHooks => {
   const { isLoading, receipients, selectedReceipients, subject, body } =
     useAppSelector((state) => state.composeMailState);
-  const { user }: IAppState = useAppSelector((state) => state.appState);
+  const { user, isOpenComposeView }: IAppState = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
   const fromEmailId = user?.email || "";
 
@@ -84,6 +84,7 @@ export const useComposeMail = (): UseComposeMailHooks => {
   };
 
   return {
+    isOpenComposeView,
     isLoading,
     editorHtml: body,
     fromEmailId,

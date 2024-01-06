@@ -1,6 +1,7 @@
 import { IAutoCompleteSuggestion } from "../../../components/auto-complete-tag/interfaces/IAutoCompleteSuggestion";
 
 export type UseComposeMailHooks = {
+  isOpenComposeView: boolean;
   editorHtml: string;
   suggestions: IAutoCompleteSuggestion[];
   selectedSuggestions: IAutoCompleteSuggestion[];

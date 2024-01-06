@@ -2,12 +2,19 @@
 @use "src/styles/Colors.module";
 @use "src/styles/Common.module";
 @use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
 
 .container {
   @include Layout.flex-row;
   @include Layout.center-align-items;
   padding: Common.$small-padding Common.$large-padding;
   justify-content: space-between;
+
+  @include Media.media-xs-devices {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 48px);
+  }
 }
 
 .button {
