@@ -5,4 +5,5 @@ export type UseAppHooks = {
   isOpenComposeView: boolean;
   canShowModuleDetailsView: boolean;
   selectedViewType: ViewType;
+  canShowAnalytics: boolean;
 };

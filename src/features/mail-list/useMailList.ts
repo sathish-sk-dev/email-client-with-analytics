@@ -4,20 +4,17 @@ import {
   useAppSelector,
 } from "../../redux-toolkit/hooks/hooks";
 import {
-  setMailList,
   setSearchedMailList,
   setSearchText,
   setUnReadCount,
   toggleSelectAll,
 } from "../../redux-toolkit/slices/mailListSlice";
-import { ChangeEvent, useCallback, useEffect } from "react";
-import { fetchMailList } from "./api";
+import { ChangeEvent, useCallback } from "react";
 import { searchList } from "../../utils/listUtils";
 import {
   getMailListSearchKeys,
   getMailListTitleByViewType,
 } from "./utils/mailListUtils";
-import { ViewType } from "../../enums/ViewType";
 
 export const useMailList = (): UseMailListHooks => {
   const {
@@ -29,15 +26,6 @@ export const useMailList = (): UseMailListHooks => {
   } = useAppSelector((state) => state.mailListState);
   const { selectedViewType } = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
-
-  const fetchMailListCallback = useCallback(async () => {
-    const list = await fetchMailList();
-    dispatch(setMailList({ selectedViewType: ViewType.INBOX, mailList: list }));
-  }, [dispatch]);
-
-  useEffect(() => {
-    fetchMailListCallback();
-  }, [fetchMailListCallback]);
 
   const onChangeSearch = useCallback(
     (text: string) => {

@@ -2,14 +2,35 @@
 @use "src/styles/Colors.module";
 @use "src/styles/Common.module";
 @use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
+
+.topContainer {
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  background-color: Colors.$background-color;
+  height: 56px;
+  padding-left: Common.$large-padding;
+  padding-right: Common.$medium-padding;
+  gap: 16px;
+  width: 100%;
+  border-bottom: Common.$border;
+
+  @include Media.media-xs-devices {
+    height: 48px;
+    padding-left: Common.$small-padding;
+    padding-right: Common.$small-padding;
+  }
+}
 
 .container {
   @include Layout.flex-column;
   background-color: Colors.$background-color;
   z-index: 9;
   flex: 1;
-  box-shadow: Common.$primary-box-shadow;
+  box-shadow: Common.$card-box-shadow;
   transition: right 2s ease-in-out;
+  margin: Common.$large-margin;
+  border-radius: 8px;
 }
 
 .hideContainer {
@@ -18,19 +39,13 @@
 
 .innerContainer {
   @include Layout.flex-column;
-  padding: Common.$large-padding;
-  width: calc(100% - 48px);
+  width: 100%;
   overflow-y: scroll;
-  height: calc(100vh - 148px);
+  height: calc(100vh - 244px);
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 .subject {
   @include Fonts.font-semi-bold-large;
-  margin-top: 24px;
-}
-
-.body {
-  @include Fonts.font-normal;
-  margin-top: 24px;
-  width: calc(100% - 48px);
 }

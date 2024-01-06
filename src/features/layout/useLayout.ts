@@ -16,6 +16,7 @@ import {
   setMailList,
   setSearchedMailList,
   setSearchText,
+  setSelectedMailItem,
   setUnReadCount,
 } from "../../redux-toolkit/slices/mailListSlice";
 import { getMailListSearchKeys } from "../mail-list/utils/mailListUtils";
@@ -47,6 +48,7 @@ export const useLayout = (): UseLayoutHooks => {
     (item: INavigationBarItem) => {
       isMobile && onToggleDrawer();
       dispatch(setSelectedViewType(item.type));
+      dispatch(setSelectedMailItem(null));
     },
     [dispatch, isMobile, onToggleDrawer],
   );

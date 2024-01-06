@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { ComposeMail } from "./features/compose-mail/ComposeMail";
 import { ProviderWrapper } from "./components/provider-wrapper/ProviderWrapper";
 import { useApp } from "./useApp";
@@ -9,37 +9,26 @@ import MailDetails from "./features/mail-details/MailDetails";
 import Layout from "./features/layout/Layout";
 
 const App = () => {
-  const {
-    isLoading,
-    selectedViewType,
-    canShowModuleDetailsView,
-    isOpenComposeView,
-  } = useApp();
+  const { canShowModuleDetailsView, canShowAnalytics, isOpenComposeView } =
+    useApp();
 
-  const renderAnalytics = () => {
-    return <Analytics />;
-  };
-
-  const renderMailList = () => {
-    return (
-      <>
-        <MailList />
-        {canShowModuleDetailsView && <MailDetails />}
-        {isOpenComposeView && <ComposeMail />}
-      </>
-    );
-  };
-
-  const renderContainer = () => {
-    if (selectedViewType === ViewType.ANALYTICS) {
-      return renderAnalytics();
+  const renderContainer = useCallback(() => {
+    switch (true) {
+      case canShowModuleDetailsView:
+        return <MailDetails />;
+      case canShowAnalytics:
+        return <Analytics />;
+      default:
+        return <MailList />;
     }
-    return renderMailList();
-  };
+  }, [canShowAnalytics, canShowModuleDetailsView]);
 
   return (
     <ProviderWrapper>
-      <Layout>{renderContainer()}</Layout>
+      <Layout>
+        {renderContainer()}
+        {isOpenComposeView && <ComposeMail />}
+      </Layout>
     </ProviderWrapper>
   );
 };

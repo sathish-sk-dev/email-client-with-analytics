@@ -43,7 +43,7 @@ export const useMailListItem = ({
 
   const selectedContainerClass = isSelected ? styles.selectedContainer : "";
 
-  const timeAgoText = formatTimeAgo(updatedAt);
+  const timeAgoText = formatTimeAgo(updatedAt, false);
 
   const subjectText = capitalizeFirstLetter(subject);
 

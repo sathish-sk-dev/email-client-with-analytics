@@ -6,6 +6,7 @@
 .container {
   @include Layout.flex-row;
   @include Layout.full-width;
+  @include Layout.full-height;
   background-color: Colors.$secondary-background-color;
 }
 

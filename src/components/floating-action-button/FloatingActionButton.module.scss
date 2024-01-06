@@ -5,8 +5,8 @@
 
 .container {
   @include Layout.center-align;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background-color: Colors.$primary-color;
   position: fixed;

@@ -19,20 +19,15 @@ const AppBar: FC<AppBarProps> = ({
 }) => {
   const isMobile = useMobileMediaQuery();
 
-  const getIconType = useCallback(() => {
-    return isOpen && !isMobile ? IconType.ARROW_LEFT : IconType.BREADCRUMB;
-  }, [isOpen, isMobile]);
-
   const renderIcon = useCallback(() => {
-    const iconType = getIconType();
     return (
       <Icon
-        iconType={iconType}
+        iconType={IconType.BREADCRUMB}
         onClick={toggleDrawer}
         containerClass={styles.icon}
       />
     );
-  }, [getIconType, toggleDrawer]);
+  }, [toggleDrawer]);
 
   const renderSearchbar = useCallback(
     () => (

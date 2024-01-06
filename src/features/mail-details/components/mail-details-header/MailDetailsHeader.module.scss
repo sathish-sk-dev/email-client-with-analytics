@@ -7,12 +7,18 @@
   @include Layout.flex-row;
   position: relative;
   width: calc(100% - 48px);
+  padding: Common.$medium-padding Common.$medium-padding Common.$medium-padding
+    8px;
+  align-items: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin-left: 16px;
 }
 
 .headerContent {

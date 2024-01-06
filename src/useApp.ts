@@ -1,8 +1,11 @@
 import { useAppDispatch, useAppSelector } from "./redux-toolkit/hooks/hooks";
 import { UseAppHooks } from "./types/UseAppHooks";
-import { useEffect } from "react";
+import { useEffect, useMemo, useCallback } from "react";
 import { fetchUserDetails } from "./api";
 import { setUser } from "./redux-toolkit/slices/appSlice";
+import { ViewType } from "./enums/ViewType";
+import { fetchMailList } from "./features/mail-list/api";
+import { setMailList } from "./redux-toolkit/slices/mailListSlice";
 
 export const useApp = (): UseAppHooks => {
   const { isLoading, isOpenComposeView, selectedViewType } = useAppSelector(
@@ -10,20 +13,42 @@ export const useApp = (): UseAppHooks => {
   );
 
   const { selectedMailItem } = useAppSelector((state) => state.mailListState);
+
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    fetchUserDetails().then((response) => {
-      dispatch(setUser(response));
-    });
+  const fetchMailListCallback = useCallback(async () => {
+    const list = await fetchMailList();
+    dispatch(setMailList({ selectedViewType: ViewType.INBOX, mailList: list }));
   }, [dispatch]);
 
-  const canShowModuleDetailsView = selectedMailItem !== null;
+  useEffect(() => {
+    fetchMailListCallback();
+  }, [fetchMailListCallback]);
+
+  const fetchUserDetailsCallback = useCallback(async () => {
+    const response = await fetchUserDetails();
+    dispatch(setUser(response));
+  }, [dispatch]);
+
+  useEffect(() => {
+    fetchUserDetailsCallback();
+  }, [fetchUserDetailsCallback]);
+
+  const canShowModuleDetailsView = useMemo(
+    () => selectedMailItem !== null,
+    [selectedMailItem],
+  );
+
+  const canShowAnalytics = useMemo(
+    () => selectedViewType === ViewType.ANALYTICS,
+    [selectedViewType],
+  );
 
   return {
     isLoading,
     isOpenComposeView,
     canShowModuleDetailsView,
+    canShowAnalytics,
     selectedViewType,
   };
 };
