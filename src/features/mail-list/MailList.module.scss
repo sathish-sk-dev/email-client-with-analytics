@@ -1,6 +1,7 @@
 @use "src/styles/Layout.module";
 @use "src/styles/Colors.module";
 @use "src/styles/Common.module";
+@use "src/styles/Media.module";
 
 .container {
   @include Layout.flex-column;
@@ -10,12 +11,17 @@
 }
 
 .innerContainer {
-  padding: Common.$small-padding Common.$large-padding Common.$large-padding;
+  @include Layout.flex-column;
+  height: calc(100vh - 68px);
+  border-radius: 6px;
+  position: relative;
+  //box-shadow: rgba(58, 53, 65, 0.1) 0px 2px 10px 0px;
+  transition: padding 0.25s ease-in-out 0s;
+  //margin: 24px;
 }
 
 .listContainer {
-  @include Layout.flex-column;
   overflow-y: scroll;
-  height: calc(100vh - 182px);
-  padding: 0px 12px Common.$large-padding Common.$large-padding;
+  @include Layout.flex-column;
+  height: calc(100vh - 124px);
 }

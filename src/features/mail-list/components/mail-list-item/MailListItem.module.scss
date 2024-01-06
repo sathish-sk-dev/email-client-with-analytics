@@ -2,22 +2,45 @@
 @use "src/styles/Colors.module";
 @use "src/styles/Common.module";
 @use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
 
 .container {
-  @include Layout.flex-column;
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
   background-color: Colors.$background-color;
-  border: Common.$border;
-  border-radius: Common.$card-border-radios;
+  border-bottom: Common.$border;
+  border-right: Common.$border;
   padding: Common.$medium-padding;
   width: calc(100% - 36px);
-  margin-bottom: 16px;
   position: relative;
   box-shadow: Common.$primary-box-shadow;
   cursor: pointer;
+  gap: 24px;
+
+  &:hover {
+    transform: scale(1);
+  }
+
+  @include Media.media-xs-devices {
+    padding: Common.$medium-padding Common.$small-padding Common.$medium-padding
+      Common.$medium-padding;
+    width: calc(100% - 29px);
+    gap: 16px;
+  }
+}
+
+.contentContainer {
+  margin-right: 100px;
+
+  @include Media.media-xs-devices {
+    @include Layout.flex-column;
+    gap: 4px;
+    margin-right: 80px;
+  }
 }
 
 .readContainer {
-  background-color: Colors.$read-color;
+  background-color: Colors.$secondary-background-color;
   box-shadow: Colors.$border-color;
 }
 
@@ -26,61 +49,27 @@
   box-shadow: Common.$primary-box-shadow;
 }
 
-.statusIndicator {
-  position: absolute;
-  width: 4px;
-  height: 24px;
-  left: 0px;
-  top: 24px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  box-shadow: Common.$primary-box-shadow;
-}
-
-.unReadStatus {
-  background-color: Colors.$badge-color;
-}
-
-.readStatus {
-  background-color: gray;
-}
-
-.header {
-  @include Layout.flex-row;
-}
-
 .avatar {
   width: 40px;
   height: 40px;
   border-radius: 20px;
 }
 
-.headerContent {
-  @include Layout.flex-column;
-  gap: 4px;
-  margin-left: 16px;
+.name {
+  @include Fonts.font-semi-bold-normal;
+}
 
-  .name {
-    @include Fonts.font-semi-bold-medium;
-  }
-
-  .time {
-    @include Fonts.font-small;
-    color: Colors.$secondary-text-color;
+.time {
+  @include Fonts.font-small;
+  color: Colors.$secondary-text-color;
+  position: absolute;
+  right: 24px;
+  @include Media.media-xs-devices {
+    right: 16px;
   }
 }
 
 .subject {
-  margin-top: 12px;
-  @include Fonts.font-semi-bold-medium;
-}
-
-.body {
-  margin-top: 6px;
   @include Fonts.font-normal;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  height: 34px;
+  color: Colors.$secondary-text-color;
 }

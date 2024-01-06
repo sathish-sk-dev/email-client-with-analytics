@@ -7,5 +7,6 @@ export interface IMailListState {
   mailListByViewType: IMailListItem[];
   unReadCount: number;
   isLoading: boolean;
-  selectedMailItem: IMailListItem | null
+  selectedMailItem: IMailListItem | null;
+  isSelectAll: boolean;
 }

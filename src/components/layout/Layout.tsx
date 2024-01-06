@@ -1,10 +1,9 @@
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import { Outlet } from "react-router-dom";
 import AppBar from "../app-bar/AppBar";
 import Drawer from "../drawer/Drawer";
 import styles from "./Layout.module.scss";
 import { useLayout } from "./useLayout";
-import useMobileMediaQuery from "../responsive/hooks/useMobileMediaQuery";
 
 const Layout = () => {
   const {
@@ -14,13 +13,6 @@ const Layout = () => {
     toggleDrawer,
     isOpenDrawer,
   } = useLayout();
-  const isMobile = useMobileMediaQuery();
-
-  useEffect(() => {
-    if (isMobile && isOpenDrawer) {
-      toggleDrawer();
-    }
-  }, [isMobile, isOpenDrawer, toggleDrawer]);
 
   const renderDrawer = useCallback(() => {
     return (

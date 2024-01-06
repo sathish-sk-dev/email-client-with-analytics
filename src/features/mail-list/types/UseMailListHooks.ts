@@ -1,4 +1,5 @@
 import { IMailListItem } from "../../../interfaces/IMailListItem";
+import { ChangeEvent } from "react";
 
 export type UseMailListHooks = {
   searchText: string;
@@ -6,8 +7,9 @@ export type UseMailListHooks = {
   searchedMailList: IMailListItem[];
   unReadCount: number;
   onSearch: () => void;
-  onAdd: () => void;
+  onChangeSelectAll: (event: ChangeEvent) => void;
   isLoading: boolean;
   title: string;
   onClearSearch: () => void;
+  canShowUnRead: boolean;
 };

@@ -1,5 +1,8 @@
+import {ChangeEvent} from "react";
+
 export type MailListHeaderProps = {
   title: string;
   unReadCount: number;
-  onClickAdd: () => void;
+  onChangeSelectAll: (event: ChangeEvent) => void;
+  canShowUnRead: boolean;
 };

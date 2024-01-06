@@ -8,10 +8,10 @@ import {
   setSearchedMailList,
   setSearchText,
   setUnReadCount,
+  toggleSelectAll,
 } from "../../redux-toolkit/slices/mailListSlice";
-import { useEffect } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { fetchMailList } from "./api";
-import { toggleComposeView } from "../../redux-toolkit/slices/appSlice";
 import { searchList } from "../../utils/listUtils";
 import {
   getMailListSearchKeys,
@@ -34,7 +34,7 @@ export const useMailList = (): UseMailListHooks => {
     fetchMailList().then((list) => {
       dispatch(setMailList({ selectedViewType, mailList: list }));
     });
-  }, [dispatch]);
+  }, [dispatch, selectedViewType]);
 
   const onChangeSearch = (text: string) => {
     dispatch(setSearchText(text));
@@ -52,11 +52,15 @@ export const useMailList = (): UseMailListHooks => {
     dispatch(setUnReadCount(mailListByViewType));
   };
 
-  const onAdd = () => {
-    dispatch(toggleComposeView(true));
+  const onChangeSelectAll = (event: ChangeEvent) => {
+    // @ts-ignore
+    const isChecked = event.target.checked;
+    dispatch(toggleSelectAll(isChecked));
   };
 
   const title = getMailListTitleByViewType(selectedViewType);
+
+  const canShowUnRead = unReadCount > 0;
 
   return {
     title,
@@ -64,9 +68,10 @@ export const useMailList = (): UseMailListHooks => {
     searchedMailList,
     unReadCount,
     isLoading,
+    canShowUnRead,
     onChangeSearch,
     onSearch,
-    onAdd,
+    onChangeSelectAll,
     onClearSearch,
   };
 };

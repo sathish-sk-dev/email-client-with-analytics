@@ -1,12 +1,13 @@
 import React, { FC, useCallback } from "react";
-import { Drawer } from "@mui/material";
+import { Drawer as MaterialDrawer } from "@mui/material";
 import { DrawerProps } from "./DrawerProps";
 import { SideNavigationBar } from "../side-navigation-bar/SideNavigationBar";
 import DrawerHeader from "./components/drawer-header/DrawerHeader";
-import DrawerStyled from "./components/material-style/DrawerStyled";
 import useMobileMediaQuery from "../responsive/hooks/useMobileMediaQuery";
+import DrawerStyled from "./components/material-style/DrawerStyled";
+import styles from "./Drawer.module.scss";
 
-const MainDrawer: FC<DrawerProps> = ({
+const Drawer: FC<DrawerProps> = ({
   isOpen,
   toggleDrawer,
   navBarItems,
@@ -41,37 +42,43 @@ const MainDrawer: FC<DrawerProps> = ({
     [drawerContent, drawerHeader],
   );
 
+  const renderMobileDrawer = useCallback(() => {
+    return (
+      <MaterialDrawer
+        variant="temporary"
+        open={isOpen}
+        onClose={toggleDrawer}
+        ModalProps={{ keepMounted: true }}
+        sx={{
+          display: { xs: "block", lg: "none" },
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
+            width: 260,
+            borderRight: `1px solid var(--ternary-border-color)`,
+            backgroundImage: "none",
+            boxShadow: "inherit",
+          },
+        }}
+      >
+        {isOpen && renderContent()}
+      </MaterialDrawer>
+    );
+  }, [isOpen, renderContent, toggleDrawer]);
+
+  const renderWebDrawer = useCallback(
+    () => (
+      <DrawerStyled variant="permanent" open={isOpen}>
+        {renderContent()}
+      </DrawerStyled>
+    ),
+    [isOpen, renderContent],
+  );
+
   return (
-    <div
-      // @ts-ignore
-      style={{ flexShrink: { md: 0 }, zIndex: 1300 }}
-    >
-      {isMobile ? (
-        <Drawer
-          variant="temporary"
-          open={isOpen}
-          onClose={toggleDrawer}
-          ModalProps={{ keepMounted: true }}
-          sx={{
-            display: { xs: "block", lg: "none" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              width: 260,
-              borderRight: `1px solid var(--ternary-border-color)`,
-              backgroundImage: "none",
-              boxShadow: "inherit",
-            },
-          }}
-        >
-          {isOpen && renderContent()}
-        </Drawer>
-      ) : (
-        <DrawerStyled variant="permanent" open={isOpen}>
-          {renderContent()}
-        </DrawerStyled>
-      )}
+    <div className={styles.container}>
+      {isMobile ? renderMobileDrawer() : renderWebDrawer()}
     </div>
   );
 };
 
-export default MainDrawer;
+export default Drawer;

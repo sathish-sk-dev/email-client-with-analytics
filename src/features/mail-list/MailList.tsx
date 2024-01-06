@@ -1,47 +1,47 @@
 import styles from "./MailList.module.scss";
-import { SearchBar } from "../../components/search-bar/SearchBar";
-import { MailListHeader } from "./components/mail-list-header/MailListHeader";
 import { MailListItem } from "./components/mail-list-item/MailListItem";
 import { useMailList } from "./useMailList";
+import React, { useCallback } from "react";
+import { MailListHeader } from "./components/mail-list-header/MailListHeader";
 
 const MailList = () => {
   const {
-    isLoading,
     title,
-    searchedMailList,
     unReadCount,
-    searchText,
-    onSearch,
-    onChangeSearch,
-    onAdd,
-    onClearSearch,
+    canShowUnRead,
+    searchedMailList,
+    onChangeSelectAll,
   } = useMailList();
 
-  const renderMailList = () => {
-    return searchedMailList.map((item, index) => (
-      <MailListItem key={index} item={item} />
-    ));
-  };
+  const renderMailList = useCallback(
+    () => (
+      <div className={styles.listContainer}>
+        {searchedMailList.map((item, index) => (
+          <MailListItem key={index} item={item} />
+        ))}
+      </div>
+    ),
+    [searchedMailList],
+  );
 
-  // return <div />;
-
-  return (
-    <div className={styles.container}>
+  const renderHeader = useCallback(
+    () => (
       <MailListHeader
         title={title}
         unReadCount={unReadCount}
-        onClickAdd={onAdd}
+        onChangeSelectAll={onChangeSelectAll}
+        canShowUnRead={canShowUnRead}
       />
+    ),
+    [canShowUnRead, onChangeSelectAll, title, unReadCount],
+  );
+
+  return (
+    <div className={styles.container}>
       <div className={styles.innerContainer}>
-        <SearchBar
-          searchText={searchText}
-          onChange={onChangeSearch}
-          placeholderText={"Search in mail"}
-          onSearch={onSearch}
-          onClear={onClearSearch}
-        />
+        {renderHeader()}
+        {renderMailList()}
       </div>
-      <div className={styles.listContainer}>{renderMailList()}</div>
     </div>
   );
 };

@@ -1,35 +1,43 @@
-@use "../../../../styles/Layout.module";
-@use "../../../../styles/Colors.module";
-@use "../../../../styles/Common.module";
-@use "../../../../styles/Fonts.module";
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
 
 .container {
   @include Layout.flex-row;
   @include Layout.center-align-items;
-  padding: 24px;
-  position: relative;
-  width: calc(100% - 48px);
+  height: 56px;
+  background-color: Colors.$background-color;
+  border-bottom: Common.$border;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @include Media.media-xs-devices {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }
 
 .title {
-  @include Fonts.font-bold-large;
+  @include Fonts.font-semi-bold-medium;
+  margin-left: 24px;
+
+  @include Media.media-xs-devices {
+    margin-left: 14px;
+  }
 }
 
 .count {
-  @include Fonts.font-semi-bold-normal;
+  @include Fonts.font-small;
   @include Layout.center-align-items;
   padding: 2px 8px;
   background-color: Colors.$badge-color;
   border-radius: 24px;
   margin-left: Common.$small-margin;
   color: white;
-}
 
-.composeButton {
-  position: absolute;
-  right: 24px;
-
-  svg {
-    fill: Colors.$primary-color;
+  @include Media.media-xs-devices {
+    margin-top: 2px;
   }
 }
