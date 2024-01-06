@@ -5,4 +5,5 @@ export type AppBarProps = {
   onChangeSearch: (text: string) => void;
   onSearch: () => void;
   onClearSearch: () => void;
+  onClickCompose: () => void;
 };

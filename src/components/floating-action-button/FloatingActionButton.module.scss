@@ -1,0 +1,29 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Common.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Media.module";
+
+.container {
+  @include Layout.center-align;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: Colors.$primary-color;
+  position: fixed;
+  z-index: 2000;
+  right: 2em;
+  bottom: 2em;
+}
+
+.icon {
+  svg {
+    path {
+      fill: Colors.$background-color;
+    }
+  }
+
+  &:hover {
+    background-color: unset !important;
+    border-radius: unset !important;
+  }
+}

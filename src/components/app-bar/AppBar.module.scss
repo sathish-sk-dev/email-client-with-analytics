@@ -64,15 +64,6 @@
 }
 
 .composeButton {
-  @include Fonts.font-semi-bold-normal;
-  background: Colors.$primary-color;
-  box-shadow: Common.$button-box-shadow;
-  border: none;
-  border-radius: 5px;
-  height: 40px;
-  padding-left: 24px;
-  padding-right: 24px;
-  color: white;
   position: fixed;
   right: 24px;
 }

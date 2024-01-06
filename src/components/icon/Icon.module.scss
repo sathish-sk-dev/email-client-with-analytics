@@ -24,3 +24,12 @@
     width: Common.$secondary-icon-width;
   }
 }
+
+.disabled {
+  padding: 0 !important;
+
+  &:hover {
+    background-color: unset !important;
+    border-radius: 0 !important;
+  }
+}

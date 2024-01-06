@@ -8,6 +8,7 @@ import {
 } from "../../redux-toolkit/hooks/hooks";
 import {
   setSelectedViewType,
+  toggleComposeView,
   toggleDrawer,
 } from "../../redux-toolkit/slices/appSlice";
 import { IMailListState } from "../../redux-toolkit/interfaces/IMailListState";
@@ -69,6 +70,10 @@ export const useLayout = (): UseLayoutHooks => {
     dispatch(setUnReadCount(mailListByViewType));
   }, [dispatch, mailListByViewType]);
 
+  const onClickCompose = useCallback(() => {
+    dispatch(toggleComposeView(true));
+  }, [dispatch]);
+
   return {
     navBarItems: fetchNavigationBarItems(),
     selectedViewType,
@@ -79,5 +84,6 @@ export const useLayout = (): UseLayoutHooks => {
     onSearch,
     onClearSearch,
     searchText,
+    onClickCompose,
   };
 };

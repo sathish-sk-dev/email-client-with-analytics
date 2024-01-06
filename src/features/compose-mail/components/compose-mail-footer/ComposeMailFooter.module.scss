@@ -1,0 +1,19 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+
+.container {
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  padding: Common.$small-padding Common.$large-padding;
+  justify-content: space-between;
+}
+
+.button {
+  width: 100px;
+}
+
+.delete {
+  padding: 12px;
+}

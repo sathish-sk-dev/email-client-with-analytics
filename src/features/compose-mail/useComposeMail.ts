@@ -5,6 +5,7 @@ import {
 } from "../../redux-toolkit/hooks/hooks";
 import { IAutoCompleteSuggestion } from "../../components/auto-complete-tag/interfaces/IAutoCompleteSuggestion";
 import {
+  resetComposeMail,
   setBody,
   setReceipients,
   setSelectedReceipients,
@@ -14,7 +15,13 @@ import { IAppState } from "../../redux-toolkit/interfaces/IAppState";
 import { toggleComposeView } from "../../redux-toolkit/slices/appSlice";
 import { useEffect } from "react";
 import { fetchReceipientsList } from "./api";
-import { constructSuggestionsFromReceipients } from "./utils/composeMailUtils";
+import {
+  constructMail,
+  constructReceipientFromUser,
+  constructSuggestionsFromReceipients,
+} from "./utils/composeMailUtils";
+import { IUser } from "../../redux-toolkit/interfaces/IUser";
+import { addMail } from "../../redux-toolkit/slices/mailListSlice";
 
 export const useComposeMail = (): UseComposeMailHooks => {
   const { isLoading, receipients, selectedReceipients, subject, body } =
@@ -28,14 +35,14 @@ export const useComposeMail = (): UseComposeMailHooks => {
       const suggestions = constructSuggestionsFromReceipients(response);
       dispatch(setReceipients(suggestions));
     });
-  }, []);
+  }, [dispatch]);
 
-  const onAdd = (suggestion: IAutoCompleteSuggestion) => {
+  const onAddReceipient = (suggestion: IAutoCompleteSuggestion) => {
     const suggestions = [...selectedReceipients, suggestion];
     dispatch(setSelectedReceipients(suggestions));
   };
 
-  const onDelete = (tagIndex: number) => {
+  const onDeleteReceipient = (tagIndex: number) => {
     const suggestions = selectedReceipients.filter(
       (_, index) => index !== tagIndex,
     );
@@ -50,8 +57,30 @@ export const useComposeMail = (): UseComposeMailHooks => {
     dispatch(setSubject(text));
   };
 
+  const resetMail = () => {
+    dispatch(resetComposeMail());
+  };
+
   const onClose = () => {
     dispatch(toggleComposeView(false));
+  };
+
+  const onSend = () => {
+    onClose();
+    resetMail();
+    const fromReceipient = constructReceipientFromUser(user as IUser);
+    const newMail = constructMail(
+      subject,
+      body,
+      fromReceipient,
+      selectedReceipients,
+    );
+    dispatch(addMail(newMail));
+  };
+
+  const onDelete = () => {
+    onClose();
+    resetMail();
   };
 
   return {
@@ -61,10 +90,12 @@ export const useComposeMail = (): UseComposeMailHooks => {
     subject,
     suggestions: receipients,
     selectedSuggestions: selectedReceipients,
-    onAdd,
+    onAddReceipient,
     onChangeSubject,
     onChangeEditorHtml,
-    onDelete,
+    onDeleteReceipient,
     onClose,
+    onSend,
+    onDelete,
   };
 };

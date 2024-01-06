@@ -17,6 +17,7 @@ import {
   getMailListSearchKeys,
   getMailListTitleByViewType,
 } from "./utils/mailListUtils";
+import { ViewType } from "../../enums/ViewType";
 
 export const useMailList = (): UseMailListHooks => {
   const {
@@ -31,8 +32,8 @@ export const useMailList = (): UseMailListHooks => {
 
   const fetchMailListCallback = useCallback(async () => {
     const list = await fetchMailList();
-    dispatch(setMailList({ selectedViewType, mailList: list }));
-  }, [dispatch, selectedViewType]);
+    dispatch(setMailList({ selectedViewType: ViewType.INBOX, mailList: list }));
+  }, [dispatch]);
 
   useEffect(() => {
     fetchMailListCallback();

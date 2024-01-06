@@ -39,6 +39,12 @@ export const mailListSlice = createSlice({
     toggleSelectAll: (state, action) => {
       state.isSelectAll = action.payload;
     },
+    addMail: (state, action) => {
+      const mailItem = action.payload;
+      const mailList = [...state.mailList];
+      mailList.unshift(mailItem);
+      state.mailList = mailList;
+    },
   },
 });
 
@@ -49,7 +55,8 @@ export const {
   setMailList,
   setSearchedMailList,
   setSelectedMailItem,
-  toggleSelectAll
+  toggleSelectAll,
+  addMail,
 } = mailListSlice.actions;
 
 export const mailListReducer = mailListSlice.reducer;

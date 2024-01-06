@@ -16,10 +16,9 @@ export const useApp = (): UseAppHooks => {
     fetchUserDetails().then((response) => {
       dispatch(setUser(response));
     });
-  }, []);
+  }, [dispatch]);
 
-  const canShowModuleDetailsView =
-    !isOpenComposeView && selectedMailItem !== null;
+  const canShowModuleDetailsView = selectedMailItem !== null;
 
   return {
     isLoading,

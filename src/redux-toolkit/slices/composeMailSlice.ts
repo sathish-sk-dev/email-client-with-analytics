@@ -20,6 +20,7 @@ export const composeMailSlice = createSlice({
     setSelectedReceipients: (state, action) => {
       state.selectedReceipients = action.payload;
     },
+    resetComposeMail: () => initialComposeMailState,
   },
 });
 
@@ -29,6 +30,7 @@ export const {
   setSubject,
   setBody,
   setSelectedReceipients,
+  resetComposeMail,
 } = composeMailSlice.actions;
 
 export const composeMailReducer = composeMailSlice.reducer;

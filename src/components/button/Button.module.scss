@@ -1,0 +1,31 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Colors.module";
+@use "src/styles/Common.module";
+@use "src/styles/Fonts.module";
+
+.container {
+  @include Layout.center-align;
+  @include Fonts.font-normal;
+  background: Colors.$primary-color;
+  border: none;
+  border-radius: 5px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.16));
+  height: 40px;
+  color: white;
+  padding-left: 16px;
+  padding-right: 16px;
+  gap: 8px;
+}
+
+.disabled {
+}
+
+.icon {
+  svg {
+    width: 20px;
+    height: 20px;
+    path {
+      fill: Colors.$background-color;
+    }
+  }
+}

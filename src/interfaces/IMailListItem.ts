@@ -10,9 +10,9 @@ export interface IMailListItem {
   body: string;
   from: IReceipient;
   receipients: IReceipient[];
-  label: ILabel;
-  labelColor: string;
-  attachments: IAttachment[];
+  label?: ILabel;
+  labelColor?: string;
+  attachments?: IAttachment[];
   updatedAt: string;
   status: MailStatus;
   userMailStatus: UserMailStatus;

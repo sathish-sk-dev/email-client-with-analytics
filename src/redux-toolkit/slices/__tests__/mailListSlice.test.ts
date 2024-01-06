@@ -6,6 +6,8 @@ import {
   setMailList,
   setSearchedMailList,
   setSelectedMailItem,
+  toggleSelectAll,
+  addMail,
 } from "../mailListSlice";
 import { initialMailListState } from "../../initial-state/initialState";
 import {
@@ -103,5 +105,29 @@ describe("mailListSlice", () => {
     const state = mailListReducer(initialMailListState, action);
 
     expect(state.selectedMailItem).toEqual(mockMailList[0]);
+  });
+
+  it("should toggle select all", () => {
+    const action = toggleSelectAll(true);
+
+    const state = mailListReducer(initialMailListState, action);
+
+    expect(state.isSelectAll).toBe(true);
+  });
+
+  it("should add mail", () => {
+    const newMailItem: IMailListItem = {
+      id: "5",
+      userMailStatus: UserMailStatus.UN_READ,
+      status: MailStatus.INBOX,
+    } as IMailListItem;
+
+    const action = addMail(newMailItem);
+
+    const state = mailListReducer(initialMailListState, action);
+
+    const expectedMailList = [newMailItem, ...initialMailListState.mailList];
+
+    expect(state.mailList).toEqual(expectedMailList);
   });
 });

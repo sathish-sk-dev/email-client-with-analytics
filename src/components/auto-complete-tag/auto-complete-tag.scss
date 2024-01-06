@@ -5,12 +5,11 @@
 
 .react-tags {
   position: relative;
-  padding: 8px 0 0 0.25rem;
-  border: 1px solid Colors.$secondary-border-color;
+  padding: 12px 0 0 24px;
   border-radius: 0;
-  border-bottom: none;
   cursor: text;
   @include Fonts.font-normal;
+  min-height: 36px;
 }
 
 .react-tags.is-active {
@@ -33,8 +32,8 @@
 .react-tags__label {
   @include Fonts.font-moderate-normal;
   position: absolute;
-  left: 12px;
-  top: 12px;
+  left: 24px;
+  top: 16px;
   width: 38px;
 }
 
@@ -61,8 +60,8 @@
 }
 
 .react-tags__tag:hover {
-  color: #ffffff;
-  background-color: Colors.$primary-color;
+  //color: #ffffff;
+  //background-color: Colors.$primary-color;
 }
 
 .react-tags__tag::after {
@@ -90,7 +89,7 @@
 }
 
 .react-tags__tag:hover::after {
-  background-color: #ffffff;
+  //background-color: #ffffff;
 }
 
 .react-tags__combobox {

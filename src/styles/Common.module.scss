@@ -32,6 +32,10 @@ $search-border-radios: 24px;
 $header-height: 63px;
 $mobile-header-height: 53px;
 $button-box-shadow: rgba(58, 53, 65, 0.42) 0px 4px 8px -4px;
+$modal-box-shadow:
+  rgba(58, 53, 65, 0.2) 0px 8px 10px -5px,
+  rgba(58, 53, 65, 0.14) 0px 16px 24px 2px,
+  rgba(58, 53, 65, 0.12) 0px 6px 30px 5px;
 
 input::placeholder {
   color: Colors.$placeholder-color;

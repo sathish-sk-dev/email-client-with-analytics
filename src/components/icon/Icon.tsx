@@ -11,8 +11,18 @@ export const Icon: FC<IconProps> = ({
 }) => {
   const IconComponent = iconType;
 
+  const disableContainerClass = isDisabled ? styles.disabled : "";
+
   return (
-    <div className={cx(styles.iconContainer, containerClass)} onClick={onClick}>
+    <div
+      className={cx(
+        styles.iconContainer,
+        disableContainerClass,
+        containerClass,
+      )}
+      onClick={onClick}
+    >
+      {/*// @ts-ignore*/}
       <IconComponent className={styles.container} />
     </div>
   );

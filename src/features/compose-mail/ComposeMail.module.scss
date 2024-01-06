@@ -6,25 +6,32 @@
 .container {
   @include Layout.flex-column;
   background-color: Colors.$background-color;
-  z-index: 11;
   flex: 1;
-  box-shadow: Common.$primary-box-shadow;
-  padding: Common.$large-padding;
-  width: calc(100% - 48px);
+  z-index: 1500;
+  position: fixed;
+  width: 754px;
+  border-radius: 8px;
+  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  box-shadow: Common.$modal-box-shadow;
+  bottom: 2em;
+  right: 2em;
 }
 
 .headerContainer {
   @include Layout.flex-row;
-  position: relative;
+  @include Layout.center-align-items;
+  height: 56px;
+  padding-left: Common.$large-padding;
+  padding-right: Common.$medium-padding;
+  justify-content: space-between;
+  background-color: Colors.$ternary-background-color;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .icon {
-  position: absolute;
-  right: 0;
-  top: -8px;
 }
 
 .title {
-  @include Fonts.font-semi-bold-large;
-  margin-bottom: 24px;
+  @include Fonts.font-semi-bold-medium;
 }

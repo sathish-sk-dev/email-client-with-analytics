@@ -6,6 +6,7 @@ import { IconType } from "../../assets/svg/types/IconType";
 import cx from "classnames";
 import { SearchBar } from "../search-bar/SearchBar";
 import useMobileMediaQuery from "../responsive/hooks/useMobileMediaQuery";
+import Button from "../button/Button";
 
 const AppBar: FC<AppBarProps> = ({
   isOpen,
@@ -14,6 +15,7 @@ const AppBar: FC<AppBarProps> = ({
   onSearch,
   onClearSearch,
   searchText,
+  onClickCompose,
 }) => {
   const isMobile = useMobileMediaQuery();
 
@@ -49,12 +51,16 @@ const AppBar: FC<AppBarProps> = ({
   const renderComposeButton = useCallback(() => {
     if (!isMobile) {
       return (
-        <button className={styles.composeButton} onClick={() => {}}>
-          {"NEW MAIL"}
-        </button>
+        <Button
+          title={"New Mail"}
+          onClick={onClickCompose}
+          containerClass={styles.composeButton}
+          canShowIcon={true}
+          iconType={IconType.PEN}
+        />
       );
     }
-  }, [isMobile]);
+  }, [isMobile, onClickCompose]);
 
   const openContainerClass = isOpen ? styles.openContainer : "";
 
