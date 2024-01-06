@@ -1,0 +1,10 @@
+@use "src/styles/Common.module";
+@use "src/styles/Media.module";
+
+.container {
+  padding: Common.$large-padding;
+
+  @include Media.media-xs-devices {
+    padding: Common.$small-padding;
+  }
+}

@@ -2,6 +2,7 @@
 @use "src/styles/Colors.module";
 @use "src/styles/Common.module";
 @use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
 
 .header {
   @include Layout.flex-row;
@@ -12,6 +13,11 @@
   align-items: center;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+
+  @include Media.media-xs-devices {
+    padding: Common.$small-padding;
+    width: calc(100% - 32px);
+  }
 }
 
 .avatar {
@@ -19,21 +25,33 @@
   height: 36px;
   border-radius: 50%;
   margin-left: 16px;
+
+  @include Media.media-xs-devices {
+    margin-left: 0;
+  }
 }
 
 .headerContent {
   @include Layout.flex-column;
   gap: 6px;
-  margin-left: 16px;
+  margin-left: 8px;
   margin-top: 4px;
 
   .name {
     @include Fonts.font-semi-bold-medium;
+
+    @include Media.media-xs-devices {
+      @include Fonts.font-semi-bold-normal;
+    }
   }
 
   .to {
     @include Fonts.font-small;
     color: Colors.$secondary-text-color;
+  }
+
+  @include Media.media-xs-devices{
+    gap: 4px;
   }
 }
 

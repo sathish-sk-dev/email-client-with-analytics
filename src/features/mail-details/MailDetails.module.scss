@@ -4,6 +4,12 @@
 @use "src/styles/Fonts.module";
 @use "src/styles/Media.module";
 
+.container {
+  @include Layout.flex-column;
+  z-index: 9;
+  flex: 1;
+}
+
 .topContainer {
   @include Layout.flex-row;
   @include Layout.center-align-items;
@@ -12,25 +18,25 @@
   padding-left: Common.$large-padding;
   padding-right: Common.$medium-padding;
   gap: 16px;
-  width: 100%;
   border-bottom: Common.$border;
 
   @include Media.media-xs-devices {
-    height: 48px;
-    padding-left: Common.$small-padding;
-    padding-right: Common.$small-padding;
+    padding-left: Common.$extra-small-padding;
+    padding-right: Common.$extra-small-padding;
   }
 }
 
-.container {
+.contentContainer {
   @include Layout.flex-column;
+  margin: Common.$large-margin;
   background-color: Colors.$background-color;
-  z-index: 9;
-  flex: 1;
   box-shadow: Common.$card-box-shadow;
   transition: right 2s ease-in-out;
-  margin: Common.$large-margin;
   border-radius: 8px;
+
+  @include Media.media-xs-devices {
+    margin: Common.$small-margin;
+  }
 }
 
 .hideContainer {
@@ -44,8 +50,16 @@
   height: calc(100vh - 244px);
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
+
+  @include Media.media-xs-devices {
+    height: calc(100vh - 162px);
+  }
 }
 
 .subject {
   @include Fonts.font-semi-bold-large;
+
+  @include Media.media-xs-devices {
+    @include Fonts.font-semi-bold-medium;
+  }
 }

@@ -2,12 +2,12 @@ import { formatTimeAgo } from "../../../../utils/dateUtils";
 import { FC } from "react";
 import { MailDetailsHeaderProps } from "../../types/MailDetailsHeaderProps";
 import styles from "./MailDetailsHeader.module.scss";
-import { Icon } from "../../../../components/icon/Icon";
-import { IconType } from "../../../../assets/svg/types/IconType";
+import useMobileMediaQuery from "../../../../components/responsive/hooks/useMobileMediaQuery";
 
 export const MailDetailsHeader: FC<MailDetailsHeaderProps> = ({
   mailDetails,
 }) => {
+  const isMobile = useMobileMediaQuery();
   const { from, updatedAt } = mailDetails;
   const { name, mailId, avatar } = from;
 
@@ -18,7 +18,7 @@ export const MailDetailsHeader: FC<MailDetailsHeaderProps> = ({
         <span className={styles.name}>{name}</span>
         <span className={styles.to}> {mailId}</span>
       </div>
-      <div className={styles.time}> {formatTimeAgo(updatedAt, true)} </div>
+      <div className={styles.time}> {formatTimeAgo(updatedAt, !isMobile)} </div>
     </div>
   );
 };

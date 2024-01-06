@@ -34,7 +34,7 @@ export const useApp = (): UseAppHooks => {
     fetchUserDetailsCallback();
   }, [fetchUserDetailsCallback]);
 
-  const canShowModuleDetailsView = useMemo(
+  const canShowMailDetailsView = useMemo(
     () => selectedMailItem !== null,
     [selectedMailItem],
   );
@@ -47,7 +47,7 @@ export const useApp = (): UseAppHooks => {
   return {
     isLoading,
     isOpenComposeView,
-    canShowModuleDetailsView,
+    canShowMailDetailsView,
     canShowAnalytics,
     selectedViewType,
   };

@@ -25,17 +25,17 @@ const MailDetails = () => {
   );
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.topContainer}>
         <Icon iconType={IconType.ARROW_LEFT} onClick={onClose} />
         <div className={styles.subject}>{capitalizeFirstLetter(subject)}</div>
       </div>
-      <div className={cx(styles.container)}>
+      <div className={cx(styles.contentContainer)}>
         <MailDetailsHeader mailDetails={mailDetails} />
         <Divider />
         {renderBody()}
       </div>
-    </>
+    </div>
   );
 };
 
