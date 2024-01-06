@@ -39,7 +39,7 @@ const App = () => {
 
   return (
     <ProviderWrapper>
-      {/*<Layout>{renderContainer()}</Layout>*/}
+      <Layout>{renderContainer()}</Layout>
     </ProviderWrapper>
   );
 };

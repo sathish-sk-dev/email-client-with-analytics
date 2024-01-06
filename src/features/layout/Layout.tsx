@@ -1,11 +1,11 @@
-import { useCallback } from "react";
-import { Outlet } from "react-router-dom";
+import { FC, useCallback } from "react";
 import AppBar from "../../components/app-bar/AppBar";
 import Drawer from "../../components/drawer/Drawer";
 import styles from "./Layout.module.scss";
 import { useLayout } from "./useLayout";
+import { CompositionProps } from "../../types/CompositionProps";
 
-const Layout = () => {
+const Layout: FC<CompositionProps> = ({ children }) => {
   const {
     navBarItems,
     onSelectItem,
@@ -41,9 +41,7 @@ const Layout = () => {
         searchText={searchText}
       />
       {renderDrawer()}
-      <div className={styles.outletContainer}>
-        <Outlet />
-      </div>
+      <div className={styles.outletContainer}>{children}</div>
     </div>
   );
 };
