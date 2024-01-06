@@ -10,7 +10,7 @@ import {
   setUnReadCount,
   toggleSelectAll,
 } from "../../redux-toolkit/slices/mailListSlice";
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, useCallback, useEffect } from "react";
 import { fetchMailList } from "./api";
 import { searchList } from "../../utils/listUtils";
 import {
@@ -20,7 +20,6 @@ import {
 
 export const useMailList = (): UseMailListHooks => {
   const {
-    mailList,
     searchedMailList,
     mailListByViewType,
     unReadCount,
@@ -30,37 +29,51 @@ export const useMailList = (): UseMailListHooks => {
   const { selectedViewType } = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    fetchMailList().then((list) => {
-      dispatch(setMailList({ selectedViewType, mailList: list }));
-    });
+  const fetchMailListCallback = useCallback(async () => {
+    const list = await fetchMailList();
+    dispatch(setMailList({ selectedViewType, mailList: list }));
   }, [dispatch, selectedViewType]);
 
-  const onChangeSearch = (text: string) => {
-    dispatch(setSearchText(text));
-  };
+  useEffect(() => {
+    fetchMailListCallback();
+  }, [fetchMailListCallback]);
 
-  const onSearch = () => {
+  const onChangeSearch = useCallback(
+    (text: string) => {
+      dispatch(setSearchText(text));
+    },
+    [dispatch],
+  );
+
+  const onSearch = useCallback(() => {
     const searchKeys = getMailListSearchKeys();
     const result = searchList(mailListByViewType, searchKeys, searchText);
     dispatch(setSearchedMailList(result));
     dispatch(setUnReadCount(result));
-  };
+  }, [dispatch, mailListByViewType, searchText]);
 
-  const onClearSearch = () => {
+  const onClearSearch = useCallback(() => {
     dispatch(setSearchedMailList(mailListByViewType));
     dispatch(setUnReadCount(mailListByViewType));
-  };
+  }, [dispatch, mailListByViewType]);
 
-  const onChangeSelectAll = (event: ChangeEvent) => {
-    // @ts-ignore
-    const isChecked = event.target.checked;
-    dispatch(toggleSelectAll(isChecked));
-  };
+  const onChangeSelectAll = useCallback(
+    (event: ChangeEvent) => {
+      // @ts-ignore
+      const isChecked = event.target.checked;
+      dispatch(toggleSelectAll(isChecked));
+    },
+    [dispatch],
+  );
 
-  const title = getMailListTitleByViewType(selectedViewType);
+  const getTitleAndUnRead = useCallback(() => {
+    const title = getMailListTitleByViewType(selectedViewType);
+    const canShowUnRead = unReadCount > 0;
 
-  const canShowUnRead = unReadCount > 0;
+    return { title, canShowUnRead };
+  }, [selectedViewType, unReadCount]);
+
+  const { title, canShowUnRead } = getTitleAndUnRead();
 
   return {
     title,

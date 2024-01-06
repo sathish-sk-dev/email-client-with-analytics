@@ -1,6 +1,7 @@
-@use "src/styles/Layout.module";
-@use "src/styles/Common.module";
-@use "src/styles/Colors.module";
+@use "../../styles/Layout.module";
+@use "../../styles/Common.module";
+@use "../../styles/Colors.module";
+@use "../../styles/Media.module";
 
 .container {
   @include Layout.flex-row;
@@ -11,9 +12,9 @@
 .outletContainer {
   @include Layout.full-width;
   flex-grow: 1;
-  p: {
-    xs: 2;
-    sm: 3;
-  }
   margin-top: Common.$header-height;
+
+  @include Media.media-xs-devices {
+    margin-top: Common.$mobile-header-height;
+  }
 }

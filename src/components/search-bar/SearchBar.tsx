@@ -4,6 +4,7 @@ import styles from "./SearchBar.module.scss";
 import { FC } from "react";
 import { SearchBarProps } from "./types/SearchBarProps";
 import { useSearchBar } from "./useSearchBar";
+import cx from "classnames";
 
 export const SearchBar: FC<SearchBarProps> = ({
   searchText,
@@ -12,6 +13,7 @@ export const SearchBar: FC<SearchBarProps> = ({
   inputRef,
   onSearch,
   onClear,
+  containerClass = "",
 }) => {
   const { shouldShowCloseIcon, onChangeInput, onClearSearch, onKeyDown } =
     useSearchBar({ inputRef, searchText, onChange, onSearch, onClear });
@@ -45,7 +47,7 @@ export const SearchBar: FC<SearchBarProps> = ({
   );
 
   return (
-    <div className={styles.container}>
+    <div className={cx(styles.container, containerClass)}>
       {renderSearchIcon()}
       {renderInputIcon()}
       {shouldShowCloseIcon && renderClearIcon()}

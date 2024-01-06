@@ -2,6 +2,7 @@
 @use "src/styles/Colors.module";
 @use "src/styles/Fonts.module";
 @use "src/styles/Common.module";
+@use "src/styles/Media.module";
 
 .container {
   align-items: center;
@@ -14,16 +15,6 @@
   padding: 3px;
   border: 1px solid Colors.$ternary-border-color;
   min-width: 300px;
-
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  &:focus-within {
-    box-shadow: Common.$input-box-shadow;
-    border: 1px solid Colors.$primary-color;
-  }
 }
 
 .input {
@@ -40,8 +31,19 @@
 }
 
 .icon {
+  @include Media.media-xs-devices {
+    padding: 0 !important;
+    margin-top: 2px;
+  }
+
   svg {
     width: 20px;
     height: 20px;
+
+    @include Media.media-xs-devices {
+      path {
+        stroke: Colors.$placeholder-color;
+      }
+    }
   }
 }

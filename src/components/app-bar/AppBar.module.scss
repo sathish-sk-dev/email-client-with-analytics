@@ -2,6 +2,7 @@
 @use "src/styles/Layout.module";
 @use "src/styles/Common.module";
 @use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
 
 .container {
   @include Layout.flex-row;
@@ -21,10 +22,19 @@
   gap: 16px;
   max-height: Common.$header-height;
   background-color: Colors.$background-color;
+
+  @include Media.media-xs-devices {
+    padding-left: 16px;
+    gap: 0;
+  }
 }
 
 .openContainer {
   left: Common.$side-nav-width;
+
+  @include Media.media-xs-devices {
+    left: 0;
+  }
 }
 
 .icon {
@@ -35,6 +45,21 @@
 
   svg path {
     fill: Colors.$primary-color;
+  }
+
+  @include Media.media-xs-devices {
+    padding: 0 !important;
+    background-color: unset !important;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      padding: 0;
+
+      path {
+        fill: Colors.$icon-color;
+      }
+    }
   }
 }
 
@@ -50,4 +75,11 @@
   color: white;
   position: fixed;
   right: 24px;
+}
+
+.searchBar {
+  border: none !important;
+  width: 100% !important;
+  min-width: auto !important;
+  margin-left: 6px;
 }

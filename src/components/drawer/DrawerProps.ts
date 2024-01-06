@@ -1,5 +1,5 @@
 import { ViewType } from "../../enums/ViewType";
-import { INavigationBarItem } from "../layout/interfaces/INavigationBarItem";
+import { INavigationBarItem } from "../../features/layout/interfaces/INavigationBarItem";
 
 export type DrawerProps = {
   isOpen: boolean;

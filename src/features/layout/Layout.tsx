@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { Outlet } from "react-router-dom";
-import AppBar from "../app-bar/AppBar";
-import Drawer from "../drawer/Drawer";
+import AppBar from "../../components/app-bar/AppBar";
+import Drawer from "../../components/drawer/Drawer";
 import styles from "./Layout.module.scss";
 import { useLayout } from "./useLayout";
 
@@ -12,6 +12,10 @@ const Layout = () => {
     selectedViewType,
     toggleDrawer,
     isOpenDrawer,
+    onChangeSearch,
+    onSearch,
+    onClearSearch,
+    searchText,
   } = useLayout();
 
   const renderDrawer = useCallback(() => {
@@ -28,7 +32,14 @@ const Layout = () => {
 
   return (
     <div className={styles.container}>
-      <AppBar isOpen={isOpenDrawer} toggleDrawer={toggleDrawer} />
+      <AppBar
+        isOpen={isOpenDrawer}
+        toggleDrawer={toggleDrawer}
+        onChangeSearch={onChangeSearch}
+        onSearch={onSearch}
+        onClearSearch={onClearSearch}
+        searchText={searchText}
+      />
       {renderDrawer()}
       <div className={styles.outletContainer}>
         <Outlet />

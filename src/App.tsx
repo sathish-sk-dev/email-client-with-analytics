@@ -6,7 +6,7 @@ import { ViewType } from "./enums/ViewType";
 import { Analytics } from "./features/analytics/Analytics";
 import MailList from "./features/mail-list/MailList";
 import MailDetails from "./features/mail-details/MailDetails";
-import Layout from "./components/layout/Layout";
+import Layout from "./features/layout/Layout";
 
 const App = () => {
   const {

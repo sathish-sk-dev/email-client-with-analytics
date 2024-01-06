@@ -4,7 +4,7 @@ import React, { lazy } from "react";
 // import MainLayout from 'layout/MainLayout';
 import LazyLoading from "../lazy-loading/LazyLoading";
 import { ComposeMail } from "../features/compose-mail/ComposeMail";
-import Layout from "../components/layout/Layout";
+import Layout from "../features/layout/Layout";
 import MailList from "../features/mail-list/MailList";
 import MailDetails from "../features/mail-details/MailDetails";
 

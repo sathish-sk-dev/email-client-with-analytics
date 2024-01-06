@@ -1,4 +1,4 @@
-import styles from "../../side-navigation-bar/components/side-navigation-bar-item/SideNavigationBarItem.module.scss";
+import styles from "../../../components/side-navigation-bar/components/side-navigation-bar-item/SideNavigationBarItem.module.scss";
 import { INavigationBarItem } from "../interfaces/INavigationBarItem";
 import { IconType } from "../../../assets/svg/types/IconType";
 import { ViewType } from "../../../enums/ViewType";

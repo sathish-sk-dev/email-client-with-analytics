@@ -13,7 +13,6 @@
   padding: Common.$medium-padding;
   width: calc(100% - 36px);
   position: relative;
-  box-shadow: Common.$primary-box-shadow;
   cursor: pointer;
   gap: 24px;
 
@@ -26,6 +25,7 @@
       Common.$medium-padding;
     width: calc(100% - 29px);
     gap: 16px;
+    border-right: none;
   }
 }
 

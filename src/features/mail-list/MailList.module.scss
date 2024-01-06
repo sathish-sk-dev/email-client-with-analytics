@@ -12,16 +12,22 @@
 
 .innerContainer {
   @include Layout.flex-column;
-  height: calc(100vh - 68px);
+  height: calc(100vh - 67px);
   border-radius: 6px;
   position: relative;
-  //box-shadow: rgba(58, 53, 65, 0.1) 0px 2px 10px 0px;
   transition: padding 0.25s ease-in-out 0s;
-  //margin: 24px;
+
+  @include Media.media-xs-devices {
+    height: calc(100vh - 52px);
+  }
 }
 
 .listContainer {
   overflow-y: scroll;
   @include Layout.flex-column;
   height: calc(100vh - 124px);
+
+  @include Media.media-xs-devices {
+    height: calc(100vh - 92px);
+  }
 }
