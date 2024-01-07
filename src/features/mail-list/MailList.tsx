@@ -3,6 +3,7 @@ import { MailListItem } from "./components/mail-list-item/MailListItem";
 import { useMailList } from "./useMailList";
 import React, { useCallback } from "react";
 import { MailListHeader } from "./components/mail-list-header/MailListHeader";
+import EmptyView from "./components/empty-view/EmptyView";
 
 const MailList = () => {
   const {
@@ -11,6 +12,9 @@ const MailList = () => {
     canShowUnRead,
     searchedMailList,
     onChangeSelectAll,
+    isSelectAll,
+    onClickDelete,
+    canShowDelete,
   } = useMailList();
 
   const renderMailList = useCallback(
@@ -28,13 +32,28 @@ const MailList = () => {
     () => (
       <MailListHeader
         title={title}
+        isSelectAll={isSelectAll}
         unReadCount={unReadCount}
         onChangeSelectAll={onChangeSelectAll}
         canShowUnRead={canShowUnRead}
+        onClickDelete={onClickDelete}
+        canShowDelete={canShowDelete}
       />
     ),
-    [canShowUnRead, onChangeSelectAll, title, unReadCount],
+    [
+      canShowDelete,
+      canShowUnRead,
+      isSelectAll,
+      onChangeSelectAll,
+      onClickDelete,
+      title,
+      unReadCount,
+    ],
   );
+
+  if (searchedMailList.length === 0) {
+    return <EmptyView />;
+  }
 
   return (
     <div className={styles.container}>

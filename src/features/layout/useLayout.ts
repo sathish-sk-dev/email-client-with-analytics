@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { getNavBarItems } from "./utils/LayoutUtils";
 import { UseLayoutHooks } from "./types/UseLayoutHooks";
 import { INavigationBarItem } from "./interfaces/INavigationBarItem";
@@ -56,12 +56,15 @@ export const useLayout = ({
     [dispatch, isMobile, onToggleDrawer],
   );
 
-  const onSearch = useCallback((searchText: string) => {
-    const searchKeys = getMailListSearchKeys();
-    const result = searchList(mailListByViewType, searchKeys, searchText);
-    dispatch(setSearchedMailList(result));
-    dispatch(setUnReadCount(result));
-  }, [dispatch, mailListByViewType, searchText]);
+  const onSearch = useCallback(
+    (searchText: string) => {
+      const searchKeys = getMailListSearchKeys();
+      const result = searchList(mailListByViewType, searchKeys, searchText);
+      dispatch(setSearchedMailList(result));
+      dispatch(setUnReadCount(result));
+    },
+    [dispatch, mailListByViewType],
+  );
 
   const onClearSearch = useCallback(() => {
     dispatch(setSearchedMailList(mailListByViewType));
@@ -72,7 +75,7 @@ export const useLayout = ({
     dispatch(toggleComposeView(true));
   }, [dispatch]);
 
-  const canShowMobileCompose = useCallback(() => {
+  const canShowMobileCompose = useMemo(() => {
     return (
       isMobile &&
       selectedViewType !== ViewType.ANALYTICS &&
@@ -89,6 +92,6 @@ export const useLayout = ({
     onSearch,
     onClearSearch,
     onClickCompose,
-    canShowMobileCompose: canShowMobileCompose(),
+    canShowMobileCompose,
   };
 };

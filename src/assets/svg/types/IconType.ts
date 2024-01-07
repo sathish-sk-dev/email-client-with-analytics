@@ -11,6 +11,7 @@ import {
   Gain,
   Logo,
   Loss,
+  MailOpen,
   MailOpenOutline,
   MailOpenSolid,
   MailSolid,
@@ -44,4 +45,5 @@ export const IconType = {
   LOGO: Logo,
   GAIN: Gain,
   LOSS: Loss,
+  MAIL_OPEN: MailOpen,
 };

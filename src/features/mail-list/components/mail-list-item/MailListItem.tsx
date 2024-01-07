@@ -7,10 +7,15 @@ import { Checkbox } from "@mui/material";
 import useDesktopMediaQuery from "../../../../components/responsive/hooks/useDesktopMediaQuery";
 
 export const MailListItem: FC<MailListItemProps> = ({ item }) => {
-  const { from } = item;
+  const { from, isChecked } = item;
   const { name, avatar } = from;
-  const { onClickItem, readContainerClass, timeAgoText, subjectText } =
-    useMailListItem({ item });
+  const {
+    onClickItem,
+    readContainerClass,
+    timeAgoText,
+    subjectText,
+    onSelect,
+  } = useMailListItem({ item });
   const isDesktop = useDesktopMediaQuery();
 
   const renderContent = useCallback(
@@ -25,9 +30,15 @@ export const MailListItem: FC<MailListItemProps> = ({ item }) => {
 
   const renderCheckbox = useCallback(() => {
     if (isDesktop) {
-      return <Checkbox defaultChecked />;
+      return (
+        <Checkbox
+          onClick={(e) => e.stopPropagation()}
+          checked={isChecked}
+          onChange={onSelect}
+        />
+      );
     }
-  }, [isDesktop]);
+  }, [isChecked, isDesktop, onSelect]);
 
   return (
     <div

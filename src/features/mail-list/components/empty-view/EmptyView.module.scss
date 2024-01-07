@@ -1,0 +1,22 @@
+@use "src/styles/Layout.module";
+@use "src/styles/Fonts.module";
+@use "src/styles/Colors.module";
+
+.container {
+  @include Layout.center-align;
+  @include Layout.flex-column;
+  gap: 12px;
+  height: 50vh;
+}
+
+.icon {
+  svg {
+    width: 40px !important;
+    height: 40px !important;
+    fill: Colors.$placeholder-color !important;
+  }
+}
+
+.title {
+  @include Fonts.font-medium;
+}

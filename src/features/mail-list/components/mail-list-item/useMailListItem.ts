@@ -12,9 +12,11 @@ import { UseMailListItemProps } from "../../types/UseMailListItemProps";
 import {
   setMailList,
   setSelectedMailItem,
+  toggleSelectedMailItem,
 } from "../../../../redux-toolkit/slices/mailListSlice";
 import { updateReadStatus } from "../../utils/mailListUtils";
 import { IAppState } from "../../../../redux-toolkit/interfaces/IAppState";
+import { ChangeEvent } from "react";
 
 export const useMailListItem = ({
   item,
@@ -57,6 +59,10 @@ export const useMailListItem = ({
     setReadStatusForSelectedItem();
   };
 
+  const onSelect = (event: ChangeEvent, isChecked: boolean) => {
+    dispatch(toggleSelectedMailItem({ mailItem: item, isChecked }));
+  };
+
   return {
     onClickItem,
     readContainerClass,
@@ -64,5 +70,6 @@ export const useMailListItem = ({
     selectedContainerClass,
     timeAgoText,
     subjectText,
+    onSelect,
   };
 };

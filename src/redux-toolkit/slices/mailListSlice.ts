@@ -4,6 +4,7 @@ import {
   filterMailListByStatus,
   getMailStatusByViewType,
   getUnReadCount,
+  toggleCheckedItem,
 } from "../../features/mail-list/utils/mailListUtils";
 
 export const mailListSlice = createSlice({
@@ -21,13 +22,16 @@ export const mailListSlice = createSlice({
     },
     setMailList: (state, action) => {
       const { selectedViewType, mailList } = action.payload;
-      state.mailList = mailList;
       const mailStatus = getMailStatusByViewType(selectedViewType);
       const filteredMailList = filterMailListByStatus(mailList, mailStatus);
-      state.mailListByViewType = filteredMailList;
-      state.searchedMailList = filteredMailList;
-      state.unReadCount = getUnReadCount(filteredMailList);
-      state.searchText = "";
+      return {
+        ...state,
+        mailListByViewType: filteredMailList,
+        searchedMailList: filteredMailList,
+        unReadCount: getUnReadCount(filteredMailList),
+        mailList,
+        isSelectAll: false,
+      };
     },
     setSearchedMailList: (state, action) => {
       state.searchedMailList = action.payload;
@@ -45,6 +49,11 @@ export const mailListSlice = createSlice({
       mailList.unshift(mailItem);
       state.mailList = mailList;
     },
+    toggleSelectedMailItem: (state, action) => {
+      const { mailItem, isChecked } = action.payload;
+      const mailList = [...state.mailList];
+      state.mailList = toggleCheckedItem(mailList, mailItem, isChecked);
+    },
   },
 });
 
@@ -57,6 +66,7 @@ export const {
   setSelectedMailItem,
   toggleSelectAll,
   addMail,
+  toggleSelectedMailItem,
 } = mailListSlice.actions;
 
 export const mailListReducer = mailListSlice.reducer;

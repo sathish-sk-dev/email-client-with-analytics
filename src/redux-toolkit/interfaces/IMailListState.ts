@@ -9,4 +9,5 @@ export interface IMailListState {
   isLoading: boolean;
   selectedMailItem: IMailListItem | null;
   isSelectAll: boolean;
+  selectedItems: IMailListItem[];
 }

@@ -4,17 +4,21 @@ import {
   useAppSelector,
 } from "../../redux-toolkit/hooks/hooks";
 import {
+  setMailList,
   setSearchedMailList,
   setSearchText,
   setUnReadCount,
   toggleSelectAll,
 } from "../../redux-toolkit/slices/mailListSlice";
-import { ChangeEvent, useCallback } from "react";
+import { ChangeEvent, useCallback, useMemo } from "react";
 import { searchList } from "../../utils/listUtils";
 import {
+  deleteSelectedMailList,
   getMailListSearchKeys,
   getMailListTitleByViewType,
+  toggleSelectAllMailItems,
 } from "./utils/mailListUtils";
+import useMobileMediaQuery from "../../components/responsive/hooks/useMobileMediaQuery";
 
 export const useMailList = (): UseMailListHooks => {
   const {
@@ -23,9 +27,12 @@ export const useMailList = (): UseMailListHooks => {
     unReadCount,
     searchText,
     isLoading,
+    isSelectAll,
+    mailList,
   } = useAppSelector((state) => state.mailListState);
   const { selectedViewType } = useAppSelector((state) => state.appState);
   const dispatch = useAppDispatch();
+  const isMobile = useMobileMediaQuery();
 
   const onChangeSearch = useCallback(
     (text: string) => {
@@ -47,18 +54,34 @@ export const useMailList = (): UseMailListHooks => {
   }, [dispatch, mailListByViewType]);
 
   const onChangeSelectAll = useCallback(
-    (event: ChangeEvent) => {
-      // @ts-ignore
-      const isChecked = event.target.checked;
+    (event: ChangeEvent, isChecked: boolean) => {
+      const newMailList = toggleSelectAllMailItems(
+        mailList,
+        isChecked,
+        false,
+        selectedViewType,
+      );
+      dispatch(setMailList({ selectedViewType, mailList: newMailList }));
       dispatch(toggleSelectAll(isChecked));
     },
-    [dispatch],
+    [dispatch, mailList, selectedViewType],
   );
+
+  const onClickDelete = useCallback(() => {
+    const newMailList = deleteSelectedMailList(mailList);
+    dispatch(setMailList({ selectedViewType, mailList: newMailList }));
+  }, [dispatch, mailList, selectedViewType]);
+
+  const canShowDelete = useMemo(() => {
+    if (!isMobile) {
+      return mailList.some((item) => item.isChecked);
+    }
+    return false;
+  }, [isMobile, mailList]);
 
   const getTitleAndUnRead = useCallback(() => {
     const title = getMailListTitleByViewType(selectedViewType);
     const canShowUnRead = unReadCount > 0;
-
     return { title, canShowUnRead };
   }, [selectedViewType, unReadCount]);
 
@@ -75,5 +98,8 @@ export const useMailList = (): UseMailListHooks => {
     onSearch,
     onChangeSelectAll,
     onClearSearch,
+    isSelectAll,
+    onClickDelete,
+    canShowDelete,
   };
 };

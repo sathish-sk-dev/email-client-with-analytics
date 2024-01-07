@@ -7,9 +7,12 @@ export type UseMailListHooks = {
   searchedMailList: IMailListItem[];
   unReadCount: number;
   onSearch: () => void;
-  onChangeSelectAll: (event: ChangeEvent) => void;
+  onChangeSelectAll: (event: ChangeEvent, isChecked: boolean) => void;
   isLoading: boolean;
   title: string;
   onClearSearch: () => void;
   canShowUnRead: boolean;
+  isSelectAll: boolean;
+  onClickDelete: () => void;
+  canShowDelete: boolean;
 };

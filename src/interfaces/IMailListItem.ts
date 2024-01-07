@@ -16,4 +16,5 @@ export interface IMailListItem {
   updatedAt: string;
   status: MailStatus;
   userMailStatus: UserMailStatus;
+  isChecked?: boolean;
 }

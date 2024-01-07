@@ -12,6 +12,7 @@
   border-bottom: Common.$border;
   padding-left: 16px;
   padding-right: 16px;
+  position: relative;
 
   @include Media.media-xs-devices {
     padding-left: 12px;
@@ -42,4 +43,11 @@
   @include Media.media-xs-devices {
     margin-top: 1px;
   }
+}
+
+.deleteButton {
+  margin-left: 24px;
+  padding-left: 8px;
+  padding-right: 8px;
+  height: 36px;
 }

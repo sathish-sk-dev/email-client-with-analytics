@@ -19,3 +19,4 @@ export { ReactComponent as Breadcrumb } from "./breadcrumb.svg";
 export { ReactComponent as Logo } from "./logo.svg";
 export { ReactComponent as Gain } from "./gain.svg";
 export { ReactComponent as Loss } from "./loss.svg";
+export { ReactComponent as MailOpen } from "./mail-open.svg";

@@ -89,6 +89,44 @@ const updateReadStatus = (
   });
 };
 
+const toggleSelectAllMailItems = (
+  mailList: IMailListItem[],
+  isChecked: boolean,
+  skipFilter: boolean,
+  selectedViewType: ViewType = ViewType.INBOX,
+) => {
+  const mailStatus = getMailStatusByViewType(selectedViewType);
+  return mailList.map((item) => {
+    if (item.status === mailStatus || skipFilter) {
+      return {
+        ...item,
+        isChecked,
+      };
+    }
+    return item;
+  });
+};
+
+const toggleCheckedItem = (
+  mailList: IMailListItem[],
+  selectedItem: IMailListItem,
+  isChecked: boolean,
+) => {
+  return mailList.map((item) => {
+    if (selectedItem.id === item.id) {
+      return {
+        ...item,
+        isChecked: isChecked,
+      };
+    }
+    return item;
+  });
+};
+
+const deleteSelectedMailList = (mailList: IMailListItem[]) => {
+  return mailList.filter((item) => !item.isChecked);
+};
+
 export {
   getUnReadCount,
   filterMailListByStatus,
@@ -96,4 +134,7 @@ export {
   getMailListTitleByViewType,
   getMailStatusByViewType,
   updateReadStatus,
+  toggleSelectAllMailItems,
+  toggleCheckedItem,
+  deleteSelectedMailList,
 };

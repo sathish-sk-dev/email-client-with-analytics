@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export type UseMailListItemHooks = {
   onClickItem: () => void;
   readContainerClass: string;
@@ -5,4 +7,5 @@ export type UseMailListItemHooks = {
   selectedContainerClass: string;
   timeAgoText: string;
   subjectText: string;
+  onSelect: (event: ChangeEvent, checked: boolean) => void;
 };

@@ -23,6 +23,7 @@ const initialMailListState: IMailListState = {
   isLoading: true,
   selectedMailItem: null,
   isSelectAll: false,
+  selectedItems: []
 };
 
 const initialComposeMailState: IComposeMailState = {
