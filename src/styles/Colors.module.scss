@@ -22,11 +22,14 @@
   --online-color: #68d391;
   --selected-card-color: #615ef00f;
   --inbox-color: #00c49f;
-  --send-color: #0088fe;
-  --deleted-color: #ffbb28;
+  --send-color: #ffbb28;
+  --deleted-color: #0088fe;
   --spam-color: #ff8042;
   --divider-color: #00000019;
   --nav-bar-selected: #e6f7ff;
+  --analytics-border: #e6ebf1;
+  --analytics-title: #8c8c8c;
+  --warning: #faad14;
 }
 
 $primary-color: var(--primary-color);
@@ -51,3 +54,6 @@ $selected-card-color: var(--selected-card-color);
 $divider-color: var(--divider-color);
 $ternary-border-color: var(--ternary-border-color);
 $nav-bar-selected: var(--nav-bar-selected);
+$analytics-border: var(--analytics-border);
+$analytics-title: var(--analytics-title);
+$warning: var(--warning);

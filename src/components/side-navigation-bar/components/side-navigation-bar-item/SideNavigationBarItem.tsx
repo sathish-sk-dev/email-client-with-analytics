@@ -4,6 +4,7 @@ import { Icon } from "../../../icon/Icon";
 import cx from "classnames";
 import styles from "./SideNavigationBarItem.module.scss";
 import Ripple from "../../../ripple/Ripple";
+import useMobileMediaQuery from "../../../responsive/hooks/useMobileMediaQuery";
 
 export const SideNavigationBarItem: FC<SideNavigationBarItemProps> = ({
   item,
@@ -18,12 +19,13 @@ export const SideNavigationBarItem: FC<SideNavigationBarItemProps> = ({
     selectedIconContainerClass,
     type,
   } = item;
+  const isMobile = useMobileMediaQuery();
 
   const isSelected = useMemo(() => {
     return selectedViewType === type;
   }, [selectedViewType, type]);
 
-  const iconType = isSelected ? solidIcon : outlineIcon;
+  const iconType = isSelected && !isMobile ? solidIcon : outlineIcon;
 
   const onClick = () => {
     onSelectItem(item);

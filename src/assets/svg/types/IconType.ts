@@ -8,7 +8,9 @@ import {
   CloseIcon,
   DeleteOutline,
   DeleteSolid,
+  Gain,
   Logo,
+  Loss,
   MailOpenOutline,
   MailOpenSolid,
   MailSolid,
@@ -40,4 +42,6 @@ export const IconType = {
   MAIL_SOLID: MailSolid,
   BREADCRUMB: Breadcrumb,
   LOGO: Logo,
+  GAIN: Gain,
+  LOSS: Loss,
 };

@@ -33,7 +33,6 @@
 .icon {
   @include Media.media-xs-devices {
     padding: 0 !important;
-    margin-top: 2px;
   }
 
   svg {
@@ -42,8 +41,16 @@
 
     @include Media.media-xs-devices {
       path {
-        stroke: Colors.$placeholder-color;
+        stroke: Colors.$icon-color;
       }
+    }
+  }
+}
+
+.closeIcon {
+  @include Media.media-xs-devices {
+    svg path {
+      fill: Colors.$icon-color;
     }
   }
 }

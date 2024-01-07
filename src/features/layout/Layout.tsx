@@ -3,7 +3,6 @@ import AppBar from "../../components/app-bar/AppBar";
 import Drawer from "../../components/drawer/Drawer";
 import styles from "./Layout.module.scss";
 import { useLayout } from "./useLayout";
-import useMobileMediaQuery from "../../components/responsive/hooks/useMobileMediaQuery";
 import FloatingActionButton from "../../components/floating-action-button/FloatingActionButton";
 import { IconType } from "../../assets/svg/types/IconType";
 import { LayoutProps } from "./types/LayoutProps";
@@ -21,8 +20,8 @@ const Layout: FC<LayoutProps> = ({ children, canShowMailDetailsView }) => {
     onClearSearch,
     searchText,
     onClickCompose,
-  } = useLayout();
-  const isMobile = useMobileMediaQuery();
+    canShowMobileCompose,
+  } = useLayout({ canShowMailDetailsView });
 
   const renderDrawer = useCallback(() => {
     return (
@@ -37,7 +36,7 @@ const Layout: FC<LayoutProps> = ({ children, canShowMailDetailsView }) => {
   }, [isOpenDrawer, navBarItems, onSelectItem, selectedViewType, toggleDrawer]);
 
   const renderMobileComposeIcon = useCallback(() => {
-    if (isMobile && !canShowMailDetailsView) {
+    if (canShowMobileCompose) {
       return (
         <FloatingActionButton
           iconType={IconType.PEN}
@@ -45,7 +44,7 @@ const Layout: FC<LayoutProps> = ({ children, canShowMailDetailsView }) => {
         />
       );
     }
-  }, [canShowMailDetailsView, isMobile, onClickCompose]);
+  }, [canShowMobileCompose, onClickCompose]);
 
   const renderOutletContainer = useCallback(() => {
     const mailDetailsContainer = canShowMailDetailsView

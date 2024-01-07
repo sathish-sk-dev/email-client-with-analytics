@@ -17,12 +17,12 @@ export const useAnalytics = (): UseAnalyticsHooks => {
 
   const emailCountData = useCallback(() => {
     return constructEmailCountFromMailList(mailList);
-  }, []);
+  }, [mailList]);
 
   const emailCountChartData = useCallback(() => {
     const emailCount = emailCountData();
     return constructEmailCountPieChartData(emailCount);
-  }, [mailList]);
+  }, [emailCountData]);
 
   const emailCountColors = useCallback(() => {
     return getEmailCountColors();
@@ -89,7 +89,7 @@ export const useAnalytics = (): UseAnalyticsHooks => {
   const dashboardItems = useCallback(() => {
     const emailCount = emailCountData();
     return getDashboardItems(emailCount, mailList);
-  }, []);
+  }, [emailCountData, mailList]);
 
   return {
     emailCountChartData: emailCountChartData(),

@@ -2,92 +2,162 @@
 @use "src/styles/Colors.module";
 @use "src/styles/Common.module";
 @use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
 
 .container {
   @include Layout.flex-column;
-  @include Layout.full-height;
   background-color: Colors.$secondary-background-color;
-  z-index: 9;
-  flex: 1;
   padding: Common.$large-padding;
-  gap: 24px;
-}
+  gap: Common.$large-margin;
+  overflow-y: scroll;
+  height: calc(100% - 63px);
 
-.headerContainer {
-  @include Layout.flex-row;
-  @include Layout.center-align-items;
-  width: 100%;
-  position: relative;
-}
-
-.dateContainer {
-  margin-left: 48px;
-  @include Layout.flex-row;
-  @include Layout.center-align-items;
-  gap: 8px;
-  background-color: white;
-  box-shadow: Common.$primary-box-shadow;
-  border: Common.$border;
-  border-radius: 6px;
-  padding-right: 8px;
-}
-
-.dateInputContainer {
-  @include Fonts.font-normal;
-  border: none;
-  border-radius: 6px;
-  width: 90px;
-  height: 26px;
-  padding-left: 8px;
-
-  &:focus-visible {
-    box-shadow: Common.$input-box-shadow;
-    border: 1px solid Colors.$primary-color;
-    outline: none;
+  @include Media.media-xs-devices {
+    height: calc(100% - 32px);
+    padding: Common.$medium-padding;
+    gap: Common.$medium-padding;
   }
-}
-
-.submitButton {
-  @include Fonts.font-normal;
-  background: Colors.$primary-color;
-  border: none;
-  border-radius: 6px;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.16));
-  height: 36px;
-  width: 80px;
-  color: white;
-  margin-left: 16px;
-}
-
-.iconContainer {
-  border-right: Common.$border;
-  background-color: Colors.$secondary-background-color;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
-
-.headingContainer {
-  @include Layout.flex-column;
-  gap: 4px;
-}
-
-.heading {
-  @include Fonts.font-bold-large;
-}
-
-.subHeading {
-  @include Fonts.font-small;
-  color: Colors.$secondary-text-color;
 }
 
 .innerContainer {
   @include Layout.flex-row;
-  gap: 24px;
+  gap: Common.$large-margin;
+
+  @include Media.media-xs-devices {
+    gap: Common.$medium-padding;
+    @include Layout.flex-column;
+  }
 }
 
-.dashboardItemsContainer {
-  @include Layout.flex-row;
-  justify-content: space-between;
-  gap: 24px;
+.headerContainer {
+  display: flex;
+  align-items: flex-start;
   width: 100%;
+}
+
+.title {
+  @include Fonts.font-semi-bold-medium;
+
+  @include Media.media-xs-devices {
+    margin-left: 2px;
+  }
+}
+
+.dashboardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: Common.$large-padding;
+
+  @include Media.media-xs-devices {
+    gap: Common.$medium-padding;
+  }
+
+  .dashboardItem {
+    @include Layout.flex-column;
+    background-color: Colors.$background-color;
+    color: Colors.$text-color;
+    overflow: hidden;
+    border: 1px solid Colors.$analytics-border;
+    border-radius: 8px;
+    padding: 24px;
+
+    @include Media.media-xs-devices {
+      width: 100%;
+    }
+  }
+
+  .dashboardItemTitle {
+    @include Fonts.font-normal;
+    color: Colors.$analytics-title;
+    font-weight: 400;
+  }
+
+  .countContainer {
+    @include Layout.flex-row;
+    @include Layout.center-align-items;
+    gap: 10px;
+  }
+
+  .dashboardItemCount {
+    @include Fonts.font-semi-bold-huge;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  .dashboardItemInfo {
+    margin-top: 18px;
+    @include Fonts.font-small;
+    color: Colors.$analytics-title;
+    font-weight: 400;
+    .color {
+      color: Colors.$primary-color;
+    }
+  }
+
+  .chip {
+    @include Layout.center-align;
+    @include Layout.flex-row;
+    height: 24px;
+    color: Colors.$background-color;
+    background-color: Colors.$warning;
+    border-radius: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    gap: 8px;
+    margin-top: 5px;
+
+    .icon {
+      width: 12px;
+      height: 12px;
+      padding: 0;
+
+      svg path {
+        fill: Colors.$background-color;
+      }
+    }
+
+    .count {
+      color: Colors.$background-color;
+      @include Fonts.font-small;
+    }
+  }
+}
+
+.chartContainer {
+  @include Layout.flex-column;
+  gap: 16px;
+  width: 50%;
+
+  @include Media.media-xs-devices {
+    width: 100%;
+  }
+}
+
+.monthlyBarChart {
+  @include Layout.flex-column;
+  background-color: Colors.$background-color;
+  color: Colors.$text-color;
+  border: 1px solid Colors.$analytics-border;
+  border-radius: 8px;
+}
+
+.chartHeader {
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  justify-content: space-between;
+  height: 34px;
+
+  .chartTitle {
+    @include Fonts.font-semi-bold-medium;
+
+    @include Media.media-xs-devices {
+      @include Fonts.font-semi-bold-normal;
+      margin-left: 2px;
+    }
+  }
+
+  .buttonList {
+    @include Layout.flex-row;
+  }
 }

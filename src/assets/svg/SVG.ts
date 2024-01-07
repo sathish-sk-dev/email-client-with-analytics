@@ -17,3 +17,5 @@ export { ReactComponent as SpamSolid } from "./spam-solid.svg";
 export { ReactComponent as MailSolid } from "./mail-solid.svg";
 export { ReactComponent as Breadcrumb } from "./breadcrumb.svg";
 export { ReactComponent as Logo } from "./logo.svg";
+export { ReactComponent as Gain } from "./gain.svg";
+export { ReactComponent as Loss } from "./loss.svg";

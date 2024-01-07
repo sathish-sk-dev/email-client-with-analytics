@@ -42,7 +42,7 @@ export const SearchBar: FC<SearchBarProps> = ({
     <Icon
       iconType={IconType.CLOSE}
       onClick={onClearSearch}
-      containerClass={styles.icon}
+      containerClass={cx(styles.icon, styles.closeIcon)}
     />
   );
 

@@ -10,4 +10,5 @@ export type UseLayoutHooks = {
   onSearch: () => void;
   onClearSearch: () => void;
   onClickCompose: () => void;
+  canShowMobileCompose: boolean
 } & NavigationBarItemProps;

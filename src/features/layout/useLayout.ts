@@ -22,8 +22,12 @@ import {
 import { getMailListSearchKeys } from "../mail-list/utils/mailListUtils";
 import { searchList } from "../../utils/listUtils";
 import useMobileMediaQuery from "../../components/responsive/hooks/useMobileMediaQuery";
+import { ViewType } from "../../enums/ViewType";
+import { UseLayoutProps } from "./types/UseLayoutProps";
 
-export const useLayout = (): UseLayoutHooks => {
+export const useLayout = ({
+  canShowMailDetailsView,
+}: UseLayoutProps): UseLayoutHooks => {
   const { selectedViewType, isOpenDrawer } = useAppSelector(
     (state) => state.appState,
   );
@@ -76,6 +80,14 @@ export const useLayout = (): UseLayoutHooks => {
     dispatch(toggleComposeView(true));
   }, [dispatch]);
 
+  const canShowMobileCompose = useCallback(() => {
+    return (
+      isMobile &&
+      selectedViewType !== ViewType.ANALYTICS &&
+      !canShowMailDetailsView
+    );
+  }, [canShowMailDetailsView, isMobile, selectedViewType]);
+
   return {
     navBarItems: fetchNavigationBarItems(),
     selectedViewType,
@@ -87,5 +99,6 @@ export const useLayout = (): UseLayoutHooks => {
     onClearSearch,
     searchText,
     onClickCompose,
+    canShowMobileCompose: canShowMobileCompose(),
   };
 };

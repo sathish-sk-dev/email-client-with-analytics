@@ -10,6 +10,7 @@
   padding-left: 6px;
   cursor: pointer;
   position: relative;
+  color: Colors.$text-color;
 
   &:hover {
     background-color: Colors.$icon-hover-color;
@@ -18,7 +19,6 @@
 
 .selectedContainer {
   background-color: Colors.$nav-bar-selected;
-  border-right: 2px solid Colors.$primary-color;
   color: Colors.$primary-color;
 
   &:hover {
