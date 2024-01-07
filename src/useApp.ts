@@ -17,18 +17,10 @@ export const useApp = (): UseAppHooks => {
 
   const dispatch = useAppDispatch();
 
-  const isMobile = useMobileMediaQuery();
-
   const fetchMailListCallback = useCallback(async () => {
     const list = await fetchMailList();
     dispatch(setMailList({ selectedViewType: ViewType.INBOX, mailList: list }));
   }, [dispatch]);
-
-  useEffect(() => {
-    if (isMobile) {
-      dispatch(toggleDrawer(false));
-    }
-  }, [isMobile]);
 
   useEffect(() => {
     fetchMailListCallback();

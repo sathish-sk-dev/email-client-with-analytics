@@ -8,6 +8,6 @@ export interface IAppState {
   theme: Theme;
   selectedViewType: ViewType;
   isOpenComposeView: boolean;
-  isOpenDrawer: true;
+  isOpenDrawer: boolean;
   searchText: string
 }
