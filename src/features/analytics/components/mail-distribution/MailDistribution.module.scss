@@ -1,19 +1,40 @@
 @use "src/styles/Layout.module";
 @use "src/styles/Colors.module";
-@use "src/styles/Common.module";
+@use "src/styles/Media.module";
 @use "src/styles/Fonts.module";
 
-.container {
+.chartContainer {
   @include Layout.flex-column;
-  background-color: Colors.$background-color;
-  box-shadow: Common.$primary-box-shadow;
-  padding: Common.$large-padding;
-  border-radius: 12px;
-  width: min-content;
-  flex: 3;
+  gap: 16px;
+  width: 50%;
+
+  @include Media.media-xs-devices {
+    width: 100%;
+  }
 }
 
-.title {
-  @include Fonts.font-bold-medium;
-  margin-bottom: 12px;
+.chartHeader {
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  justify-content: space-between;
+  height: 34px;
+
+  .chartTitle {
+    @include Fonts.font-semi-bold-medium;
+
+    @include Media.media-xs-devices {
+      @include Fonts.font-semi-bold-normal;
+      margin-left: 2px;
+    }
+  }
+}
+
+.barChart {
+  @include Layout.flex-column;
+  background-color: Colors.$background-color;
+  color: Colors.$text-color;
+  border: 1px solid Colors.$analytics-border;
+  border-radius: 8px;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }

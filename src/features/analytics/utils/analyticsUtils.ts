@@ -6,8 +6,8 @@ import { MailStatus } from "../../../enums/MailStatus";
 import { capitalizeFirstLetter } from "../../../utils/stringUtils";
 import { KeyValueData } from "../../../types/KeyValueData";
 import { IDashboardItem } from "../interfaces/IDashboardItem";
-import { FC, SVGProps } from "react";
 import { IconType } from "../../../assets/svg/types/IconType";
+import { generatePrevCount } from "../../../utils/fakeDataGenerator";
 
 const constructEmailCountFromMailList = (mailList: IMailListItem[]) => {
   const initializeEmailCount: IEmailCount = {
@@ -79,15 +79,18 @@ const getDashboardItems = (
     icon: IconType.MAIL_SOLID,
     title: "Total Mails",
     count: mailList.length,
+    prevCount: 85,
   };
   const dashboardItemsByEmailCount = emailCountKeys.map((key) => {
     const title = capitalizeFirstLetter(key);
     const count = emailCount[key as keyof IEmailCount];
     const icon = getIconByEmailCountKey(key as keyof IEmailCount);
+    const prevCount = generatePrevCount();
     return {
       icon,
       title,
       count,
+      prevCount,
     };
   });
   return [totalMailsItem, ...dashboardItemsByEmailCount];

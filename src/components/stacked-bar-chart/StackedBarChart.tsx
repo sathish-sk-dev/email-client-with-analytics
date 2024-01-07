@@ -9,17 +9,24 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import "./StackedBarChart.scss"
 
 export const StackedBarChart: FC<StackedBarChartProps> = ({
   bars,
   dataKey,
   colors,
+  width,
 }) => {
   const renderBars = () => {
     return (
       <>
         {colors.map((item) => (
-          <Bar dataKey={item.key} stackId={"mail"} fill={item.value} width={50}/>
+          <Bar
+            dataKey={item.key}
+            stackId={"mail"}
+            fill={item.value}
+            width={50}
+          />
         ))}
       </>
     );
@@ -27,13 +34,13 @@ export const StackedBarChart: FC<StackedBarChartProps> = ({
 
   return (
     <BarChart
-      width={800}
+      width={width}
       height={350}
       data={bars}
       margin={{
         top: 20,
         right: 30,
-        left: 20,
+        left: 0,
         bottom: 5,
       }}
     >

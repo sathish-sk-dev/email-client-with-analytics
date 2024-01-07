@@ -79,6 +79,8 @@ const generateMockReceipients = (count: number): IReceipient[] =>
     count,
   });
 
+const generatePrevCount = (): number => faker.number.int({ min: 10, max: 30 });
+
 const generateMockUser = (): IUser => ({
   id: faker.string.uuid(),
   name: faker.internet.displayName(),
@@ -87,4 +89,9 @@ const generateMockUser = (): IUser => ({
   status: faker.helpers.enumValue(UserStatus),
 });
 
-export { generateMockMailList, generateMockReceipients, generateMockUser };
+export {
+  generateMockMailList,
+  generateMockReceipients,
+  generateMockUser,
+  generatePrevCount,
+};

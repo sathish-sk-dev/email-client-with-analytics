@@ -2,41 +2,74 @@
 @use "src/styles/Colors.module";
 @use "src/styles/Common.module";
 @use "src/styles/Fonts.module";
+@use "src/styles/Media.module";
 
-.container {
-  background-color: #ffffff;
-  color: #262626;
-  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  border-radius: 4px;
+.dashboardItem {
+  @include Layout.flex-column;
+  background-color: Colors.$background-color;
+  color: Colors.$text-color;
   overflow: hidden;
-  border: 1px solid;
-  border-color: #e6ebf1;
-  display: flex;
-  flex-direction: row;
+  border: 1px solid Colors.$analytics-border;
+  border-radius: 8px;
+  padding: 24px;
+
+  @include Media.media-xs-devices {
+    width: 100%;
+  }
 }
 
-.content {
-  @include Layout.flex-column();
-  gap: 8px
+.dashboardItemTitle {
+  @include Fonts.font-normal;
+  color: Colors.$analytics-title;
+  font-weight: 400;
 }
 
-.title {
-  @include Fonts.font-semi-bold-large;
+.countContainer {
+  @include Layout.flex-row;
+  @include Layout.center-align-items;
+  gap: 10px;
 }
 
-.count {
-  @include Fonts.font-bold-mammoth;
+.dashboardItemCount {
+  @include Fonts.font-semi-bold-huge;
+  font-weight: 600;
+  margin-top: 6px;
 }
 
-.icon {
-  background-color: Colors.$selected-card-color !important;
-  border-radius: 14px !important;
-  padding: 16px;
-  svg {
-    width: 40px;
-    height: 40px;
-    path {
-      fill: Colors.$primary-color !important;
+.dashboardItemInfo {
+  margin-top: 18px;
+  @include Fonts.font-small;
+  color: Colors.$analytics-title;
+  font-weight: 400;
+  .color {
+    color: Colors.$primary-color;
+  }
+}
+
+.chip {
+  @include Layout.center-align;
+  @include Layout.flex-row;
+  height: 24px;
+  color: Colors.$background-color;
+  background-color: Colors.$warning;
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  gap: 8px;
+  margin-top: 5px;
+
+  .icon {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+
+    svg path {
+      fill: Colors.$background-color;
     }
+  }
+
+  .count {
+    color: Colors.$background-color;
+    @include Fonts.font-small;
   }
 }

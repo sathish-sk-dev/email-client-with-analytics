@@ -7,10 +7,11 @@ import { usePieChartWithAngle } from "./usePieChartWithAngle";
 export const PieChartWithAngle: FC<PieChartWithAngleProps> = ({
   pieChartData,
   colors,
+  width,
 }) => {
   const { activeIndex, onPieEnter } = usePieChartWithAngle();
   return (
-    <PieChart width={450} height={350}>
+    <PieChart width={width} height={350}>
       <Pie
         activeIndex={activeIndex}
         data={pieChartData}

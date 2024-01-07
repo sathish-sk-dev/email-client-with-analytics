@@ -5,4 +5,5 @@ export type StackedBarChartProps = {
   dataKey: string;
   bars: IBar[];
   colors: KeyValueData[];
+  width: number;
 };

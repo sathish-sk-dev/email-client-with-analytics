@@ -4,4 +4,5 @@ export interface IDashboardItem {
   icon: FC<SVGProps<SVGSVGElement>>;
   title: string;
   count: number;
+  prevCount: number;
 }

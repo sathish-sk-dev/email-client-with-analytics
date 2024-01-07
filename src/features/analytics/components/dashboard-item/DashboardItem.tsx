@@ -1,26 +1,38 @@
 import styles from "./DashboardItem.module.scss";
-import { FC } from "react";
+import React, { FC } from "react";
 import { DashboardItemProps } from "../../types/DashboardItemProps";
 import { Icon } from "../../../../components/icon/Icon";
+import useDashboardItem from "./useDashboardItem";
 
 export const DashboardItem: FC<DashboardItemProps> = ({ item }) => {
-  const { icon, title, count } = item;
+  const { title, count } = item;
+  const { percentageChange, countChange, prefixInfo, chipColor, iconType } =
+    useDashboardItem({
+      item,
+    });
 
-  const renderTitle = () => <div className={styles.title}> {title} </div>;
-
-  const renderIcon = () => (
-    <Icon iconType={icon} containerClass={styles.icon} />
+  const renderChip = () => (
+    <div className={styles.chip} style={{ backgroundColor: chipColor }}>
+      <Icon iconType={iconType} containerClass={styles.icon} />
+      <div className={styles.count}> {`${percentageChange}%`} </div>
+    </div>
   );
 
-  const renderCount = () => <div className={styles.count}> {count} </div>;
+  const renderInfo = () => (
+    <div className={styles.dashboardItemInfo}>
+      {prefixInfo}
+      <span className={styles.color}> {countChange} </span> {"this year"}
+    </div>
+  );
 
   return (
-    <div className={styles.container}>
-      {renderIcon()}
-      <div className={styles.content}>
-        {renderTitle()}
-        {renderCount()}
+    <div className={styles.dashboardItem}>
+      <div className={styles.dashboardItemTitle}> {title} </div>
+      <div className={styles.countContainer}>
+        <div className={styles.dashboardItemCount}> {count} </div>
+        {renderChip()}
       </div>
+      {renderInfo()}
     </div>
   );
 };
