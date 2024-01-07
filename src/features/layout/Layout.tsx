@@ -15,10 +15,8 @@ const Layout: FC<LayoutProps> = ({ children, canShowMailDetailsView }) => {
     selectedViewType,
     toggleDrawer,
     isOpenDrawer,
-    onChangeSearch,
     onSearch,
     onClearSearch,
-    searchText,
     onClickCompose,
     canShowMobileCompose,
   } = useLayout({ canShowMailDetailsView });
@@ -63,10 +61,8 @@ const Layout: FC<LayoutProps> = ({ children, canShowMailDetailsView }) => {
         <AppBar
           isOpen={isOpenDrawer}
           toggleDrawer={toggleDrawer}
-          onChangeSearch={onChangeSearch}
           onSearch={onSearch}
           onClearSearch={onClearSearch}
-          searchText={searchText}
           onClickCompose={onClickCompose}
         />
       );
@@ -74,11 +70,9 @@ const Layout: FC<LayoutProps> = ({ children, canShowMailDetailsView }) => {
   }, [
     canShowMailDetailsView,
     isOpenDrawer,
-    onChangeSearch,
     onClearSearch,
     onClickCompose,
     onSearch,
-    searchText,
     toggleDrawer,
   ]);
 

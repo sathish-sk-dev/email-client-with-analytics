@@ -15,7 +15,6 @@ import { IMailListState } from "../../redux-toolkit/interfaces/IMailListState";
 import {
   setMailList,
   setSearchedMailList,
-  setSearchText,
   setSelectedMailItem,
   setUnReadCount,
 } from "../../redux-toolkit/slices/mailListSlice";
@@ -57,14 +56,7 @@ export const useLayout = ({
     [dispatch, isMobile, onToggleDrawer],
   );
 
-  const onChangeSearch = useCallback(
-    (text: string) => {
-      dispatch(setSearchText(text));
-    },
-    [dispatch],
-  );
-
-  const onSearch = useCallback(() => {
+  const onSearch = useCallback((searchText: string) => {
     const searchKeys = getMailListSearchKeys();
     const result = searchList(mailListByViewType, searchKeys, searchText);
     dispatch(setSearchedMailList(result));
@@ -94,10 +86,8 @@ export const useLayout = ({
     onSelectItem,
     toggleDrawer: onToggleDrawer,
     isOpenDrawer,
-    onChangeSearch,
     onSearch,
     onClearSearch,
-    searchText,
     onClickCompose,
     canShowMobileCompose: canShowMobileCompose(),
   };

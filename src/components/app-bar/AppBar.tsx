@@ -11,10 +11,8 @@ import Button from "../button/Button";
 const AppBar: FC<AppBarProps> = ({
   isOpen,
   toggleDrawer,
-  onChangeSearch,
   onSearch,
   onClearSearch,
-  searchText,
   onClickCompose,
 }) => {
   const isMobile = useMobileMediaQuery();
@@ -32,15 +30,13 @@ const AppBar: FC<AppBarProps> = ({
   const renderSearchbar = useCallback(
     () => (
       <SearchBar
-        onChange={onChangeSearch}
-        searchText={searchText}
         placeholderText={"Search mail"}
         onSearch={onSearch}
         onClear={onClearSearch}
         containerClass={styles.searchBar}
       />
     ),
-    [onChangeSearch, onClearSearch, onSearch, searchText],
+    [onClearSearch, onSearch],
   );
 
   const renderComposeButton = useCallback(() => {

@@ -7,23 +7,20 @@ import { useSearchBar } from "./useSearchBar";
 import cx from "classnames";
 
 export const SearchBar: FC<SearchBarProps> = ({
-  searchText,
-  onChange,
   placeholderText,
   inputRef,
   onSearch,
   onClear,
   containerClass = "",
 }) => {
-  const { shouldShowCloseIcon, onChangeInput, onClearSearch, onKeyDown } =
-    useSearchBar({ inputRef, searchText, onChange, onSearch, onClear });
+  const { onChangeInput, onClearSearch } = useSearchBar({
+    inputRef,
+    onSearch,
+    onClear,
+  });
 
   const renderSearchIcon = () => (
-    <Icon
-      iconType={IconType.SEARCH}
-      onClick={onSearch}
-      containerClass={styles.icon}
-    />
+    <Icon iconType={IconType.SEARCH} containerClass={styles.icon} />
   );
 
   const renderInputIcon = () => (
@@ -32,8 +29,6 @@ export const SearchBar: FC<SearchBarProps> = ({
       type="text"
       onChange={onChangeInput}
       placeholder={placeholderText}
-      value={searchText}
-      onKeyDown={onKeyDown}
       className={styles.input}
     />
   );
@@ -50,7 +45,6 @@ export const SearchBar: FC<SearchBarProps> = ({
     <div className={cx(styles.container, containerClass)}>
       {renderSearchIcon()}
       {renderInputIcon()}
-      {shouldShowCloseIcon && renderClearIcon()}
     </div>
   );
 };

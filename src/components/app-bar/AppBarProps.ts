@@ -1,9 +1,7 @@
 export type AppBarProps = {
   isOpen: boolean;
   toggleDrawer: () => void;
-  searchText: string;
-  onChangeSearch: (text: string) => void;
-  onSearch: () => void;
+  onSearch: (value: string) => void;
   onClearSearch: () => void;
   onClickCompose: () => void;
 };

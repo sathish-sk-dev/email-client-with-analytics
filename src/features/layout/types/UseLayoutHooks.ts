@@ -5,10 +5,8 @@ export type UseLayoutHooks = {
   navBarItems: INavigationBarItem[];
   toggleDrawer: () => void;
   isOpenDrawer: boolean;
-  searchText: string;
-  onChangeSearch: (text: string) => void;
-  onSearch: () => void;
+  onSearch: (value: string) => void;
   onClearSearch: () => void;
   onClickCompose: () => void;
-  canShowMobileCompose: boolean
+  canShowMobileCompose: boolean;
 } & NavigationBarItemProps;
