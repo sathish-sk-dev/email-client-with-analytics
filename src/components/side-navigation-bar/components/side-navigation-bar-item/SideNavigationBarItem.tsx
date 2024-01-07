@@ -3,6 +3,7 @@ import { SideNavigationBarItemProps } from "../../types/SideNavigationBarItemPro
 import { Icon } from "../../../icon/Icon";
 import cx from "classnames";
 import styles from "./SideNavigationBarItem.module.scss";
+import Ripple from "../../../ripple/Ripple";
 
 export const SideNavigationBarItem: FC<SideNavigationBarItemProps> = ({
   item,
@@ -45,6 +46,7 @@ export const SideNavigationBarItem: FC<SideNavigationBarItemProps> = ({
       className={cx(styles.container, selectedContainerClass)}
       onClick={onClick}
     >
+      <Ripple />
       <Icon
         data-testid={`side-navigation-bar-${type}`}
         iconType={iconType}

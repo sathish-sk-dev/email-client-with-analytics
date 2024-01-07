@@ -2,6 +2,7 @@ import { FC } from "react";
 import { IconProps } from "./types/IconProps";
 import styles from "./Icon.module.scss";
 import cx from "classnames";
+import Ripple from "../ripple/Ripple";
 
 export const Icon: FC<IconProps> = ({
   iconType,
@@ -24,6 +25,7 @@ export const Icon: FC<IconProps> = ({
     >
       {/*// @ts-ignore*/}
       <IconComponent className={styles.container} />
+      <Ripple />
     </div>
   );
 };

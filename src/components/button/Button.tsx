@@ -3,6 +3,8 @@ import { ButtonProps } from "./ButtonProps";
 import styles from "./Button.module.scss";
 import cx from "classnames";
 import { Icon } from "../icon/Icon";
+import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
+import Ripple from "../ripple/Ripple";
 
 const Button: FC<ButtonProps> = ({
   onClick,
@@ -33,6 +35,7 @@ const Button: FC<ButtonProps> = ({
     >
       {canShowIcon && renderIcon()}
       {title}
+      <Ripple />
     </button>
   );
 };

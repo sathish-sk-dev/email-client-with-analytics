@@ -10,6 +10,7 @@
   outline: none;
   cursor: pointer;
   padding: 6px;
+  position: relative;
 
   &:hover {
     background-color: Colors.$icon-hover-color;
