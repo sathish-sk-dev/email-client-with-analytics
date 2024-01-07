@@ -1,0 +1,12 @@
+@use "src/styles/Colors.module";
+
+.menuItem {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+
+  &:hover {
+    background-color: Colors.$read-color;
+  }
+}
