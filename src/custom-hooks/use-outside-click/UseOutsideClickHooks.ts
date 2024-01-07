@@ -1,7 +1,7 @@
-import { Dispatch, RefObject, SetStateAction } from "react";
+import { Dispatch, LegacyRef, SetStateAction } from "react";
 
 export type UseOutsideClickHooks = {
-  ref: RefObject<HTMLElement>;
+  ref: LegacyRef<HTMLElement>;
   isClickOutside: boolean;
   setIsClickOutside: Dispatch<SetStateAction<boolean>>;
 };

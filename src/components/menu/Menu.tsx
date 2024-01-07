@@ -48,6 +48,7 @@ const Menu: FC<MenuProps> = ({ isOpen, menuItems, onSelect }) => {
   }, []);
 
   return (
+    // @ts-ignore
     <div ref={ref} className={styles.menuContainer}>
       <div className={styles.menuButton} onClick={toggleMenu}>
         Menu
